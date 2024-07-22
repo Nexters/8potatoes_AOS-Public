@@ -7,23 +7,28 @@
 
 import UIKit
 
-class StartViewController: UIViewController {
+class StartViewController: BaseViewController {
+    // MARK: - Properties
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    // MARK: - UI
 
-        // Do any additional setup after loading the view.
+    // MARK: - Init & LifeCycle
+    
+    
+    // MARK: - SetUpUI
+    override func addView() {
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func layout() {
+        
     }
-    */
 
+    
+    // MARK: - Bind
+    
+    private func bind(reactor: MainMapReactor) {
+        
+    }
 }

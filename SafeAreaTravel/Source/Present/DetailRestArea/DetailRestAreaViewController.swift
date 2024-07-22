@@ -12,9 +12,27 @@ import FlexLayout
 import RxCocoa
 
 final class DetailRestAreaViewController: BaseViewController {
+    // MARK: - Properties
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    // MARK: - UI
 
+    // MARK: - Init & LifeCycle
+    
+    
+    // MARK: - SetUpUI
+    override func addView() {
+        
+    }
+    
+    override func layout() {
+        
+    }
+
+    
+    // MARK: - Bind
+    
+    private func bind(reactor: MainMapReactor) {
+        
     }
 }

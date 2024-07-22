@@ -53,7 +53,6 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
                     throw error
                 }
             }
-            
             return .just(response)
             
         }
