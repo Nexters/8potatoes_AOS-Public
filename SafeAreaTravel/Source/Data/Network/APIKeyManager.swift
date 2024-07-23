@@ -12,6 +12,6 @@ final class APIKeyManager {
     
     private init() {}
     
-    let nClientID = "fp1puz846b"
-    let nClientSecret = "87DHjvhriEthGj4u62HywCF3q85Q81au5QAr7Br1"
+    let nClientID = "46tqel8rx1"
+    let nClientSecret = "3gsHj6bK1hgF7GGjQJAogi2wlZKF2RnRCtjtB33M"
 }

@@ -39,5 +39,6 @@ class BaseViewController: UIViewController {
         self.addView()
         self.layout()
         self.binding()
+        self.view.backgroundColor = .white
     }
 }
