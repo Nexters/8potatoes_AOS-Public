@@ -8,5 +8,8 @@
 import Foundation
 
 final class AppDIContainer {
-        
+    func makeSafeAreaDIContainer() -> SafeAreaDIContainer {
+        let dependencies = SafeAreaDIContainer.Dependencies(networking: Networking())
+        return SafeAreaDIContainer(dependencies: dependencies)
+    }
 }

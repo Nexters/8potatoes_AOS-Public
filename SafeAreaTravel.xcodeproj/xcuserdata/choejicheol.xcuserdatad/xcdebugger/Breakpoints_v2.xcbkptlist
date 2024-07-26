@@ -23,17 +23,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0FD9D1F0-3F8B-4837-9E75-BA12F7A77FDF"
+            uuid = "E82F650D-1DC0-4F63-842E-1D94C708A5D4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SafeAreaTravel/Source/Present/Main/Reactor/MainMapReactor.swift"
+            filePath = "SafeAreaTravel/Source/Present/Main/View/Section/LocationSearchFloatingBtn.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "State"
-            landmarkType = "14">
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "LocationSearchFloatingBtn"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70C54BF5-D430-4BE3-A58D-22E8D6228704"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeAreaTravel/Source/Present/Main/View/Section/LocationSearchFloatingBtn.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "LocationSearchFloatingBtn"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

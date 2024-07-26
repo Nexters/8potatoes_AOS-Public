@@ -33,12 +33,24 @@
 		0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2DA2C4BE9FA00AB22F7 /* MainMapReactor.swift */; };
 		0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */; };
 		0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */; };
-		0944F2E42C4BEC1000AB22F7 /* tempInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E32C4BEC1000AB22F7 /* tempInterface.swift */; };
-		0944F2E62C4BEC1800AB22F7 /* tempUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E52C4BEC1800AB22F7 /* tempUseCase.swift */; };
-		0944F2E82C4BEC2400AB22F7 /* tempRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E72C4BEC2400AB22F7 /* tempRepository.swift */; };
+		0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */; };
+		0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */; };
+		0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */; };
 		0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */; };
 		0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */; };
 		0944F2F22C4BFA8700AB22F7 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 0944F2F12C4BFA8700AB22F7 /* NMapsMap */; };
+		0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0932C4D2E710025BB7C /* APIKeyManager.swift */; };
+		0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0982C4D315A0025BB7C /* LocationModel.swift */; };
+		0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B09C2C4D34A30025BB7C /* Networking.swift */; };
+		0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */; };
+		095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */; };
+		095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */; };
+		095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */; };
+		095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA12C4FEAB4007E3C1F /* Kingfisher */; };
+		095D6FA52C4FECDE007E3C1F /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */; };
+		095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA82C4FF017007E3C1F /* FloatingPanel */; };
+		0983BF1D2C4E964600F438A2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0983BF1C2C4E964600F438A2 /* RxMoya */; };
+		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,11 +95,20 @@
 		0944F2DA2C4BE9FA00AB22F7 /* MainMapReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapReactor.swift; sourceTree = "<group>"; };
 		0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaViewController.swift; sourceTree = "<group>"; };
 		0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaReactor.swift; sourceTree = "<group>"; };
-		0944F2E32C4BEC1000AB22F7 /* tempInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempInterface.swift; sourceTree = "<group>"; };
-		0944F2E52C4BEC1800AB22F7 /* tempUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempUseCase.swift; sourceTree = "<group>"; };
-		0944F2E72C4BEC2400AB22F7 /* tempRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempRepository.swift; sourceTree = "<group>"; };
+		0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoRepository.swift; sourceTree = "<group>"; };
+		0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoUseCase.swift; sourceTree = "<group>"; };
+		0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoDAO.swift; sourceTree = "<group>"; };
 		0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDIContainer.swift; sourceTree = "<group>"; };
 		0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCoordinator.swift; sourceTree = "<group>"; };
+		0952B0932C4D2E710025BB7C /* APIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyManager.swift; sourceTree = "<group>"; };
+		0952B0982C4D315A0025BB7C /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		0952B09C2C4D34A30025BB7C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationReactor.swift; sourceTree = "<group>"; };
+		095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaBottomSheet.swift; sourceTree = "<group>"; };
+		095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
+		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +120,11 @@
 				0944F2AE2C4BDDCA00AB22F7 /* RxCocoa in Frameworks */,
 				0944F2CB2C4BE0CE00AB22F7 /* Moya in Frameworks */,
 				0944F2F22C4BFA8700AB22F7 /* NMapsMap in Frameworks */,
+				095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */,
+				095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */,
 				0944F2B72C4BDE0500AB22F7 /* PinLayout in Frameworks */,
 				0944F2BA2C4BDE1F00AB22F7 /* ReactorKit in Frameworks */,
+				0983BF1D2C4E964600F438A2 /* RxMoya in Frameworks */,
 				0944F2B12C4BDDE400AB22F7 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +200,7 @@
 				0944F2722C4BDD4000AB22F7 /* AppDelegate.swift */,
 				0944F2742C4BDD4000AB22F7 /* SceneDelegate.swift */,
 				0944F2C22C4BDF7A00AB22F7 /* AppFlowCoordinator.swift */,
+				0944F2C42C4BDF9000AB22F7 /* DIContainer */,
 				0944F2BF2C4BDEE300AB22F7 /* Utills */,
 			);
 			path = App;
@@ -194,6 +219,7 @@
 		0944F2A42C4BDD5D00AB22F7 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				095D6F942C4FE753007E3C1F /* SearchLocation */,
 				0944F2A92C4BDD8700AB22F7 /* DetailRestArea */,
 				0944F2A82C4BDD8200AB22F7 /* Main */,
 				0944F2A52C4BDD6500AB22F7 /* Init */,
@@ -212,6 +238,7 @@
 		0944F2A62C4BDD6B00AB22F7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				0952B0972C4D314F0025BB7C /* Entity */,
 				0944F2BC2C4BDE5800AB22F7 /* Interface */,
 				0944F2BB2C4BDE5100AB22F7 /* UseCase */,
 			);
@@ -221,9 +248,9 @@
 		0944F2A72C4BDD7100AB22F7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2CC2C4BE1B100AB22F7 /* DataMapping */,
 				0944F2BE2C4BDE6A00AB22F7 /* Network */,
-				0944F2BD2C4BDE5F00AB22F7 /* Repository */,
+				0944F2CC2C4BE1B100AB22F7 /* DTO */,
+				0944F2BD2C4BDE5F00AB22F7 /* DAO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -250,7 +277,7 @@
 		0944F2BB2C4BDE5100AB22F7 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2E52C4BEC1800AB22F7 /* tempUseCase.swift */,
+				0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -258,23 +285,25 @@
 		0944F2BC2C4BDE5800AB22F7 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2E32C4BEC1000AB22F7 /* tempInterface.swift */,
+				0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
 		};
-		0944F2BD2C4BDE5F00AB22F7 /* Repository */ = {
+		0944F2BD2C4BDE5F00AB22F7 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2E72C4BEC2400AB22F7 /* tempRepository.swift */,
+				0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */,
 			);
-			path = Repository;
+			path = DAO;
 			sourceTree = "<group>";
 		};
 		0944F2BE2C4BDE6A00AB22F7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2C72C4BE0AC00AB22F7 /* SafeAraAPI.swift */,
+				0952B09B2C4D348A0025BB7C /* Network */,
+				0952B09A2C4D34780025BB7C /* EndPoint */,
+				0952B0932C4D2E710025BB7C /* APIKeyManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -282,9 +311,9 @@
 		0944F2BF2C4BDEE300AB22F7 /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				095D6FA62C4FED05007E3C1F /* Base */,
+				095D6FA32C4FECCB007E3C1F /* UI */,
 				0944F2D52C4BE9AD00AB22F7 /* Common */,
-				0944F2C42C4BDF9000AB22F7 /* DIContainer */,
-				0944F2C02C4BDEF300AB22F7 /* BaseViewController.swift */,
 				0944F2D32C4BE98500AB22F7 /* DetectDeinit.swift */,
 			);
 			path = Utills;
@@ -296,15 +325,17 @@
 				0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */,
 				0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */,
 			);
-			path = DIContainer;
+			name = DIContainer;
+			path = Utills/DIContainer;
 			sourceTree = "<group>";
 		};
-		0944F2CC2C4BE1B100AB22F7 /* DataMapping */ = {
+		0944F2CC2C4BE1B100AB22F7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
 				0944F2CD2C4BE1BD00AB22F7 /* ApiError.swift */,
+				0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */,
 			);
-			path = DataMapping;
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		0944F2CF2C4BE27000AB22F7 /* Logging */ = {
@@ -352,9 +383,84 @@
 		0944F2EF2C4BEF2C00AB22F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09E9229F2C4FCCF900DBBEAC /* Section */,
 				0944F2D82C4BE9ED00AB22F7 /* MainMapViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0952B0972C4D314F0025BB7C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				0952B0982C4D315A0025BB7C /* LocationModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		0952B09A2C4D34780025BB7C /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				0944F2C72C4BE0AC00AB22F7 /* SafeAraAPI.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		0952B09B2C4D348A0025BB7C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0952B09C2C4D34A30025BB7C /* Networking.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		095D6F942C4FE753007E3C1F /* SearchLocation */ = {
+			isa = PBXGroup;
+			children = (
+				095D6F982C4FE77C007E3C1F /* Reactor */,
+				095D6F972C4FE777007E3C1F /* View */,
+			);
+			path = SearchLocation;
+			sourceTree = "<group>";
+		};
+		095D6F972C4FE777007E3C1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		095D6F982C4FE77C007E3C1F /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		095D6FA32C4FECCB007E3C1F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		095D6FA62C4FED05007E3C1F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0944F2C02C4BDEF300AB22F7 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		09E9229F2C4FCCF900DBBEAC /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */,
+				095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */,
+			);
+			path = Section;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +487,9 @@
 				0944F2B92C4BDE1F00AB22F7 /* ReactorKit */,
 				0944F2CA2C4BE0CE00AB22F7 /* Moya */,
 				0944F2F12C4BFA8700AB22F7 /* NMapsMap */,
+				0983BF1C2C4E964600F438A2 /* RxMoya */,
+				095D6FA12C4FEAB4007E3C1F /* Kingfisher */,
+				095D6FA82C4FF017007E3C1F /* FloatingPanel */,
 			);
 			productName = SafeAreaTravel;
 			productReference = 0944F26F2C4BDD4000AB22F7 /* SafeAreaTravel.app */;
@@ -462,6 +571,8 @@
 				0944F2B82C4BDE1F00AB22F7 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */,
 				0944F2F02C4BFA8700AB22F7 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
+				095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 0944F2702C4BDD4000AB22F7 /* Products */;
 			projectDirPath = "";
@@ -508,23 +619,32 @@
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
+				0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */,
+				0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */,
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
-				0944F2E42C4BEC1000AB22F7 /* tempInterface.swift in Sources */,
+				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
+				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
 				0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */,
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
+				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
+				095D6FA52C4FECDE007E3C1F /* PassThroughView.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
+				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
-				0944F2E82C4BEC2400AB22F7 /* tempRepository.swift in Sources */,
+				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
-				0944F2E62C4BEC1800AB22F7 /* tempUseCase.swift in Sources */,
+				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
+				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
+				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
+				095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,10 +821,12 @@
 				DEVELOPMENT_TEAM = JA7UDVTQBU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SafeAreaTravel/Resource/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -728,10 +850,12 @@
 				DEVELOPMENT_TEAM = JA7UDVTQBU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SafeAreaTravel/Resource/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -919,6 +1043,22 @@
 				kind = branch;
 			};
 		};
+		095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SCENEE/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -956,6 +1096,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0944F2F02C4BFA8700AB22F7 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
 			productName = NMapsMap;
+		};
+		095D6FA12C4FEAB4007E3C1F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		095D6FA82C4FF017007E3C1F /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+		0983BF1C2C4E964600F438A2 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
