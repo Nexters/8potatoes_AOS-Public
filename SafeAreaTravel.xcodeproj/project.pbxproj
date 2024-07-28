@@ -56,6 +56,7 @@
 		09C048FA2C5601C900688197 /* StartReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048F92C5601C900688197 /* StartReactor.swift */; };
 		09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FB2C5601D200688197 /* StartCoordinator.swift */; };
 		09C048FF2C5602D700688197 /* DivideLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FE2C5602D600688197 /* DivideLine.swift */; };
+		09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049002C560BAF00688197 /* LocateDIContainer.swift */; };
 		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		09C048F92C5601C900688197 /* StartReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartReactor.swift; sourceTree = "<group>"; };
 		09C048FB2C5601D200688197 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		09C048FE2C5602D600688197 /* DivideLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideLine.swift; sourceTree = "<group>"; };
+		09C049002C560BAF00688197 /* LocateDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateDIContainer.swift; sourceTree = "<group>"; };
 		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,10 +233,10 @@
 		0944F2A42C4BDD5D00AB22F7 /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				095D6F942C4FE753007E3C1F /* SearchLocation */,
-				0944F2A92C4BDD8700AB22F7 /* DetailRestArea */,
-				0944F2A82C4BDD8200AB22F7 /* Main */,
 				0944F2A52C4BDD6500AB22F7 /* Init */,
+				095D6F942C4FE753007E3C1F /* SearchLocation */,
+				0944F2A82C4BDD8200AB22F7 /* Main */,
+				0944F2A92C4BDD8700AB22F7 /* DetailRestArea */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -338,6 +340,7 @@
 			children = (
 				0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */,
 				0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */,
+				09C049002C560BAF00688197 /* LocateDIContainer.swift */,
 			);
 			name = DIContainer;
 			path = Utills/DIContainer;
@@ -709,6 +712,7 @@
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
+				09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,

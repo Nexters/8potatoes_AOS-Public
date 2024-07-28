@@ -30,10 +30,11 @@ extension UIColor {
     }
     // MARK: - Color
     
-    static let bg50 = UIColor(hexString: "FFFCF6") //F4F0EA
+    static let bg50 = UIColor(hexString: "FFFCF6") //D2CEC6
     static let main100 = UIColor(hexString: "FF7512")
     static let bik100 = UIColor(hexString: "201404")
     static let bik30 = UIColor(hexString: "BFBFBE")
+    static let bik20 = UIColor(hexString: "D2CEC6")
     static let bik5 = UIColor(hexString: "F4F0EA")
 
 }
