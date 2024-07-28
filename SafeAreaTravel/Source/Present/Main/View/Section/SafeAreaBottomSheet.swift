@@ -6,29 +6,45 @@
 //
 
 import UIKit
-import FloatingPanel
 
-final class SafeAreaBottomSheet: UIViewController {
+import RxSwift
+import RxCocoa
+
+final class SafeAreaBottomSheet: BaseViewController {
+    // MARK: - Properties
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        setupLayout()
+    
+    // MARK: - UI
+    
+    private let countLabel = UILabel().then {
+        $0.text = "n개의"
+        $0.sizeToFit()
+    }
+    private let safeAreaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.backgroundColor = UIColor(hexString: "F4F7F8")
     }
     
-    private func setupLayout() {
-        // 바텀 시트의 레이아웃 설정
-        let label = UILabel()
-        label.text = "Bottom Sheet"
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(label)
-        
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+    override func addView() {
+        [countLabel, safeAreaCollectionView].forEach {
+            self.view.addSubview($0)
+        }
     }
+    
+    override func layout() {
+        countLabel.pin
+            .top(28)
+            .hCenter()
+        safeAreaCollectionView.pin
+            .below(of: countLabel)
+            .marginTop(25)
+            .horizontally()
+            .bottom()
+    }
+    
+    override func configure() {
+        self.view.layer.cornerRadius = 20
+        self.view.backgroundColor = .white
+        self.isModalInPresentation = true
+    }
+    
 }

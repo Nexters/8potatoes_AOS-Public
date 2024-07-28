@@ -47,9 +47,15 @@
 		095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */; };
 		095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */; };
 		095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA12C4FEAB4007E3C1F /* Kingfisher */; };
-		095D6FA52C4FECDE007E3C1F /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */; };
 		095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA82C4FF017007E3C1F /* FloatingPanel */; };
 		0983BF1D2C4E964600F438A2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0983BF1C2C4E964600F438A2 /* RxMoya */; };
+		09C048ED2C52971600688197 /* SafeAreaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048EC2C52971600688197 /* SafeAreaListCell.swift */; };
+		09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048EE2C5299E500688197 /* UIColor+Extension.swift */; };
+		09C048F32C54A47F00688197 /* SUIT-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09C048F22C54A47F00688197 /* SUIT-Variable.ttf */; };
+		09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048F42C54AB6F00688197 /* UIView+Extension.swift */; };
+		09C048FA2C5601C900688197 /* StartReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048F92C5601C900688197 /* StartReactor.swift */; };
+		09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FB2C5601D200688197 /* StartCoordinator.swift */; };
+		09C048FF2C5602D700688197 /* DivideLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FE2C5602D600688197 /* DivideLine.swift */; };
 		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +113,13 @@
 		095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationReactor.swift; sourceTree = "<group>"; };
 		095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaBottomSheet.swift; sourceTree = "<group>"; };
-		095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
+		09C048EC2C52971600688197 /* SafeAreaListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaListCell.swift; sourceTree = "<group>"; };
+		09C048EE2C5299E500688197 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		09C048F22C54A47F00688197 /* SUIT-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Variable.ttf"; sourceTree = "<group>"; };
+		09C048F42C54AB6F00688197 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		09C048F92C5601C900688197 /* StartReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartReactor.swift; sourceTree = "<group>"; };
+		09C048FB2C5601D200688197 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
+		09C048FE2C5602D600688197 /* DivideLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideLine.swift; sourceTree = "<group>"; };
 		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,7 +242,9 @@
 		0944F2A52C4BDD6500AB22F7 /* Init */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2AA2C4BDD9E00AB22F7 /* StartViewController.swift */,
+				09C048F82C5601B800688197 /* View */,
+				09C048F72C5601B400688197 /* Reactor */,
+				09C048F62C5601B000688197 /* Flow */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 		0944F2D22C4BE82500AB22F7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				09C048F12C54A38900688197 /* Font */,
 				0944F27D2C4BDD4400AB22F7 /* LaunchScreen.storyboard */,
 				0944F2802C4BDD4400AB22F7 /* Info.plist */,
 				0944F27B2C4BDD4400AB22F7 /* Assets.xcassets */,
@@ -441,7 +456,9 @@
 		095D6FA32C4FECCB007E3C1F /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				095D6FA42C4FECDE007E3C1F /* PassThroughView.swift */,
+				09C048FD2C5602B900688197 /* DesignSystem */,
+				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
+				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -454,9 +471,58 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		09C048EB2C5296FD00688197 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				09C048EC2C52971600688197 /* SafeAreaListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		09C048F12C54A38900688197 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				09C048F22C54A47F00688197 /* SUIT-Variable.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		09C048F62C5601B000688197 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				09C048FB2C5601D200688197 /* StartCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		09C048F72C5601B400688197 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				09C048F92C5601C900688197 /* StartReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		09C048F82C5601B800688197 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0944F2AA2C4BDD9E00AB22F7 /* StartViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09C048FD2C5602B900688197 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				09C048FE2C5602D600688197 /* DivideLine.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		09E9229F2C4FCCF900DBBEAC /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				09C048EB2C5296FD00688197 /* Cell */,
 				09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */,
 				095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */,
 			);
@@ -592,6 +658,7 @@
 			files = (
 				0944F27C2C4BDD4400AB22F7 /* Assets.xcassets in Resources */,
 				0944F27F2C4BDD4400AB22F7 /* Base in Resources */,
+				09C048F32C54A47F00688197 /* SUIT-Variable.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C048FF2C5602D700688197 /* DivideLine.swift in Sources */,
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
@@ -624,12 +692,14 @@
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
+				09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */,
 				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
+				09C048ED2C52971600688197 /* SafeAreaListCell.swift in Sources */,
+				09C048FA2C5601C900688197 /* StartReactor.swift in Sources */,
 				0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */,
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
-				095D6FA52C4FECDE007E3C1F /* PassThroughView.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
@@ -639,8 +709,10 @@
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
+				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
+				09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */,
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
 				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
@@ -826,7 +898,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -855,7 +927,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
