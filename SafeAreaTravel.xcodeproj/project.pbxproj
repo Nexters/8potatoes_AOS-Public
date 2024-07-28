@@ -57,6 +57,12 @@
 		09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FB2C5601D200688197 /* StartCoordinator.swift */; };
 		09C048FF2C5602D700688197 /* DivideLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FE2C5602D600688197 /* DivideLine.swift */; };
 		09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049002C560BAF00688197 /* LocateDIContainer.swift */; };
+		09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049032C5622E500688197 /* SearchResultTableViewCell.swift */; };
+		09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049072C5624A700688197 /* UILabel+Extension.swift */; };
+		09C0490B2C56267C00688197 /* SearchLocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */; };
+		09C0490D2C5634FC00688197 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490C2C5634FC00688197 /* RoundView.swift */; };
+		09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490E2C563E1900688197 /* UITextField+Extension.swift */; };
+		09C049112C563E4800688197 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049102C563E4800688197 /* SearchBar.swift */; };
 		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +128,12 @@
 		09C048FB2C5601D200688197 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		09C048FE2C5602D600688197 /* DivideLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideLine.swift; sourceTree = "<group>"; };
 		09C049002C560BAF00688197 /* LocateDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateDIContainer.swift; sourceTree = "<group>"; };
+		09C049032C5622E500688197 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		09C049072C5624A700688197 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCoordinator.swift; sourceTree = "<group>"; };
+		09C0490C2C5634FC00688197 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		09C0490E2C563E1900688197 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		09C049102C563E4800688197 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -434,8 +446,9 @@
 		095D6F942C4FE753007E3C1F /* SearchLocation */ = {
 			isa = PBXGroup;
 			children = (
-				095D6F982C4FE77C007E3C1F /* Reactor */,
 				095D6F972C4FE777007E3C1F /* View */,
+				095D6F982C4FE77C007E3C1F /* Reactor */,
+				09C049092C56266300688197 /* Flow */,
 			);
 			path = SearchLocation;
 			sourceTree = "<group>";
@@ -443,6 +456,7 @@
 		095D6F972C4FE777007E3C1F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09C049022C5622C900688197 /* Section */,
 				095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */,
 			);
 			path = View;
@@ -462,6 +476,8 @@
 				09C048FD2C5602B900688197 /* DesignSystem */,
 				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
 				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
+				09C049072C5624A700688197 /* UILabel+Extension.swift */,
+				09C0490E2C563E1900688197 /* UITextField+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -518,8 +534,34 @@
 			isa = PBXGroup;
 			children = (
 				09C048FE2C5602D600688197 /* DivideLine.swift */,
+				09C0490C2C5634FC00688197 /* RoundView.swift */,
+				09C049102C563E4800688197 /* SearchBar.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		09C049022C5622C900688197 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				09C049052C5622EE00688197 /* Cell */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		09C049052C5622EE00688197 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				09C049032C5622E500688197 /* SearchResultTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		09C049092C56266300688197 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		09E9229F2C4FCCF900DBBEAC /* Section */ = {
@@ -691,16 +733,19 @@
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
 				0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */,
+				09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */,
 				0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */,
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
 				09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */,
+				09C0490D2C5634FC00688197 /* RoundView.swift in Sources */,
 				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
 				09C048ED2C52971600688197 /* SafeAreaListCell.swift in Sources */,
 				09C048FA2C5601C900688197 /* StartReactor.swift in Sources */,
 				0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */,
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
+				09C0490B2C56267C00688197 /* SearchLocationCoordinator.swift in Sources */,
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
@@ -708,13 +753,16 @@
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
+				09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */,
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
+				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
+				09C049112C563E4800688197 /* SearchBar.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
 				09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */,
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,

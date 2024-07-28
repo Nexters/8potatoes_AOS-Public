@@ -34,17 +34,19 @@ final class StartViewController: BaseViewController {
     private let startInputDesLabel = UILabel().then {
         $0.text = "출발지 입력*"
         $0.sizeToFit()
+        $0.setColorForText(textForAttribute: "*", withColor: .red)
     }
     private let goalInputDesLabel = UILabel().then {
         $0.text = "도착지 입력*"
         $0.sizeToFit()
+        $0.setColorForText(textForAttribute: "*", withColor: .red)
     }
     private let startLocateBtn = UIButton().then {
         $0.setTitle("어디서 출발하세요?", for: .normal)
         $0.contentHorizontalAlignment = .left
         $0.setTitleColor(.bik30, for: .normal)
     }
-    private let divideLine = DivideLine()
+    private let divideLine = DivideLine(type: .line)
     private let goalLocateBtn = UIButton().then {
         $0.setTitle("어디까지 가세요?", for: .normal)
         $0.contentHorizontalAlignment = .left
@@ -71,6 +73,7 @@ final class StartViewController: BaseViewController {
     init(reactor: StartReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
+        self.bind(reactor: reactor)
     }
     
     required init?(coder: NSCoder) {
@@ -154,7 +157,15 @@ final class StartViewController: BaseViewController {
     
     // MARK: - Bind
     
-    private func bind(reactor: MainMapReactor) {
+    private func bind(reactor: StartReactor) {
+        startLocateBtn.rx.tap
+            .map { StartReactor.Action.startLocationTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
+        goalLocateBtn.rx.tap
+            .map { StartReactor.Action.goalLocationTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }

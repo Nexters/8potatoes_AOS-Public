@@ -68,5 +68,67 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86643219-12B6-4116-B4E4-9440A47D1C83"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeAreaTravel/Source/Present/SearchLocation/View/SearchLocationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "configure()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60AFAC86-FEB8-4206-AC68-94D20792FC0E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SafeAreaTravel/Source/Present/SearchLocation/Flow/SearchLocationCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "SearchLocationCoordinator"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "60AFAC86-FEB8-4206-AC68-94D20792FC0E - 44097d6675f74d56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SafeAreaTravel.SearchLocationCoordinator.__allocating_init(navigationController: __C.UINavigationController, dependencies: SafeAreaTravel.SearchLocationCoordinatorDependencies) -&gt; SafeAreaTravel.SearchLocationCoordinator"
+                  moduleName = "SafeAreaTravel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choejicheol/Desktop/SafeAreaTravel/SafeAreaTravel/Source/Present/SearchLocation/Flow/SearchLocationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "60AFAC86-FEB8-4206-AC68-94D20792FC0E - d134bab9efbb0231"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SafeAreaTravel.SearchLocationCoordinator.init(navigationController: __C.UINavigationController, dependencies: SafeAreaTravel.SearchLocationCoordinatorDependencies) -&gt; SafeAreaTravel.SearchLocationCoordinator"
+                  moduleName = "SafeAreaTravel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choejicheol/Desktop/SafeAreaTravel/SafeAreaTravel/Source/Present/SearchLocation/Flow/SearchLocationCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

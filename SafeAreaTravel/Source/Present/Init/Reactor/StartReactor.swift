@@ -26,31 +26,28 @@ final class StartReactor: DetectDeinit, Reactor {
     }
     
     enum Action {
-        case fetchData(start: Coordinate, goal: Coordinate)
+        case startLocationTapped
+        case goalLocationTapped
     }
     
     enum Mutation {
-        case setLocations([Route])
+        case none
     }
-       
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .fetchData(let start, let goal):
-            return usecase.fetchRouteInfo(start: start, goal: goal)
-                .asObservable() // Single을 Observable로 변환
-                .map { locations in
-                    return Mutation.setLocations([locations])
-                }
+        case .startLocationTapped:
+            coordinator.presentSearchViewController()
+
+            return .just(.none)
+        case .goalLocationTapped:
+            coordinator.presentSearchViewController()
+            return .just(.none)
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
-//        switch mutation {
-//        case .setLocations(let locations):
-//            newState.startLocation = 0
-//        }
         return newState
     }
 }

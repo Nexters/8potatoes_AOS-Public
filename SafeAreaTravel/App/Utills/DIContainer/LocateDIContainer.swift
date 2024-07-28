@@ -9,7 +9,6 @@ import UIKit
 
 final class LocateDIContainer: StartCoordinatorDependencies {
     
-    
     struct Dependencies {
         let networking: Networking
     }
@@ -36,8 +35,17 @@ final class LocateDIContainer: StartCoordinatorDependencies {
                               coordinator: coordinator))
     }
     
-    func makeStartViewController(coordinator: StartCoordinatorProtocol) -> StartViewController {
-        return StartViewController(reactor: makeStartReactor(coordinator: coordinator as! StartCoordinator))
+    func makeStartViewController(coordinator: StartCoordinator) -> StartViewController {
+        return StartViewController(reactor: makeStartReactor(coordinator: coordinator ))
+    }
+    
+    func makeSearchLocationReactor(coordinator: StartCoordinator) -> SearchLocationReactor {
+        return(SearchLocationReactor(usecase: makeLocationInfoUseCase(),
+                              coordinator: coordinator))
+    }
+    
+    func makeSearchLocationViewController(coordinator: StartCoordinator) -> SearchLocationViewController {
+        return SearchLocationViewController(reactor: makeSearchLocationReactor(coordinator: coordinator))
     }
     
     // MARK: - Flow Coordinators

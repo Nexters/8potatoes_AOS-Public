@@ -15,7 +15,7 @@ protocol MainMapCoordinatorProtocol {
     func start()
 }
 
-class MainMapCoordinator: MainMapCoordinatorProtocol {
+final class MainMapCoordinator: MainMapCoordinatorProtocol {
     
     private let navigationController: UINavigationController
     private let dependencies: MainMapCoordinatorDependencies
