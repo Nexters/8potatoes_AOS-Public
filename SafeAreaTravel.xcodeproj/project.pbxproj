@@ -47,7 +47,6 @@
 		095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */; };
 		095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */; };
 		095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA12C4FEAB4007E3C1F /* Kingfisher */; };
-		095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA82C4FF017007E3C1F /* FloatingPanel */; };
 		09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09834DE02C57BC6300120358 /* SearchLocationDTO+Mapping.swift */; };
 		09834DE32C57BCF700120358 /* SearchLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09834DE22C57BCF700120358 /* SearchLocationModel.swift */; };
 		0983BF1D2C4E964600F438A2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0983BF1C2C4E964600F438A2 /* RxMoya */; };
@@ -150,7 +149,6 @@
 				0944F2AE2C4BDDCA00AB22F7 /* RxCocoa in Frameworks */,
 				0944F2CB2C4BE0CE00AB22F7 /* Moya in Frameworks */,
 				0944F2F22C4BFA8700AB22F7 /* NMapsMap in Frameworks */,
-				095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */,
 				095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */,
 				0944F2B72C4BDE0500AB22F7 /* PinLayout in Frameworks */,
 				0944F2BA2C4BDE1F00AB22F7 /* ReactorKit in Frameworks */,
@@ -606,7 +604,6 @@
 				0944F2F12C4BFA8700AB22F7 /* NMapsMap */,
 				0983BF1C2C4E964600F438A2 /* RxMoya */,
 				095D6FA12C4FEAB4007E3C1F /* Kingfisher */,
-				095D6FA82C4FF017007E3C1F /* FloatingPanel */,
 			);
 			productName = SafeAreaTravel;
 			productReference = 0944F26F2C4BDD4000AB22F7 /* SafeAreaTravel.app */;
@@ -689,7 +686,6 @@
 				0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */,
 				0944F2F02C4BFA8700AB22F7 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
 				095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 0944F2702C4BDD4000AB22F7 /* Products */;
 			projectDirPath = "";
@@ -1183,14 +1179,6 @@
 				minimumVersion = 7.12.0;
 			};
 		};
-		095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SCENEE/FloatingPanel";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1233,11 +1221,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		095D6FA82C4FF017007E3C1F /* FloatingPanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 095D6FA72C4FF017007E3C1F /* XCRemoteSwiftPackageReference "FloatingPanel" */;
-			productName = FloatingPanel;
 		};
 		0983BF1C2C4E964600F438A2 /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
