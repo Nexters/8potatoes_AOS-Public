@@ -20,11 +20,13 @@ final class SearchLocationReactor {
     }
     
     struct State {
-        var startLocation = Coordinate(lat: 0, lon: 0)
+        var location = Coordinate(lat: 0, lon: 0)
+        var searchText: String = ""
     }
     
     enum Action {
-
+        case searchLocation(String)
+        case xMarkBtnTapped
     }
     
     enum Mutation {
@@ -34,6 +36,10 @@ final class SearchLocationReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
 
+        case .searchLocation(_):
+            <#code#>
+        case .xMarkBtnTapped:
+            <#code#>
         }
     }
     

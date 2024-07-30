@@ -48,6 +48,8 @@
 		095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */; };
 		095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA12C4FEAB4007E3C1F /* Kingfisher */; };
 		095D6FA92C4FF017007E3C1F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 095D6FA82C4FF017007E3C1F /* FloatingPanel */; };
+		09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09834DE02C57BC6300120358 /* SearchLocationDTO+Mapping.swift */; };
+		09834DE32C57BCF700120358 /* SearchLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09834DE22C57BCF700120358 /* SearchLocationModel.swift */; };
 		0983BF1D2C4E964600F438A2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0983BF1C2C4E964600F438A2 /* RxMoya */; };
 		09C048ED2C52971600688197 /* SafeAreaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048EC2C52971600688197 /* SafeAreaListCell.swift */; };
 		09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048EE2C5299E500688197 /* UIColor+Extension.swift */; };
@@ -120,6 +122,8 @@
 		095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationReactor.swift; sourceTree = "<group>"; };
 		095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaBottomSheet.swift; sourceTree = "<group>"; };
+		09834DE02C57BC6300120358 /* SearchLocationDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchLocationDTO+Mapping.swift"; sourceTree = "<group>"; };
+		09834DE22C57BCF700120358 /* SearchLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationModel.swift; sourceTree = "<group>"; };
 		09C048EC2C52971600688197 /* SafeAreaListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaListCell.swift; sourceTree = "<group>"; };
 		09C048EE2C5299E500688197 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09C048F22C54A47F00688197 /* SUIT-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Variable.ttf"; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			children = (
 				0944F2CD2C4BE1BD00AB22F7 /* ApiError.swift */,
 				0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */,
+				09834DE02C57BC6300120358 /* SearchLocationDTO+Mapping.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				0952B0982C4D315A0025BB7C /* LocationModel.swift */,
+				09834DE22C57BCF700120358 /* SearchLocationModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */,
 				09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */,
 				0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */,
+				09834DE32C57BCF700120358 /* SearchLocationModel.swift in Sources */,
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
@@ -749,6 +756,7 @@
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
+				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,

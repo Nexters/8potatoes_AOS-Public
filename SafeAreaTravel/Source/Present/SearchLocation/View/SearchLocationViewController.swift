@@ -16,7 +16,18 @@ final class SearchLocationViewController: UIViewController {
     
     // MARK: - UI
     
-    private let searchBar = SearchBar()
+    private let titleLabel = UILabel().then {
+        $0.text = "위치 검색"
+        $0.sizeToFit()
+    }
+    private let backBtn = UIButton().then {
+        $0.backgroundColor = .clear
+        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
+        $0.tintColor = .bik100
+    }
+    private let searchBar = SearchBar().then {
+        $0.placeholder = "지번, 도로명, 건물명으로 검색"
+    }
     private let divideView = DivideLine(type: .dot)
     private let searchTipInfoImg = UIImageView().then {
         $0.image = UIImage(named: "searchTipInfo")
@@ -27,14 +38,14 @@ final class SearchLocationViewController: UIViewController {
     }
     private let resultContentLabel = UILabel().then {
         $0.text = "xx 검색된 주소"
+        $0.sizeToFit()
     }
     
     // MARK: - Init & LifeCycle
     
     override func viewDidLoad() {
-        print("asdasd")
-        view.backgroundColor = .white
         addView()
+        configure()
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,30 +65,51 @@ final class SearchLocationViewController: UIViewController {
     // MARK: - SetUpUI
     
      func  configure() {
-        self.navigationItem.title = "위치 검색"
-        self.navigationItem.backBarButtonItem?.tintColor = .black
-        self.navigationItem.backButtonTitle = ""
-        view.backgroundColor = .black
-    }
+         self.view.backgroundColor = UIColor(hexString: "FFFCF6")
+     }
     
      func addView() {
-         [searchBar, divideView, searchTipInfoImg, searchResultTabelView, resultContentLabel].forEach {
+         [titleLabel, backBtn, searchBar, divideView, searchTipInfoImg, searchResultTabelView, resultContentLabel].forEach {
              self.view.addSubview($0)
          }
     }
     
      func layout() {
+         
+         titleLabel.pin
+             .top(self.view.pin.safeArea.top + 32)
+             .hCenter()
+        
+         backBtn.pin
+             .top(self.view.pin.safeArea.top + 32)
+             .left(20)
+             .height(24)
+             .width(24)
         
         searchBar.pin
-            .top(self.view.pin.safeArea.top + 20)
+            .below(of: titleLabel)
+            .marginTop(46)
             .horizontally(20)
             .height(48)
         
+         resultContentLabel.pin
+             .below(of: searchBar)
+             .marginTop(40)
+             .left(20)
+         
         divideView.pin
-            .below(of: searchBar)
-            .marginTop(40)
+            .below(of: resultContentLabel)
+            .marginTop(20)
             .horizontally(20)
             .height(2)
+         
+         searchResultTabelView.pin
+             .below(of: divideView)
+             .marginTop(2)
+             .left()
+             .right()
+             .bottom(self.view.safeAreaInsets.bottom)
+         
     }
     
     // MARK: - Bind

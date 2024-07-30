@@ -14,7 +14,6 @@ import RxCocoa
 final class SearchBar: UITextField {
     
     private let searchImg = UIImageView().then {
-        $0.backgroundColor = .blue
         $0.image = UIImage(systemName: "magnifyingglass")
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .bik70
@@ -33,7 +32,8 @@ final class SearchBar: UITextField {
 
     private func layout() {
         self.addSubview(xMarkBtn)
-        
+        self.addLeftView(view: searchImg)
+
         NSLayoutConstraint.activate([
             xMarkBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
             xMarkBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
@@ -73,7 +73,6 @@ final class SearchBar: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.addLeftView(view: searchImg)
         self.addLeftPadding()
         layout()
         bindUI()

@@ -14,18 +14,18 @@ struct Coordinate {
 }
 
 // MARK: - 경로 정보
-struct Route: Codable {
+struct Route {
     let trafast: [Trafast]
 }
 extension Route {
-    struct Trafast: Codable {
+    struct Trafast {
         let summary: Summary
         let path: [[Double]]
         let section: [Section]
         let guide: [Guide]
     }
 
-    struct Summary: Codable {
+    struct Summary {
         let start: Location
         let goal: Goal
         let distance: Int
@@ -36,16 +36,16 @@ extension Route {
         let fuelPrice: Int
     }
 
-    struct Location: Codable {
+    struct Location {
         let location: [Double]
     }
 
-    struct Goal: Codable {
+    struct Goal {
         let location: [Double]
         let dir: Int
     }
 
-    struct Section: Codable {
+    struct Section {
         let pointIndex: Int
         let pointCount: Int
         let distance: Int
@@ -54,7 +54,7 @@ extension Route {
         let speed: Int
     }
 
-    struct Guide: Codable {
+    struct Guide {
         let pointIndex: Int
         let type: Int
         let instructions: String

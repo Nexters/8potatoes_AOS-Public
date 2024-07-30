@@ -9,7 +9,7 @@ import UIKit
 
 extension UITextField {
     
-    func addLeftView(view: UIView) {
+func addLeftView(view: UIView) {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width + 12, height: view.frame.height))
         view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         container.addSubview(view)

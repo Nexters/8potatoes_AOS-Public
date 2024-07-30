@@ -18,10 +18,7 @@ final class StartViewController: BaseViewController {
 
     // MARK: - UI
     
-    private let titleLabel = UILabel().then {
-        $0.text = "경로입력"
-        $0.sizeToFit()
-    }
+    private let scrollView = UIScrollView()
     private let welecomeLabel = UILabel().then {
         $0.text = "쥬쥬와 함께\n휴게소 맛집을 찾아보세요!"
         $0.numberOfLines = 0
@@ -83,8 +80,13 @@ final class StartViewController: BaseViewController {
     
     // MARK: - SetUpUI
     
+    override func configure() {
+        navigationItem.title = "경로입력"
+    }
+    
     override func addView() {
-        self.view.addSubview(rootFlexContainer)
+        self.view.addSubview(scrollView)
+         scrollView.addSubview(rootFlexContainer)
     }
     
     override func layout() {
@@ -131,11 +133,8 @@ final class StartViewController: BaseViewController {
             .direction(.column)
             .alignItems(.stretch)
             .define {  flex in
-                flex.addItem(titleLabel)
-                    .marginTop(25)
-                    .alignSelf(.center)
                 flex.addItem(welecomeImg)
-                    .marginTop(26)
+                    .marginTop(12)
                     .horizontally(0)
                     .height(327)
                 flex.addItem(welecomeLabel)
@@ -151,8 +150,14 @@ final class StartViewController: BaseViewController {
                     .marginLeft(20)
                     .marginRight(20)
             }
-        rootFlexContainer.pin.all()
-        rootFlexContainer.flex.layout()
+        scrollView.pin.all()
+        rootFlexContainer.pin
+            .top()
+            .left()
+            .right()
+        rootFlexContainer.flex.layout(mode: .adjustHeight)
+        
+        scrollView.contentSize = rootFlexContainer.frame.size
     }
     
     // MARK: - Bind

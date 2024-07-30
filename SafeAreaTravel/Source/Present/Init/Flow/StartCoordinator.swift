@@ -33,8 +33,8 @@ final class StartCoordinator: StartCoordinatorProtocol {
     }
     
     func presentSearchViewController() {
-        print("!1")
         let vc = dependencies.makeSearchLocationViewController(coordinator: self)
+        vc.modalPresentationStyle = .automatic
         navigationController.present(vc, animated: true)
     }
 }
