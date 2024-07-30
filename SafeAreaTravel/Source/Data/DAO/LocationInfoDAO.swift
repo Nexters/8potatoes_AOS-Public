@@ -21,7 +21,17 @@ final class LocationInfoDAO: LocationInfoRepository {
             .map(RouteResponseDTO.self)
             .map { $0.route.toDomain() }
             .do(onSuccess: { (route) in
-                log.debug("response \(route)")
+                log.debug("response FetchRouteInfo \(route)")
+            })
+    }
+    
+    func searchLocation(location: String, page: Int) -> Single<[SearchLocationModel]> {
+        return network
+            .request(.fetchSearchLocationInfo(location: location, page: page))
+            .map(SearchPoiInfoDTO.self)
+            .map {$0.toDomain()}
+            .do(onSuccess: { (location) in
+                log.debug("response SearchLocation \(location)")
             })
     }
 }

@@ -37,9 +37,9 @@ final class SearchLocationReactor {
         switch action {
 
         case .searchLocation(_):
-            <#code#>
+            break
         case .xMarkBtnTapped:
-            <#code#>
+            break
         }
     }
     

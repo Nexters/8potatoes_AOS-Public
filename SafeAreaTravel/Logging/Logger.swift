@@ -25,7 +25,7 @@ let log = Logger()
 
 final class Logger {
     
-    private let logQueue = DispatchQueue(label: "com.yourapp.logger")
+    private let logQueue = DispatchQueue(label: "com.SafeAreaTravel.logger")
     private let logFileURL: URL
     
     // MARK: - Initialize

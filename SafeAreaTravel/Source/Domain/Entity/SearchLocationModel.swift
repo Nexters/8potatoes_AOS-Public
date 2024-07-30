@@ -12,5 +12,6 @@ struct SearchLocationModel {
     let frontLon: Double
     let name: String
     let fullAddressRoad: String
+    let fullAddressNum: String
 }
  

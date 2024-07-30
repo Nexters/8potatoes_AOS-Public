@@ -131,3 +131,17 @@ extension SearchPoiInfoDTO.PoisDTO.PoiDTO.NewAddressListDTO {
 }
 
 // MARK: - Mappings to Domain
+
+extension SearchPoiInfoDTO {
+    func toDomain() -> [SearchLocationModel] {
+        return pois.poi.map { poi in
+            SearchLocationModel(
+                frontLat: Double(poi.frontLat) ?? 0.0,
+                frontLon: Double(poi.frontLon) ?? 0.0,
+                name: poi.name,
+                fullAddressRoad: poi.newAddressList.newAddress[0].fullAddressRoad,
+                fullAddressNum: "\(poi.upperAddrName) \(poi.middleAddrName) \(poi.lowerAddrName) \(poi.firstBuildNo)-\(poi.secondBuildNo)\(poi.detailAddrname)"
+            )
+        }
+    }
+}
