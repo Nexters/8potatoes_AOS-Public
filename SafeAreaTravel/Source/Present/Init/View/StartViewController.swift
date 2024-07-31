@@ -151,10 +151,7 @@ final class StartViewController: BaseViewController {
                     .marginRight(20)
             }
         scrollView.pin.all()
-        rootFlexContainer.pin
-            .top()
-            .left()
-            .right()
+        rootFlexContainer.pin.all()
         rootFlexContainer.flex.layout(mode: .adjustHeight)
         
         scrollView.contentSize = rootFlexContainer.frame.size

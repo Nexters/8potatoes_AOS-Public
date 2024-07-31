@@ -7,13 +7,16 @@
 
 import UIKit
 
+import ReactorKit
+import RxCocoa
+import RxSwift
 
-final class SearchLocationViewController: UIViewController {
+final class SearchLocationViewController: BaseViewController {
     
     // MARK: - Properties
     
     private let reactor: SearchLocationReactor
-    
+        
     // MARK: - UI
     
     private let titleLabel = UILabel().then {
@@ -31,6 +34,8 @@ final class SearchLocationViewController: UIViewController {
     private let divideView = DivideLine(type: .dot)
     private let searchTipInfoImg = UIImageView().then {
         $0.image = UIImage(named: "searchTipInfo")
+        $0.contentMode = .scaleAspectFit
+        $0.backgroundColor = .clear
     }
     private let searchResultTabelView = UITableView(frame: .zero, style: .plain).then {
         $0.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
@@ -64,18 +69,17 @@ final class SearchLocationViewController: UIViewController {
     
     // MARK: - SetUpUI
     
-     func  configure() {
+    override func  configure() {
          self.view.backgroundColor = UIColor(hexString: "FFFCF6")
      }
     
-     func addView() {
+    override func addView() {
          [titleLabel, backBtn, searchBar, divideView, searchTipInfoImg, searchResultTabelView, resultContentLabel].forEach {
              self.view.addSubview($0)
          }
     }
     
-     func layout() {
-         
+    override func layout() {
          titleLabel.pin
              .top(self.view.pin.safeArea.top + 32)
              .hCenter()
@@ -109,12 +113,31 @@ final class SearchLocationViewController: UIViewController {
              .left()
              .right()
              .bottom(self.view.safeAreaInsets.bottom)
-         
     }
     
     // MARK: - Bind
     
     private func bind(reactor: SearchLocationReactor) {
+        
+        searchBar.rx.text.orEmpty
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] _ in
+                self?.searchTipInfoImg.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.text.orEmpty
+            .distinctUntilChanged()
+            .map { SearchLocationReactor.Action.searchLocation($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.searchResults }
+            .bind(to: searchResultTabelView.rx.items(cellIdentifier: SearchResultTableViewCell.identifier, cellType: SearchResultTableViewCell.self)) { index, model, cell in
+                cell.configure(model)
+            }
+            .disposed(by: disposeBag)
         
     }
 }

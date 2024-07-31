@@ -42,22 +42,21 @@ extension SafeAraAPI: TargetType {
         switch self {
         case .fetchSearchLocationInfo(let location, let page):
             return .requestParameters(parameters: [
-                "version": "1", // Use appropriate version
+                "version": "1",
                 "page": page,
-                "count": 10, // Default or specify count
+                "count": 20,
                 "searchKeyword": location,
-                "areaLLCode": "", // Optional or specify code
-                "areaLMCode": "", // Optional or specify code
-                "resCoordType": "WGS84GEO", // Example, change if necessary
-                "searchType": "A", // Example, change if necessary
-                "searchtypCd": "", // Optional or specify code
-                "radius": "2000", // Example radius
-                "reqCoordType": "WGS84GEO", // Example, change if necessary
-                "centerLon": "", // Specify if needed
-                "centerLat": "", // Specify if needed
-                "multiPoint": "", // Specify if needed
-                "callback": "", // Optional callback parameter
-                "appKey": APIKeyManager.shared.tmapAPIKey // Your Tmap API Key
+                "areaLLCode": "",
+                "areaLMCode": "",
+                "resCoordType": "WGS84GEO",
+                "searchType": "all",
+                "searchtypCd": "",
+                "radius": "0",
+                "reqCoordType": "WGS84GEO",
+                "centerLon": "",
+                "centerLat": "",
+                "multiPoint": "",
+                "callback": "",
             ], encoding: URLEncoding.default)
             
         default :
@@ -72,7 +71,8 @@ extension SafeAraAPI: TargetType {
             return ["X-NCP-APIGW-API-KEY-ID " : APIKeyManager.shared.nClientID,
                     "X-NCP-APIGW-API-KEY" : APIKeyManager.shared.nClientSecret]
         case .fetchSearchLocationInfo(location: let location, page: let page):
-            return nil
+            return ["appKey": APIKeyManager.shared.tmapAPIKey]
+
         }
     }
 }

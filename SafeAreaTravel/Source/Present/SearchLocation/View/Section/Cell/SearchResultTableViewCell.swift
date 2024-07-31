@@ -29,10 +29,10 @@ final class SearchResultTableViewCell: UITableViewCell {
     private let numAddressFlexContainer = UIView()
     private let rootflexContainer = UIView()
     
-    private func configure(loadAddress: String, numAddress: String, location: String) {
-        locationLabel.text = location
-        loadAddressLabel.text = loadAddress
-        numAddressLabel.text = numAddress
+    func configure(_ model: SearchLocationModel) {
+        locationLabel.text = model.name
+        loadAddressLabel.text = model.fullAddressRoad
+        numAddressLabel.text = model.fullAddressNum
     }
     
     private func layout() {
