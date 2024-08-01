@@ -11,7 +11,9 @@ import PinLayout
 
 final class RoundView: UIView {
     
-    private let titleLabel = UILabel()
+    private let titleLabel = UILabel().then {
+        $0.numberOfLines = 0
+    }
     
     func configre(backgroundColor: UIColor, title: String, titleColor: UIColor) {
         titleLabel.text = title
@@ -22,17 +24,20 @@ final class RoundView: UIView {
     
     override func layoutSubviews() {
         titleLabel.pin
-            .top(8)
-            .left(8)
-            .sizeToFit()
+            .top(4)
+            .horizontally(8)
         
         self.pin
-            .width(titleLabel.frame.width + 16)
+            .height(26)
+            .width(titleLabel.frame.width + 20)
     }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.layer.cornerRadius = 4
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.bik50.cgColor
+        self.addSubview(titleLabel)
     }
     
     required init?(coder: NSCoder) {

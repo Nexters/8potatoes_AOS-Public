@@ -15,15 +15,24 @@ final class SearchResultTableViewCell: UITableViewCell {
     
     static let identifier = "SearchResultTableViewCell"
     
-    private let locationLabel = UILabel()
+    private let locationLabel = UILabel().then {
+        $0.numberOfLines = 0
+        $0.sizeToFit()
+    }
     private let loadAddressDesView = RoundView().then {
         $0.configre(backgroundColor: .clear, title: "도로명", titleColor: .bik50)
     }
     private let numAddressDesView = RoundView().then {
         $0.configre(backgroundColor: .clear, title: "지번", titleColor: .bik50)
     }
-    private let loadAddressLabel = UILabel()
-    private let numAddressLabel = UILabel()
+    private let loadAddressLabel = UILabel().then {
+        $0.numberOfLines = 0
+        $0.sizeToFit()
+    }
+    private let numAddressLabel = UILabel().then {
+        $0.numberOfLines = 0
+        $0.sizeToFit()
+    }
     
     private let loadAddrexFlexContainer = UIView()
     private let numAddressFlexContainer = UIView()
@@ -33,6 +42,8 @@ final class SearchResultTableViewCell: UITableViewCell {
         locationLabel.text = model.name
         loadAddressLabel.text = model.fullAddressRoad
         numAddressLabel.text = model.fullAddressNum
+        setNeedsLayout()
+        layoutIfNeeded()  
     }
     
     private func layout() {
@@ -43,7 +54,8 @@ final class SearchResultTableViewCell: UITableViewCell {
             .alignItems(.start)
             .define {  flex in
                 flex.addItem(loadAddressDesView)
-                    .height(53)
+                    .height(26)
+                    .width(loadAddressDesView.frame.width)
                 flex.addItem(loadAddressLabel)
                     .marginLeft(12)
             }
@@ -52,7 +64,8 @@ final class SearchResultTableViewCell: UITableViewCell {
             .alignItems(.start)
             .define {  flex in
                 flex.addItem(numAddressDesView)
-                    .height(53)
+                    .height(26)
+                    .width(numAddressDesView.frame.width)
                 flex.addItem(numAddressLabel)
                     .marginLeft(12)
             }
@@ -77,11 +90,19 @@ final class SearchResultTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
+        selectionStyle = .default 
         layout()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        locationLabel.text = nil
+        loadAddressLabel.text = nil
+        numAddressLabel.text = nil
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: "")
+        super.init(style: style, reuseIdentifier: SearchResultTableViewCell.identifier)
     }
     
     required init?(coder: NSCoder) {

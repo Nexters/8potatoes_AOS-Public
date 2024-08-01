@@ -8,6 +8,8 @@ import Foundation
 
 import Then
 
+// MARK: - ModelType Protocol
+
 protocol ModelType: Codable, Then {
     static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
 }

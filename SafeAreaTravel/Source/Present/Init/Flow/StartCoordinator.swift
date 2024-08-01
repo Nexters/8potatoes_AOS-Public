@@ -14,10 +14,12 @@ protocol StartCoordinatorDependencies {
 
 protocol StartCoordinatorProtocol {
     func start()
+    func presentSearchViewController()
+    func dismissSearchViewController()
 }
 
 final class StartCoordinator: StartCoordinatorProtocol {
-    
+        
     private let navigationController: UINavigationController
     private let dependencies: StartCoordinatorDependencies
     
@@ -36,5 +38,9 @@ final class StartCoordinator: StartCoordinatorProtocol {
         let vc = dependencies.makeSearchLocationViewController(coordinator: self)
         vc.modalPresentationStyle = .automatic
         navigationController.present(vc, animated: true)
+    }
+    
+    func dismissSearchViewController() {
+        navigationController.dismiss(animated: true)
     }
 }

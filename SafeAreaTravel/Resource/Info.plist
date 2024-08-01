@@ -4,7 +4,14 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SUIT</string>
+		<string>SUIT-Bold.ttf</string>
+		<string>SUIT-ExtraBold.ttf</string>
+		<string>SUIT-Light.ttf</string>
+		<string>SUIT-Heavy.ttf</string>
+		<string>SUIT-Medium.ttf</string>
+		<string>SUIT-Regular.ttf</string>
+		<string>SUIT-Thin.ttf</string>
+		<string>SUIT-SemiBold.ttf</string>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string></string>

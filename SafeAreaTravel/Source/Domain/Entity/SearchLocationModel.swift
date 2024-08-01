@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchLocationModel {
+struct SearchLocationModel: Equatable {
     let frontLat: Double
     let frontLon: Double
     let name: String

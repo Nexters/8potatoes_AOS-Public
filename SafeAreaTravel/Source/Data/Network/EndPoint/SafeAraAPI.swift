@@ -44,7 +44,7 @@ extension SafeAraAPI: TargetType {
             return .requestParameters(parameters: [
                 "version": "1",
                 "page": page,
-                "count": 20,
+                "count": 10,
                 "searchKeyword": location,
                 "areaLLCode": "",
                 "areaLMCode": "",
@@ -70,7 +70,7 @@ extension SafeAraAPI: TargetType {
         case .fetchDirction:
             return ["X-NCP-APIGW-API-KEY-ID " : APIKeyManager.shared.nClientID,
                     "X-NCP-APIGW-API-KEY" : APIKeyManager.shared.nClientSecret]
-        case .fetchSearchLocationInfo(location: let location, page: let page):
+        case .fetchSearchLocationInfo:
             return ["appKey": APIKeyManager.shared.tmapAPIKey]
 
         }

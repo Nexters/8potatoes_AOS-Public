@@ -13,12 +13,12 @@ final class Networking {
     
     private let provider = MoyaProvider<SafeAraAPI>()
 
-    func request(
-        _ target: SafeAraAPI,
-        file: StaticString = #file,
-        function: StaticString = #function,
-        line: UInt = #line
-    ) -> Single<Response> {
+func request(
+    _ target: SafeAraAPI,
+    file: StaticString = #file,
+    function: StaticString = #function,
+    line: UInt = #line
+) -> Single<Response> {
         let requestString = "\(target.method.rawValue) \(target.path)"
         return provider.rx.request(target)
             .catchAPIError(APIErrorResponse.self)

@@ -17,8 +17,8 @@ final class LocateDIContainer: StartCoordinatorDependencies {
     
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
-        
     }
+    
     // MARK: - Repositories
     func makeLocationInfoRepository() -> LocationInfoRepository {
         return LocationInfoDAO(network: dependencies.networking)
@@ -31,17 +31,15 @@ final class LocateDIContainer: StartCoordinatorDependencies {
     
     // MARK: - Present
     func makeStartReactor(coordinator: StartCoordinator) -> StartReactor {
-        return(StartReactor(usecase: makeLocationInfoUseCase(),
-                              coordinator: coordinator))
+        return StartReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
     }
     
     func makeStartViewController(coordinator: StartCoordinator) -> StartViewController {
-        return StartViewController(reactor: makeStartReactor(coordinator: coordinator ))
+        return StartViewController(reactor: makeStartReactor(coordinator: coordinator))
     }
     
     func makeSearchLocationReactor(coordinator: StartCoordinator) -> SearchLocationReactor {
-        return(SearchLocationReactor(usecase: makeLocationInfoUseCase(),
-                              coordinator: coordinator))
+        return SearchLocationReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
     }
     
     func makeSearchLocationViewController(coordinator: StartCoordinator) -> SearchLocationViewController {
@@ -51,7 +49,6 @@ final class LocateDIContainer: StartCoordinatorDependencies {
     // MARK: - Flow Coordinators
     
     func makeStartFlowCoordinator(navigationController: UINavigationController) -> StartCoordinator {
-        return StartCoordinator(navigationController: navigationController,
-                                  dependencies: self)
+        return StartCoordinator(navigationController: navigationController, dependencies: self)
     }
 }

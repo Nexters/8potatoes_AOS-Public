@@ -12,11 +12,13 @@ import RxCocoa
 import RxSwift
 
 final class SearchLocationViewController: BaseViewController {
-    
+
     // MARK: - Properties
     
     private let reactor: SearchLocationReactor
-        
+    private var disposeBag = DisposeBag()
+    private var isFirstInput = true
+    
     // MARK: - UI
     
     private let titleLabel = UILabel().then {
@@ -40,17 +42,20 @@ final class SearchLocationViewController: BaseViewController {
     private let searchResultTabelView = UITableView(frame: .zero, style: .plain).then {
         $0.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         $0.backgroundColor = .clear
+        $0.isUserInteractionEnabled = true // 상호작용 허용
     }
     private let resultContentLabel = UILabel().then {
-        $0.text = "xx 검색된 주소"
+        $0.text = ""
         $0.sizeToFit()
     }
     
     // MARK: - Init & LifeCycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         addView()
         configure()
+        bind(reactor: reactor)
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,14 +74,19 @@ final class SearchLocationViewController: BaseViewController {
     
     // MARK: - SetUpUI
     
-    override func  configure() {
-         self.view.backgroundColor = UIColor(hexString: "FFFCF6")
-     }
+    override func configure() {
+        self.view.backgroundColor = UIColor(hexString: "FFFCF6")
+        searchResultTabelView.delegate = self
+        searchResultTabelView.tableFooterView = UIView() // 이 부분을 추가합니다.
+        searchResultTabelView.allowsSelection = true // 셀 선택을 허용합니다.
+        bindUI()
+    }
     
     override func addView() {
-         [titleLabel, backBtn, searchBar, divideView, searchTipInfoImg, searchResultTabelView, resultContentLabel].forEach {
+         [titleLabel, backBtn, searchBar, divideView, searchResultTabelView, resultContentLabel].forEach {
              self.view.addSubview($0)
          }
+        searchResultTabelView.addSubview(searchTipInfoImg)
     }
     
     override func layout() {
@@ -109,10 +119,17 @@ final class SearchLocationViewController: BaseViewController {
          
          searchResultTabelView.pin
              .below(of: divideView)
-             .marginTop(2)
+             .marginTop(8)
              .left()
              .right()
              .bottom(self.view.safeAreaInsets.bottom)
+        
+        searchTipInfoImg.pin
+            .below(of: divideView)
+            .marginTop(2)
+            .left()
+            .right()
+            .height(300)
     }
     
     // MARK: - Bind
@@ -121,16 +138,15 @@ final class SearchLocationViewController: BaseViewController {
         
         searchBar.rx.text.orEmpty
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] _ in
-                self?.searchTipInfoImg.isHidden = true
-            })
-            .disposed(by: disposeBag)
-        
-        searchBar.rx.text.orEmpty
-            .distinctUntilChanged()
             .map { SearchLocationReactor.Action.searchLocation($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        searchResultTabelView.rx.modelSelected(SearchLocationModel.self)
+            .map { SearchLocationReactor.Action.selectLocation($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         
         reactor.state
             .map { $0.searchResults }
@@ -139,8 +155,24 @@ final class SearchLocationViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        reactor.state
+            .map { !$0.searchResults.isEmpty }
+            .bind(to: searchBar.searchResultExists)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUI() {
+        searchBar.rx.controlEvent(.editingChanged)
+            .subscribe(onNext: { [weak self] in
+                if self?.isFirstInput == true {
+                    self?.isFirstInput = false
+                    self?.searchTipInfoImg.isHidden = true
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
+
 // MARK: - UITableViewDelegate
 
 extension SearchLocationViewController: UITableViewDelegate {

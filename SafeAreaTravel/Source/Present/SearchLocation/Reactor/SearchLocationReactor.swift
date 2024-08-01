@@ -9,22 +9,17 @@ import ReactorKit
 import RxSwift
 
 final class SearchLocationReactor: Reactor {
-    // MARK: - Properties
-
+    
     var initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: StartCoordinatorProtocol
     
-    // MARK: - Init
-
     init(usecase: LocationInfoUseCaseProtocol, coordinator: StartCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
         self.initialState = State()
     }
     
-    // MARK: - State & Action
-
     struct State {
         var location = Coordinate(lat: 0, lon: 0)
         var searchResults: [SearchLocationModel] = []
@@ -32,23 +27,23 @@ final class SearchLocationReactor: Reactor {
     
     enum Action {
         case searchLocation(String)
+        case selectLocation(SearchLocationModel)
     }
-    
     
     enum Mutation {
         case setSearchResults([SearchLocationModel])
     }
-}
-
-// MARK: - Mutation & Reduce
-
-extension SearchLocationReactor {
+    
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .searchLocation(let text):
             return usecase.searchLocation(location: text, page: 1)
                 .map { Mutation.setSearchResults($0) }
                 .asObservable()
+        case .selectLocation(let location):
+            usecase.selectLocation(location: location)
+            coordinator.dismissSearchViewController()
+            return .empty()
         }
     }
     

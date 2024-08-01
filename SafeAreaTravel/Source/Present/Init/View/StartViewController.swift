@@ -10,17 +10,20 @@ import UIKit
 import Then
 import PinLayout
 import FlexLayout
+import RxSwift
 
 final class StartViewController: BaseViewController {
     // MARK: - Properties
 
     private let reactor: StartReactor
+    private var disposeBag = DisposeBag()
 
     // MARK: - UI
     
     private let scrollView = UIScrollView()
     private let welecomeLabel = UILabel().then {
         $0.text = "쥬쥬와 함께\n휴게소 맛집을 찾아보세요!"
+        $0.font = .suit(.Bold, size: 24)
         $0.numberOfLines = 0
         $0.sizeToFit()
     }
@@ -30,22 +33,28 @@ final class StartViewController: BaseViewController {
     }
     private let startInputDesLabel = UILabel().then {
         $0.text = "출발지 입력*"
+        $0.font = .suit(.Medium, size: 14)
         $0.sizeToFit()
+        $0.textColor = .bik30
         $0.setColorForText(textForAttribute: "*", withColor: .red)
     }
     private let goalInputDesLabel = UILabel().then {
         $0.text = "도착지 입력*"
+        $0.font = .suit(.Medium, size: 14)
         $0.sizeToFit()
+        $0.textColor = .bik30
         $0.setColorForText(textForAttribute: "*", withColor: .red)
     }
     private let startLocateBtn = UIButton().then {
         $0.setTitle("어디서 출발하세요?", for: .normal)
+        $0.titleLabel?.font = .suit(.Medium, size: 18)
         $0.contentHorizontalAlignment = .left
         $0.setTitleColor(.bik30, for: .normal)
     }
     private let divideLine = DivideLine(type: .line)
     private let goalLocateBtn = UIButton().then {
         $0.setTitle("어디까지 가세요?", for: .normal)
+        $0.titleLabel?.font = .suit(.Medium, size: 18)
         $0.contentHorizontalAlignment = .left
         $0.setTitleColor(.bik30, for: .normal)
     }
@@ -58,6 +67,7 @@ final class StartViewController: BaseViewController {
     private let searchBtn = UIButton().then {
         $0.setTitle("검색", for: .normal)
         $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = .suit(.Bold, size: 16)
         $0.backgroundColor = .bik20
         $0.layer.cornerRadius = 16
     }
@@ -160,6 +170,21 @@ final class StartViewController: BaseViewController {
     // MARK: - Bind
     
     private func bind(reactor: StartReactor) {
+        
+        reactor.state.map { $0.selectedLocation }
+             .distinctUntilChanged()
+             .subscribe(onNext: { [weak self] location in
+                 if let location = location {
+                     log.debug("뷰컨: \(location)")
+                     if reactor.currentState.isStartLocationTapped {
+                         self?.startLocateBtn.setTitle(location.name, for: .normal)
+                     } else if reactor.currentState.isGoalLocationTapped {
+                         self?.goalLocateBtn.setTitle(location.name, for: .normal)
+                     }
+                 }
+             })
+             .disposed(by: disposeBag)
+        
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)

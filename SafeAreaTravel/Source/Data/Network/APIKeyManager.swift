@@ -14,6 +14,5 @@ final class APIKeyManager {
     
     let nClientID = "46tqel8rx1"
     let nClientSecret = "3gsHj6bK1hgF7GGjQJAogi2wlZKF2RnRCtjtB33M"
-    let tmapAPIKey = "3gsHj6bK1hgF7GGjQJAogi2wlZKF2RnRCtjtB33M"
-
+    let tmapAPIKey = "85RpqdnIYq7uw8C0hl5glT82ytBlTOq50kyHj4T1"
 }
