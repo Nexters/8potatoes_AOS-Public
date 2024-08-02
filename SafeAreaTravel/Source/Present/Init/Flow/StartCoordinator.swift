@@ -8,8 +8,8 @@
 import UIKit
 
 protocol StartCoordinatorDependencies {
-    func makeStartViewController(coordinator: StartCoordinator) -> StartViewController
-    func makeSearchLocationViewController(coordinator: StartCoordinator) -> SearchLocationViewController
+    func makeStartViewController(coordinator: StartCoordinatorProtocol) -> StartViewController
+    func makeSearchLocationViewController(coordinator: StartCoordinatorProtocol) -> SearchLocationViewController
 }
 
 protocol StartCoordinatorProtocol {
@@ -44,3 +44,4 @@ final class StartCoordinator: StartCoordinatorProtocol {
         navigationController.dismiss(animated: true)
     }
 }
+
