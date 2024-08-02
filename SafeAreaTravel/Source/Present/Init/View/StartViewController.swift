@@ -11,12 +11,13 @@ import Then
 import PinLayout
 import FlexLayout
 import RxSwift
+import ReactorKit
 
-final class StartViewController: BaseViewController {
+final class StartViewController: BaseViewController, View {
     // MARK: - Properties
 
-    private let reactor: StartReactor
-    private var disposeBag = DisposeBag()
+    let reactor: StartReactor
+    var disposeBag = DisposeBag()
 
     // MARK: - UI
     
@@ -28,7 +29,7 @@ final class StartViewController: BaseViewController {
         $0.sizeToFit()
     }
     private let welecomeImg = UIImageView().then {
-        $0.image = UIImage(named: "")
+       // $0.image = UIImage(named: "")
         $0.backgroundColor = .red
     }
     private let startInputDesLabel = UILabel().then {
@@ -80,7 +81,6 @@ final class StartViewController: BaseViewController {
     init(reactor: StartReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
-        self.bind(reactor: reactor)
     }
     
     required init?(coder: NSCoder) {
@@ -92,6 +92,8 @@ final class StartViewController: BaseViewController {
     
     override func configure() {
         navigationItem.title = "경로입력"
+        bind(reactor: reactor)
+        bindUI()
     }
     
     override func addView() {
@@ -169,22 +171,18 @@ final class StartViewController: BaseViewController {
     
     // MARK: - Bind
     
-    private func bind(reactor: StartReactor) {
+    func bind(reactor: StartReactor) {
         
         reactor.state.map { $0.selectedLocation }
-             .distinctUntilChanged()
-             .subscribe(onNext: { [weak self] location in
-                 if let location = location {
-                     log.debug("뷰컨: \(location)")
-                     if reactor.currentState.isStartLocationTapped {
-                         self?.startLocateBtn.setTitle(location.name, for: .normal)
-                     } else if reactor.currentState.isGoalLocationTapped {
-                         self?.goalLocateBtn.setTitle(location.name, for: .normal)
-                     }
-                 }
-             })
-             .disposed(by: disposeBag)
-        
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] location in
+                log.debug("State change - selectedLocation: \(location)")
+                // Update UI with selected location
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUI() {
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)
@@ -194,5 +192,6 @@ final class StartViewController: BaseViewController {
             .map { StartReactor.Action.goalLocationTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
     }
 }

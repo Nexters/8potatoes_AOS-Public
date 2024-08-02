@@ -14,7 +14,7 @@ protocol StartCoordinatorDependencies {
 
 protocol StartCoordinatorProtocol {
     func start()
-    func presentSearchViewController()
+    func presentSearchViewController(reactor: SearchLocationReactor)
     func dismissSearchViewController()
 }
 
@@ -34,8 +34,8 @@ final class StartCoordinator: StartCoordinatorProtocol {
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func presentSearchViewController() {
-        let vc = dependencies.makeSearchLocationViewController(coordinator: self)
+    func presentSearchViewController(reactor: SearchLocationReactor) {
+        let vc = SearchLocationViewController(reactor: reactor)
         vc.modalPresentationStyle = .automatic
         navigationController.present(vc, animated: true)
     }

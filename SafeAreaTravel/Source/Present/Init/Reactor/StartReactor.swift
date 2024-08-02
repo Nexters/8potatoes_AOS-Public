@@ -13,7 +13,8 @@ final class StartReactor: Reactor {
     var initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: StartCoordinatorProtocol
-
+    private var disposeBag = DisposeBag()
+    
     init(usecase: LocationInfoUseCaseProtocol, coordinator: StartCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
@@ -22,7 +23,7 @@ final class StartReactor: Reactor {
 
     struct State {
         var startLocation = Coordinate(lat: 0, lon: 0)
-        var selectedLocation: SearchLocationModel?
+        var selectedLocation = SearchLocationModel(frontLat: 0.0, frontLon: 0.0, name: "", fullAddressRoad: "", fullAddressNum: "")
         var isStartLocationTapped: Bool = false
         var isGoalLocationTapped: Bool = false
     }
@@ -41,13 +42,12 @@ final class StartReactor: Reactor {
         case setGoalLocationTapped
     }
 
-    func mutate(action: Action) -> Observable<Mutation> {
+    func mutate(action: StartReactor.Action) -> Observable<StartReactor.Mutation> {
+        log.debug("Mutate - action: \(action)")
         switch action {
         case .startLocationTapped:
-            coordinator.presentSearchViewController()
             return .just(.setStartLocationTapped)
         case .goalLocationTapped:
-            coordinator.presentSearchViewController()
             return .just(.setGoalLocationTapped)
         case .chageBtnTapped:
             return .just(.none)
@@ -56,8 +56,9 @@ final class StartReactor: Reactor {
         }
     }
 
-    func reduce(state: State, mutation: Mutation) -> State {
+    func reduce(state: StartReactor.State, mutation: StartReactor.Mutation) -> State {
         var newState = state
+        log.debug("Reduce - mutation: \(mutation)")
         switch mutation {
         case .none:
             break
@@ -66,22 +67,33 @@ final class StartReactor: Reactor {
         case .setStartLocationTapped:
             newState.isStartLocationTapped = true
             newState.isGoalLocationTapped = false
+            coordinator.presentSearchViewController(reactor: getSearchReactor())
         case .setGoalLocationTapped:
             newState.isStartLocationTapped = false
             newState.isGoalLocationTapped = true
+            coordinator.presentSearchViewController(reactor: getSearchReactor())
         }
         return newState
     }
 
-    func transform(action: Observable<Action>) -> Observable<Action> {
-        let selectedLocationAction = usecase.event
-            .flatMap { event -> Observable<Action> in
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        log.debug("transform - Mutation: \(mutation)")
+
+        let selectedLocationState = usecase.event
+            .flatMap { event -> Observable<Mutation> in
                 switch event {
                 case .selectLocation(let location):
-                    return .just(.setSelectedLocation(location))
+                    log.debug("Transform - selectLocation: \(location)")
+                    var newState = self.currentState
+                    newState.selectedLocation = location
+                    return .just(.setStartLocationTapped)
                 }
             }
-        return Observable.merge(action, selectedLocationAction)
+        return Observable.merge(mutation, selectedLocationState)
     }
 }
-
+extension StartReactor {
+    func getSearchReactor() -> SearchLocationReactor {
+        return SearchLocationReactor(usecase: usecase, coordinator: coordinator)
+    }
+}
