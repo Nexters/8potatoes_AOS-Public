@@ -21,8 +21,6 @@ class BaseViewController: UIViewController {
       log.verbose("DEINIT: \(self.className)")
     }
 
-    // MARK: Rx
-    var disposeBag = DisposeBag()
     
     func layout() {}
     func configure() {}
@@ -33,12 +31,16 @@ class BaseViewController: UIViewController {
         view.endEditing(true)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.layout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         self.configure()
         self.addView()
-        self.layout()
         self.binding()
-        self.view.backgroundColor = .white
     }
 }

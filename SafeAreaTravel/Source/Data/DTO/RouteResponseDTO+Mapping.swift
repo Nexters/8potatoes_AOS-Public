@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - RouteDTO
+
 struct RouteResponseDTO: ModelType {
     let code: Int
     let message: String
@@ -68,6 +69,7 @@ extension RouteResponseDTO.RouteDTO.TrafastDTO {
 }
 
 // MARK: - Mappings to Domain
+
 extension RouteResponseDTO {
     func toDomain() -> Route {
         return .init(trafast: route.trafast.map { $0.toDomain() })

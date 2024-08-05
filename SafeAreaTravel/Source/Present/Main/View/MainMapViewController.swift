@@ -7,29 +7,29 @@
 
 import UIKit
 
+import PinLayout
 import NMapsMap
 import RxCocoa
 import ReactorKit
-import FloatingPanel
 
-final class MainMapViewController: BaseViewController {
-    var position: FloatingPanel.FloatingPanelPosition
-    
-    var initialState: FloatingPanel.FloatingPanelState
-    
-    var anchors: [FloatingPanel.FloatingPanelState : any FloatingPanel.FloatingPanelLayoutAnchoring]
+final class MainMapViewController: BaseViewController, View {
     
     // MARK: - Properties
 
     private let reactor: MainMapReactor
-    private var floatingPanel: FloatingPanelController!
+    var disposeBag =  DisposeBag()
 
     // MARK: - UI
     private let nMapView = NMFMapView()
-    private var bottomSheetVC: SafeAreaBottomSheet!
-
-
+    private var bottomSheet =  SafeAreaBottomSheet()
+    private let searchBtn = LocationSearchFloatingBtn()
+    
     // MARK: - Init & LifeCycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presentBottomSheet()
+    }
+    
     init(reactor: MainMapReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
@@ -42,66 +42,44 @@ final class MainMapViewController: BaseViewController {
     // MARK: - SetUpUI
     
     override func  configure() {
-        showBottomSheet()
+        
     }
     
     override func addView() {
         self.view.addSubview(nMapView)
+        [searchBtn].forEach {
+            nMapView.addSubview($0)
+        }
     }
     
     override func layout() {
         nMapView.pin.all()
+        
+        searchBtn.pin
+            .top(40)
+            .height(48)
+            .horizontally(16)
     }
     
-    private func showBottomSheet() {
-         let bottomSheetVC = SafeAreaBottomSheet()
-         
-         floatingPanel = FloatingPanelController()
-         floatingPanel.delegate = self
-         floatingPanel.set(contentViewController: bottomSheetVC)
-         floatingPanel.addPanel(toParent: self)
-         
-         // 패널의 레이아웃 및 초기 위치 설정
-         //floatingPanel.layout = CustomFloatingPanelLayout()
-     }
-
     // MARK: - Bind
-    
-    private func bind(reactor: MainMapReactor) {
+    func bind(reactor: MainMapReactor) {
         
     }
-}
-extension MainMapViewController: FloatingPanelControllerDelegate, FloatingPanelLayout {
-    // MARK: - Bottom Sheet
-    private func setupBottomSheet() {
-        bottomSheetVC = SafeAreaBottomSheet()
-        floatingPanel = FloatingPanelController()
-        floatingPanel.delegate = self
-        floatingPanel.layout = self
-        floatingPanel.set(contentViewController: bottomSheetVC)
-        floatingPanel.addPanel(toParent: self)
-
-        // 초기 컨텐츠 설정
-    }
-
-    private func showBottomSheet() {
-        floatingPanel.move(to: .tip, animated: false)
-    }
-
-    // MARK: - FloatingPanelLayout
-    var initialPosition: FloatingPanelPosition {
-        return .tip
-    }
     
-    var supportedPositions: Set<FloatingPanelPosition> {
-        return [.tip, .full]
-    }
-    
-    func insetFor(position: FloatingPanelPosition) -> CGFloat? {
-        switch position {
-        case .full: return 60.0
-        case .tip: return 300.0
-        default: return nil
+    private func presentBottomSheet() {
+        let bottomSheet = SafeAreaBottomSheet()
+        bottomSheet.modalPresentationStyle = .pageSheet
+        bottomSheet.modalTransitionStyle = .coverVertical
+
+        if let sheetPresentationController = bottomSheet.sheetPresentationController {
+            let customMediumDetent = UISheetPresentationController.Detent.custom { context in
+                return context.maximumDetentValue * 0.25
+            }
+
+            sheetPresentationController.detents = [customMediumDetent, .medium(), .large()]
+            sheetPresentationController.prefersGrabberVisible = true
+            sheetPresentationController.largestUndimmedDetentIdentifier = .large
         }
+        present(bottomSheet, animated: true, completion: nil)
     }
 }

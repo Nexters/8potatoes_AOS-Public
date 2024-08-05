@@ -25,7 +25,7 @@ let log = Logger()
 
 final class Logger {
     
-    private let logQueue = DispatchQueue(label: "com.yourapp.logger")
+    private let logQueue = DispatchQueue(label: "com.SafeAreaTravel.logger")
     private let logFileURL: URL
     
     // MARK: - Initialize
@@ -47,6 +47,7 @@ final class Logger {
     }
     
     // MARK: - Logging
+    
     func error(_ items: Any..., file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         log(level: "❤️ ERROR", items: items, file: file, function: function, line: line)
     }
@@ -68,6 +69,7 @@ final class Logger {
     }
     
     // MARK: - Private methods
+    
     private func log(level: String, items: [Any], file: StaticString, function: StaticString, line: UInt) {
         let message = message(from: items)
         let formattedMessage = LogFormatter.format(level: level, fileName: "\(file)", function: "\(function)", line: Int(line), message: message)
