@@ -191,6 +191,18 @@ final class StartViewController: BaseViewController, View {
                 self?.goalLocateBtn.setTitleColor(.bik100, for: .normal)
             })
             .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.completeSetLocation}
+            .bind(onNext: {  [weak self]  isCompleted in
+                if isCompleted {
+                    log.info(isCompleted)
+                    self?.searchBtn.isEnabled = false
+                    self?.searchBtn.backgroundColor = .main100
+                    self?.chagneLocateBtn.tintColor = .main100
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindUI() {
