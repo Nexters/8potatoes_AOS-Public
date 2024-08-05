@@ -19,8 +19,8 @@ class AppFlowCoordinator {
     }
     
     func start() {
-        let safeAreaDIContainer = appDIContainer.makeLocateDIContainer()
-        let flow = safeAreaDIContainer.makeStartFlowCoordinator(navigationController: navigationController)
+        let locationDIContainer = appDIContainer.makeSafeAreaDIContainer()
+        let flow = locationDIContainer.makeStartFlowCoordinator(navigationController: navigationController)
         flow.start()
     }
 }

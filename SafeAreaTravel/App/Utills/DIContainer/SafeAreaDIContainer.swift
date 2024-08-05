@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SafeAreaDIContainer: MainMapCoordinatorDependencies {
+final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinatorDependencies {
     struct Dependencies {
         let networking: Networking
     }
@@ -16,22 +16,44 @@ final class SafeAreaDIContainer: MainMapCoordinatorDependencies {
     
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
-        
     }
+    
     // MARK: - Repositories
+    
     func makeLocationInfoRepository() -> LocationInfoRepository {
         return LocationInfoDAO(network: dependencies.networking)
     }
     
     // MARK: - Use Cases
+    
     func makeLocationInfoUseCase() -> LocationInfoUseCaseProtocol {
         return LocationInfoUseCase(repository: makeLocationInfoRepository())
     }
     
-    // MARK: - Present
+    // MARK: - Present (Start)
+    
+    func makeStartReactor(coordinator: StartCoordinatorProtocol) -> StartReactor {
+        return StartReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
+    }
+    
+    func makeStartViewController(coordinator: StartCoordinatorProtocol) -> StartViewController {
+        return StartViewController(reactor: makeStartReactor(coordinator: coordinator))
+    }
+    
+    // MARK: - Present (Search)
+    
+    func makeSearchLocationReactor(coordinator: StartCoordinatorProtocol) -> SearchLocationReactor {
+        return SearchLocationReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
+    }
+    
+    func makeSearchLocationViewController(coordinator: StartCoordinatorProtocol) -> SearchLocationViewController {
+        return SearchLocationViewController(reactor: makeSearchLocationReactor(coordinator: coordinator))
+    }
+    
+    // MARK: - Present (MainMap)
+    
     func makeMainMapReactor(coordinator: MainMapCoordinator) -> MainMapReactor {
-        return(MainMapReactor(usecase: makeLocationInfoUseCase(),
-                              coordinator: coordinator))
+        return MainMapReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
     }
     
     func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol) -> MainMapViewController {
@@ -40,8 +62,11 @@ final class SafeAreaDIContainer: MainMapCoordinatorDependencies {
     
     // MARK: - Flow Coordinators
     
+    func makeStartFlowCoordinator(navigationController: UINavigationController) -> StartCoordinator {
+        return StartCoordinator(navigationController: navigationController, dependencies: self)
+    }
+
     func makeMainMapFlowCoordinator(navigationController: UINavigationController) -> MainMapCoordinator {
-        return MainMapCoordinator(navigationController: navigationController,
-                                  dependencies: self)
+        return MainMapCoordinator(navigationController: navigationController, dependencies: self)
     }
 }

@@ -16,7 +16,7 @@ import ReactorKit
 final class StartViewController: BaseViewController, View {
     // MARK: - Properties
 
-    let reactor: StartReactor
+    private let reactor: StartReactor
     var disposeBag = DisposeBag()
 
     // MARK: - UI
@@ -66,11 +66,12 @@ final class StartViewController: BaseViewController, View {
         $0.setBackgroundImage(UIImage(named: "arrow-switch-horizontal"), for: .normal)
     }
     private let searchBtn = UIButton().then {
-        $0.setTitle("검색", for: .normal)
+        $0.setTitle("휴게소 찾기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .suit(.Bold, size: 16)
         $0.backgroundColor = .bik20
         $0.layer.cornerRadius = 16
+        $0.isEnabled = true
     }
     private let locateVerticalFlexContainer = UIView()
     private let locateHorizontalFlexContainer = UIView()
@@ -173,11 +174,21 @@ final class StartViewController: BaseViewController, View {
     
     func bind(reactor: StartReactor) {
         
-        reactor.state.map { $0.selectedLocation }
+        reactor.state
+            .map{ $0.startLocation}
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] location in
-                log.debug("State change - selectedLocation: \(location)")
-                // Update UI with selected location
+            .bind(onNext: {  [weak self] location in
+                self?.startLocateBtn.setTitle(location.name, for: .normal)
+                self?.startLocateBtn.setTitleColor(.bik100, for: .normal)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map{ $0.goalLocation}
+            .distinctUntilChanged()
+            .bind(onNext: {  [weak self] location in
+                self?.goalLocateBtn.setTitle(location.name, for: .normal)
+                self?.goalLocateBtn.setTitleColor(.bik100, for: .normal)
             })
             .disposed(by: disposeBag)
     }
@@ -193,5 +204,9 @@ final class StartViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        chagneLocateBtn.rx.tap
+            .map { StartReactor.Action.chageBtnTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }

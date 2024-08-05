@@ -12,9 +12,4 @@ final class AppDIContainer {
         let dependencies = SafeAreaDIContainer.Dependencies(networking: Networking())
         return SafeAreaDIContainer(dependencies: dependencies)
     }
-    
-    func makeLocateDIContainer() -> LocateDIContainer {
-        let dependencies = LocateDIContainer.Dependencies(networking: Networking())
-        return LocateDIContainer(dependencies: dependencies)
-    }
 }

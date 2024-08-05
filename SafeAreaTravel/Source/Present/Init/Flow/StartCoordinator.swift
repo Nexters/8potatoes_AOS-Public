@@ -10,12 +10,14 @@ import UIKit
 protocol StartCoordinatorDependencies {
     func makeStartViewController(coordinator: StartCoordinatorProtocol) -> StartViewController
     func makeSearchLocationViewController(coordinator: StartCoordinatorProtocol) -> SearchLocationViewController
+    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol) -> MainMapViewController
+    func makeMainMapFlowCoordinator(navigationController: UINavigationController) -> MainMapCoordinator
 }
-
 protocol StartCoordinatorProtocol {
     func start()
     func presentSearchViewController(reactor: SearchLocationReactor)
     func dismissSearchViewController()
+    func pushMainMapViewController()
 }
 
 final class StartCoordinator: StartCoordinatorProtocol {
@@ -23,8 +25,7 @@ final class StartCoordinator: StartCoordinatorProtocol {
     private let navigationController: UINavigationController
     private let dependencies: StartCoordinatorDependencies
     
-    init(navigationController: UINavigationController,
-         dependencies: StartCoordinatorDependencies) {
+    init(navigationController: UINavigationController, dependencies: StartCoordinatorDependencies) {
         self.navigationController = navigationController
         self.dependencies = dependencies
     }
@@ -42,6 +43,11 @@ final class StartCoordinator: StartCoordinatorProtocol {
     
     func dismissSearchViewController() {
         navigationController.dismiss(animated: true)
+    }
+    
+    func pushMainMapViewController() {
+        let mainMapFlowCoordinator = dependencies.makeMainMapFlowCoordinator(navigationController: navigationController)
+        mainMapFlowCoordinator.start()
     }
 }
 

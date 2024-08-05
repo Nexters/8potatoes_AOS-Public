@@ -11,7 +11,7 @@ extension UIColor {
     
     // MARK: - Extension
     
-    convenience init(hexString: String) {     /// hex값 사용
+    convenience init(hexString: String) {     /// Using hex
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
         Scanner(string: hex).scanHexInt64(&int)
@@ -28,13 +28,16 @@ extension UIColor {
         }
         self.init(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: CGFloat(alpha) / 255)
     }
+    
     // MARK: - Color
     
-    static let bg50 = UIColor(hexString: "FFFCF6") //63594C
+    static let bg50 = UIColor(hexString: "FFFCF6") //A69F95
     static let main100 = UIColor(hexString: "FF7512")
     static let bik100 = UIColor(hexString: "201404")
     static let bik70 = UIColor(hexString: "63594C")
+    static let bik60 = UIColor(hexString: "797165")
     static let bik50 = UIColor(hexString: "90887D")
+    static let bik40 = UIColor(hexString: "A69F95")
     static let bik30 = UIColor(hexString: "BFBFBE")
     static let bik20 = UIColor(hexString: "D2CEC6")
     static let bik5 = UIColor(hexString: "F4F0EA")

@@ -16,6 +16,7 @@
 		094066152C5BB507009A5A7C /* SUIT-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0940660A2C5BAC41009A5A7C /* SUIT-Light.ttf */; };
 		094066162C5BB50A009A5A7C /* SUIT-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0940660D2C5BAC41009A5A7C /* SUIT-Thin.ttf */; };
 		094066172C5BB50C009A5A7C /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0940660B2C5BAC41009A5A7C /* SUIT-Regular.ttf */; };
+		094066192C5DED7B009A5A7C /* TimeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094066182C5DED7B009A5A7C /* TimeInfoView.swift */; };
 		0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2722C4BDD4000AB22F7 /* AppDelegate.swift */; };
 		0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2742C4BDD4000AB22F7 /* SceneDelegate.swift */; };
 		0944F27C2C4BDD4400AB22F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0944F27B2C4BDD4400AB22F7 /* Assets.xcassets */; };
@@ -65,7 +66,6 @@
 		09C048FA2C5601C900688197 /* StartReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048F92C5601C900688197 /* StartReactor.swift */; };
 		09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FB2C5601D200688197 /* StartCoordinator.swift */; };
 		09C048FF2C5602D700688197 /* DivideLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FE2C5602D600688197 /* DivideLine.swift */; };
-		09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049002C560BAF00688197 /* LocateDIContainer.swift */; };
 		09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049032C5622E500688197 /* SearchResultTableViewCell.swift */; };
 		09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049072C5624A700688197 /* UILabel+Extension.swift */; };
 		09C0490B2C56267C00688197 /* SearchLocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */; };
@@ -102,6 +102,7 @@
 		0940660C2C5BAC41009A5A7C /* SUIT-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraLight.ttf"; sourceTree = "<group>"; };
 		0940660D2C5BAC41009A5A7C /* SUIT-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.ttf"; sourceTree = "<group>"; };
 		0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		094066182C5DED7B009A5A7C /* TimeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInfoView.swift; sourceTree = "<group>"; };
 		0944F26F2C4BDD4000AB22F7 /* SafeAreaTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeAreaTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0944F2722C4BDD4000AB22F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0944F2742C4BDD4000AB22F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		09C048F92C5601C900688197 /* StartReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartReactor.swift; sourceTree = "<group>"; };
 		09C048FB2C5601D200688197 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		09C048FE2C5602D600688197 /* DivideLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideLine.swift; sourceTree = "<group>"; };
-		09C049002C560BAF00688197 /* LocateDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateDIContainer.swift; sourceTree = "<group>"; };
 		09C049032C5622E500688197 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		09C049072C5624A700688197 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCoordinator.swift; sourceTree = "<group>"; };
@@ -370,7 +370,6 @@
 			children = (
 				0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */,
 				0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */,
-				09C049002C560BAF00688197 /* LocateDIContainer.swift */,
 			);
 			name = DIContainer;
 			path = Utills/DIContainer;
@@ -564,6 +563,7 @@
 				09C048FE2C5602D600688197 /* DivideLine.swift */,
 				09C0490C2C5634FC00688197 /* RoundView.swift */,
 				09C049102C563E4800688197 /* SearchBar.swift */,
+				094066182C5DED7B009A5A7C /* TimeInfoView.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -787,6 +787,7 @@
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
+				094066192C5DED7B009A5A7C /* TimeInfoView.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
 				09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */,
@@ -795,7 +796,6 @@
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
-				09C049012C560BAF00688197 /* LocateDIContainer.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
 				09C049112C563E4800688197 /* SearchBar.swift in Sources */,

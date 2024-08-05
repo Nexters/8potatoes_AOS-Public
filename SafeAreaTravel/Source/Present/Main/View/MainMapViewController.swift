@@ -12,12 +12,12 @@ import NMapsMap
 import RxCocoa
 import ReactorKit
 
-final class MainMapViewController: BaseViewController {
+final class MainMapViewController: BaseViewController, View {
     
     // MARK: - Properties
 
     private let reactor: MainMapReactor
-    
+    var disposeBag =  DisposeBag()
 
     // MARK: - UI
     private let nMapView = NMFMapView()
@@ -57,12 +57,12 @@ final class MainMapViewController: BaseViewController {
         
         searchBtn.pin
             .top(40)
-            .height(40)
+            .height(48)
             .horizontally(16)
     }
     
     // MARK: - Bind
-    private func bind(reactor: MainMapReactor) {
+    func bind(reactor: MainMapReactor) {
         
     }
     
