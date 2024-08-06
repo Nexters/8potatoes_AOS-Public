@@ -68,7 +68,6 @@
 		09C048FF2C5602D700688197 /* DivideLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C048FE2C5602D600688197 /* DivideLine.swift */; };
 		09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049032C5622E500688197 /* SearchResultTableViewCell.swift */; };
 		09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049072C5624A700688197 /* UILabel+Extension.swift */; };
-		09C0490B2C56267C00688197 /* SearchLocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */; };
 		09C0490D2C5634FC00688197 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490C2C5634FC00688197 /* RoundView.swift */; };
 		09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490E2C563E1900688197 /* UITextField+Extension.swift */; };
 		09C049112C563E4800688197 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049102C563E4800688197 /* SearchBar.swift */; };
@@ -149,7 +148,6 @@
 		09C048FE2C5602D600688197 /* DivideLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideLine.swift; sourceTree = "<group>"; };
 		09C049032C5622E500688197 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		09C049072C5624A700688197 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCoordinator.swift; sourceTree = "<group>"; };
 		09C0490C2C5634FC00688197 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		09C0490E2C563E1900688197 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		09C049102C563E4800688197 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -467,7 +465,6 @@
 			children = (
 				095D6F972C4FE777007E3C1F /* View */,
 				095D6F982C4FE77C007E3C1F /* Reactor */,
-				09C049092C56266300688197 /* Flow */,
 			);
 			path = SearchLocation;
 			sourceTree = "<group>";
@@ -582,14 +579,6 @@
 				09C049032C5622E500688197 /* SearchResultTableViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		09C049092C56266300688197 /* Flow */ = {
-			isa = PBXGroup;
-			children = (
-				09C0490A2C56267C00688197 /* SearchLocationCoordinator.swift */,
-			);
-			path = Flow;
 			sourceTree = "<group>";
 		};
 		09E9229F2C4FCCF900DBBEAC /* Section */ = {
@@ -780,7 +769,6 @@
 				09C048FA2C5601C900688197 /* StartReactor.swift in Sources */,
 				0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */,
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
-				09C0490B2C56267C00688197 /* SearchLocationCoordinator.swift in Sources */,
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
