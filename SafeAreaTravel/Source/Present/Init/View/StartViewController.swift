@@ -63,7 +63,7 @@ final class StartViewController: BaseViewController, View {
         $0.image = UIImage(named: "sideLocateImg")
     }
     private let chagneLocateBtn = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "arrow-switch-horizontal"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "emptySwap"), for: .normal)
     }
     private let searchBtn = UIButton().then {
         $0.setTitle("휴게소 찾기", for: .normal)
@@ -193,13 +193,19 @@ final class StartViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state
-            .map { $0.completeSetLocation}
-            .bind(onNext: {  [weak self]  isCompleted in
+            .map { $0.completeSetLocation }
+            .bind(onNext: { [weak self] isCompleted in
                 if isCompleted {
                     log.info(isCompleted)
                     self?.searchBtn.isEnabled = false
                     self?.searchBtn.backgroundColor = .main100
-                    self?.chagneLocateBtn.tintColor = .main100
+                    self?.chagneLocateBtn.setImage(UIImage(named: "Swap"), for: .normal)
+                    self?.divideLine.updateColor(.main100)
+                } else {
+                    self?.searchBtn.isEnabled = true
+                    self?.searchBtn.backgroundColor = .bik20
+                    self?.chagneLocateBtn.setImage(UIImage(named: "emptySwap"), for: .normal)
+                    self?.divideLine.updateColor(.bik5)
                 }
             })
             .disposed(by: disposeBag)
