@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092D91B62C624FF900818B5F /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D91B52C624FF900818B5F /* CurrentLocationViewController.swift */; };
 		0940660F2C5BB20A009A5A7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */; };
 		094066102C5BB4FC009A5A7C /* SUIT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 094066062C5BAC40009A5A7C /* SUIT-Medium.ttf */; };
 		094066112C5BB4FE009A5A7C /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 094066072C5BAC40009A5A7C /* SUIT-Bold.ttf */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		092D91B52C624FF900818B5F /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		094066052C5BAC40009A5A7C /* SUIT-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.ttf"; sourceTree = "<group>"; };
 		094066062C5BAC40009A5A7C /* SUIT-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.ttf"; sourceTree = "<group>"; };
 		094066072C5BAC40009A5A7C /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
@@ -188,6 +190,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092D91B42C624FD500818B5F /* CurrentLocation */ = {
+			isa = PBXGroup;
+			children = (
+				092D91B52C624FF900818B5F /* CurrentLocationViewController.swift */,
+			);
+			path = CurrentLocation;
+			sourceTree = "<group>";
+		};
+		092D91B72C6255EF00818B5F /* SearchLocation */ = {
+			isa = PBXGroup;
+			children = (
+				09C049022C5622C900688197 /* Section */,
+				095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */,
+			);
+			path = SearchLocation;
+			sourceTree = "<group>";
+		};
 		0944F2662C4BDD4000AB22F7 = {
 			isa = PBXGroup;
 			children = (
@@ -472,8 +491,8 @@
 		095D6F972C4FE777007E3C1F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09C049022C5622C900688197 /* Section */,
-				095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */,
+				092D91B72C6255EF00818B5F /* SearchLocation */,
+				092D91B42C624FD500818B5F /* CurrentLocation */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -775,6 +794,7 @@
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
+				092D91B62C624FF900818B5F /* CurrentLocationViewController.swift in Sources */,
 				094066192C5DED7B009A5A7C /* TimeInfoView.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,

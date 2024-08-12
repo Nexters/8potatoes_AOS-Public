@@ -38,6 +38,10 @@ final class LocationInfoUseCase: LocationInfoUseCaseProtocol {
     
     func searchLocation(location: String, page: Int) -> Single<[SearchLocationModel]> {
         return repository.searchLocation(location: location, page: page)
+            .map { models in
+                // 모델의 주소를 처리하여 반환
+                return models.map { $0.cleaned() }
+            }
     }
 }
 

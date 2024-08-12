@@ -63,3 +63,9 @@ final class SearchLocationReactor: Reactor {
         return newState
     }
 }
+
+// MARK: - Private Method
+
+extension SearchLocationReactor {
+    
+}

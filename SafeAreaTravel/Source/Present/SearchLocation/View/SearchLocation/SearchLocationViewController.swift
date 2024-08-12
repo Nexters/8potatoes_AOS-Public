@@ -35,18 +35,20 @@ final class SearchLocationViewController: BaseViewController {
     }
     private let divideView = DivideLine(type: .dot)
     private let searchTipInfoImg = UIImageView().then {
-        $0.image = UIImage(named: "searchTipInfo")
+        $0.image = UIImage(named: "needInputLocation")
         $0.contentMode = .scaleAspectFit
         $0.backgroundColor = .clear
     }
     private let searchResultTabelView = UITableView(frame: .zero, style: .plain).then {
         $0.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         $0.backgroundColor = .clear
-        $0.isUserInteractionEnabled = true // 상호작용 허용
+        $0.isUserInteractionEnabled = true 
     }
-    private let resultContentLabel = UILabel().then {
-        $0.text = ""
-        $0.sizeToFit()
+    private let searchToCurrentLocationBtn = UIButton().then {
+        $0.setTitle(" 현재 위치로 주소 찾기", for: .normal)
+        $0.setTitleColor(.bik60, for: .normal)
+        $0.titleLabel?.font = .suit(.SemiBold, size: 14)
+        $0.setImage(UIImage(named: "filLocationBtn"), for: .normal)
     }
     
     // MARK: - Init & LifeCycle
@@ -75,15 +77,14 @@ final class SearchLocationViewController: BaseViewController {
     // MARK: - SetUpUI
     
     override func configure() {
-        self.view.backgroundColor = UIColor(hexString: "FFFCF6")
         searchResultTabelView.delegate = self
-        searchResultTabelView.tableFooterView = UIView() // 이 부분을 추가합니다.
-        searchResultTabelView.allowsSelection = true // 셀 선택을 허용합니다.
+        searchResultTabelView.tableFooterView = UIView()
+        searchResultTabelView.allowsSelection = true
         bindUI()
     }
     
     override func addView() {
-         [titleLabel, backBtn, searchBar, divideView, searchResultTabelView, resultContentLabel].forEach {
+         [titleLabel, backBtn, searchBar, divideView, searchResultTabelView, searchToCurrentLocationBtn].forEach {
              self.view.addSubview($0)
          }
         searchResultTabelView.addSubview(searchTipInfoImg)
@@ -106,14 +107,16 @@ final class SearchLocationViewController: BaseViewController {
             .horizontally(20)
             .height(48)
         
-         resultContentLabel.pin
-             .below(of: searchBar)
-             .marginTop(40)
-             .left(20)
-         
-        divideView.pin
-            .below(of: resultContentLabel)
+        searchToCurrentLocationBtn.pin
+            .below(of: searchBar)
             .marginTop(20)
+            .left(20)
+            .width(149)
+            .height(48)
+        
+        divideView.pin
+            .below(of: searchToCurrentLocationBtn)
+            .marginTop(40)
             .horizontally(20)
             .height(2)
          
@@ -125,11 +128,10 @@ final class SearchLocationViewController: BaseViewController {
              .bottom(self.view.safeAreaInsets.bottom)
         
         searchTipInfoImg.pin
-            .below(of: divideView)
-            .marginTop(2)
-            .left()
-            .right()
-            .height(300)
+            .below(of: divideView, aligned: .center)
+            .marginTop(120)
+            .width(131)
+            .height(91)
     }
     
     // MARK: - Bind

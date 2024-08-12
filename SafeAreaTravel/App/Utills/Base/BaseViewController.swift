@@ -25,7 +25,6 @@ class BaseViewController: UIViewController {
     func layout() {}
     func configure() {}
     func addView() {}
-    func binding() {}
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -41,6 +40,5 @@ class BaseViewController: UIViewController {
         self.view.backgroundColor = .white
         self.configure()
         self.addView()
-        self.binding()
     }
 }
