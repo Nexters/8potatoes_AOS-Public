@@ -80,7 +80,6 @@ final class SearchLocationViewController: BaseViewController {
         searchResultTabelView.delegate = self
         searchResultTabelView.tableFooterView = UIView()
         searchResultTabelView.allowsSelection = true
-        bindUI()
     }
     
     override func addView() {
@@ -149,7 +148,6 @@ final class SearchLocationViewController: BaseViewController {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        
         reactor.state
             .map { $0.searchResults }
             .bind(to: searchResultTabelView.rx.items(cellIdentifier: SearchResultTableViewCell.identifier, cellType: SearchResultTableViewCell.self)) { index, model, cell in
@@ -161,9 +159,7 @@ final class SearchLocationViewController: BaseViewController {
             .map { !$0.searchResults.isEmpty }
             .bind(to: searchBar.searchResultExists)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindUI() {
+        
         searchBar.rx.controlEvent(.editingChanged)
             .subscribe(onNext: { [weak self] in
                 if self?.isFirstInput == true {
@@ -171,6 +167,11 @@ final class SearchLocationViewController: BaseViewController {
                     self?.searchTipInfoImg.isHidden = true
                 }
             })
+            .disposed(by: disposeBag)
+        
+        searchToCurrentLocationBtn.rx.tap
+            .map { SearchLocationReactor.Action.currentLocationTapped }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
 }

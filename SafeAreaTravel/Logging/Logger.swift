@@ -76,11 +76,6 @@ final class Logger {
         
         // Print to console
         print(formattedMessage)
-        
-        // Write to log file
-        logQueue.async {
-            self.writeToFile(message: formattedMessage)
-        }
     }
     
     private func message(from items: [Any]) -> String {

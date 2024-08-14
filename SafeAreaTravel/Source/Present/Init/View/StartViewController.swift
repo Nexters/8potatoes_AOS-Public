@@ -94,7 +94,6 @@ final class StartViewController: BaseViewController, View {
     override func configure() {
         navigationItem.title = "경로입력"
         bind(reactor: reactor)
-        bindUI()
     }
     
     override func addView() {
@@ -191,9 +190,7 @@ final class StartViewController: BaseViewController, View {
                 self?.goalLocateBtn.setTitleColor(.bik100, for: .normal)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func bindUI() {
+        
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)

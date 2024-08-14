@@ -28,11 +28,13 @@ final class SearchLocationReactor: Reactor {
     enum Action {
         case searchLocation(String)
         case selectLocation(SearchLocationModel)
+        case currentLocationTapped
     }
     
     enum Mutation {
         case setSearchResults([SearchLocationModel])
         case selectedLocation(SearchLocationModel)
+        case setCurrentLocationTapped
     }
     
     func mutate(action: SearchLocationReactor.Action) -> Observable<SearchLocationReactor.Mutation> {
@@ -49,6 +51,8 @@ final class SearchLocationReactor: Reactor {
                 })
                 .disposed(by: disposeBag)
             return .empty()
+        case .currentLocationTapped:
+            return .just(.setCurrentLocationTapped)
         }
     }
     
@@ -59,6 +63,8 @@ final class SearchLocationReactor: Reactor {
             newState.searchResults = results
         case .selectedLocation(let location):
             newState.location = location
+        case .setCurrentLocationTapped:
+            coordinator.pushCurrentLocationViewController()
         }
         return newState
     }
@@ -67,5 +73,8 @@ final class SearchLocationReactor: Reactor {
 // MARK: - Private Method
 
 extension SearchLocationReactor {
-    
+    private func pushCurrentLocation() {
+        coordinator.pushCurrentLocationViewController()
+        
+    }
 }
