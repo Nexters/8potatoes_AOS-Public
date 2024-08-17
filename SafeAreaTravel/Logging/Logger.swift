@@ -74,8 +74,9 @@ final class Logger {
         let message = message(from: items)
         let formattedMessage = LogFormatter.format(level: level, fileName: "\(file)", function: "\(function)", line: Int(line), message: message)
         
-        // Print to console
-        print(formattedMessage)
+        #if DEBUG
+            print(formattedMessage)
+        #endif
     }
     
     private func message(from items: [Any]) -> String {
