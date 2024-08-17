@@ -11,12 +11,12 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 
-final class SearchLocationViewController: BaseViewController {
+final class SearchLocationViewController: BaseViewController, View {
 
     // MARK: - Properties
     
     private let reactor: SearchLocationReactor
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     private var isFirstInput = true
     
     // MARK: - UI
@@ -53,18 +53,6 @@ final class SearchLocationViewController: BaseViewController {
     
     // MARK: - Init & LifeCycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addView()
-        configure()
-        bind(reactor: reactor)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.layout()
-    }
-    
     init(reactor: SearchLocationReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
@@ -80,6 +68,7 @@ final class SearchLocationViewController: BaseViewController {
         searchResultTabelView.delegate = self
         searchResultTabelView.tableFooterView = UIView()
         searchResultTabelView.allowsSelection = true
+        bind(reactor: reactor)
     }
     
     override func addView() {
@@ -135,7 +124,7 @@ final class SearchLocationViewController: BaseViewController {
     
     // MARK: - Bind
     
-    private func bind(reactor: SearchLocationReactor) {
+    func bind(reactor: SearchLocationReactor) {
         
         searchBar.rx.text.orEmpty
             .distinctUntilChanged()
@@ -171,6 +160,11 @@ final class SearchLocationViewController: BaseViewController {
         
         searchToCurrentLocationBtn.rx.tap
             .map { SearchLocationReactor.Action.currentLocationTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        backBtn.rx.tap
+            .map { SearchLocationReactor.Action.dismissTapped}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
