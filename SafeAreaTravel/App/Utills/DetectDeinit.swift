@@ -16,5 +16,4 @@ class DetectDeinit: NSObject {
     deinit {
       log.verbose("DEINIT: \(self.className)")
     }
-    
 }

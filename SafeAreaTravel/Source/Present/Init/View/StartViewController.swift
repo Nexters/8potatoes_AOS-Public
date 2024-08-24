@@ -88,11 +88,11 @@ final class StartViewController: BaseViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - SetUpUI
     
     override func configure() {
         navigationItem.title = "경로입력"
+        searchBtn.isEnabled = false
         bind(reactor: reactor)
     }
     

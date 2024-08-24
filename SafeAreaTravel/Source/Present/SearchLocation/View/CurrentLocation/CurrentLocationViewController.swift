@@ -15,11 +15,25 @@ final class CurrentLocationViewController: BaseViewController {
 
     // MARK: - Properties
     var disposeBag = DisposeBag()
+    private let reactor: CurrentLocationReactor
     private let locationManager = CLLocationManager()
     private let mapView = NMFMapView()
     private let marker = NMFMarker()
     
     // MARK: - UI
+    private let naviBar = UIView().then {
+        $0.backgroundColor = .white
+    }
+    private let backButton = UIButton().then {
+        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.tintColor = .bik100
+    }
+    private let naviTitleLabel = UILabel().then {
+        $0.textColor = .bik100
+        $0.text = "지도에서 위치 설정"
+        $0.font = .suit(.Bold, size: 18)
+        $0.sizeToFit()
+    }
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -45,8 +59,10 @@ final class CurrentLocationViewController: BaseViewController {
     }
     
     // MARK: - LifeCycle
-    init() {
+    init(reactor: CurrentLocationReactor) {
+        self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
+        bind(reactor: reactor)
         setupLocationManager()
     }
     
@@ -55,13 +71,16 @@ final class CurrentLocationViewController: BaseViewController {
     }
     
     // MARK: - SetupUI
+    
     override func configure() {
-        navigationItem.title = "지도에서 위치 설정"
-        navigationItem.backButtonTitle = ""
-        bindUI()
+
     }
     
     override func addView() {
+        self.view.addSubview(naviBar)
+        [backButton, naviTitleLabel].forEach {
+            naviBar.addSubview($0)
+        }
         self.view.addSubview(mapView)
         [setLocationBtn, locationNameLabel].forEach {
             bottomView.addSubview($0)
@@ -72,8 +91,21 @@ final class CurrentLocationViewController: BaseViewController {
     }
     
     override func layout() {
-        mapView.pin
+        naviBar.pin
             .top(self.view.pin.safeArea.top)
+            .horizontally()
+            .height(64)
+        
+        backButton.pin
+            .vertically(16)
+            .left(12)
+            .width(32)
+
+        naviTitleLabel.pin
+            .center()
+        
+        mapView.pin
+            .below(of: naviBar)
             .horizontally()
             .bottom()
         
@@ -100,7 +132,13 @@ final class CurrentLocationViewController: BaseViewController {
             .bottom(28)
     }
     
-    private func bindUI() {
+    private func bind(reactor: CurrentLocationReactor) {
+        
+        backButton.rx.tap
+            .map { CurrentLocationReactor.Action.backButtonTapped}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reloadLoctionBtn.rx.tap
             .bind { [weak self] in
                 self?.requestCurrentLocation()

@@ -106,7 +106,6 @@ final class StartReactor: Reactor {
             .map { event -> Mutation in
                 switch event {
                 case .selectLocation(let location):
-                    log.debug("Transform - selectLocation: \(location)")
                     if self.currentState.isStartLocationTapped {
                         return .setStartLocation(location)
                     } else {
@@ -119,7 +118,7 @@ final class StartReactor: Reactor {
 }
 
     // MARK: - Private Method
-
+ 
 extension StartReactor {
     func getSearchReactor() -> SearchLocationReactor {
         return SearchLocationReactor(usecase: usecase, coordinator: coordinator)

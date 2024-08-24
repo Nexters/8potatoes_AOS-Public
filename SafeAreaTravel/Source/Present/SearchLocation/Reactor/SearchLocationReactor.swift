@@ -9,16 +9,23 @@ import ReactorKit
 import RxSwift
 
 final class SearchLocationReactor: Reactor {
+    
+    // MARK: - Properties
+
     let initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: StartCoordinatorProtocol
     private var disposeBag = DisposeBag()
     
+    // MARK: - Init
+
     init(usecase: LocationInfoUseCaseProtocol, coordinator: StartCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
         self.initialState = State()
     }
+    
+    // MARK: - State, Action, Mutation
     
     struct State {
         var location = SearchLocationModel(frontLat: 0.0, frontLon: 0.0, name: "", fullAddressRoad: "", fullAddressNum: "")
@@ -39,6 +46,8 @@ final class SearchLocationReactor: Reactor {
         case setDismissViewController
     }
     
+    // MARK: - Reactor Method
+
     func mutate(action: SearchLocationReactor.Action) -> Observable<SearchLocationReactor.Mutation> {
         switch action {
         case .searchLocation(let text):

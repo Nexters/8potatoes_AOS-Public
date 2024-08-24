@@ -43,10 +43,10 @@ final class StartCoordinator: StartCoordinatorProtocol {
     }
     
     func pushCurrentLocationViewController() {
-        log.warning("푸시")
-        self.navigationController.dismiss(animated: false, completion: nil)
-        let vc = CurrentLocationViewController()
-        navigationController.pushViewController(vc, animated: false)
+        let reactor = CurrentLocationReactor(usecase: LocationInfoUseCase(repository: LocationInfoDAO(network: Networking())), coordinator: self)
+        let vc = CurrentLocationViewController(reactor: reactor)
+        vc.modalPresentationStyle = .fullScreen
+        navigationController.presentedViewController?.present(vc, animated: true, completion: nil)
     }
     
     func dismissSearchViewController() {
@@ -56,6 +56,10 @@ final class StartCoordinator: StartCoordinatorProtocol {
     func pushMainMapViewController() {
         let mainMapFlowCoordinator = dependencies.makeMainMapFlowCoordinator(navigationController: navigationController)
         mainMapFlowCoordinator.start()
+    }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
     }
 }
 

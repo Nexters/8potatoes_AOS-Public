@@ -37,6 +37,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        log.verbose("ViewDidLoad: \(self.className)")
         self.view.backgroundColor = .white
         self.configure()
         self.addView()

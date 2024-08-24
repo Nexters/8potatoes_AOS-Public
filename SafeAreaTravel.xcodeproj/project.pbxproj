@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		092D91B62C624FF900818B5F /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D91B52C624FF900818B5F /* CurrentLocationViewController.swift */; };
+		092D91B92C77645800818B5F /* CurrentLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D91B82C77645700818B5F /* CurrentLocationReactor.swift */; };
 		0940660F2C5BB20A009A5A7C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */; };
 		094066102C5BB4FC009A5A7C /* SUIT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 094066062C5BAC40009A5A7C /* SUIT-Medium.ttf */; };
 		094066112C5BB4FE009A5A7C /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 094066072C5BAC40009A5A7C /* SUIT-Bold.ttf */; };
@@ -94,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		092D91B52C624FF900818B5F /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
+		092D91B82C77645700818B5F /* CurrentLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationReactor.swift; sourceTree = "<group>"; };
 		094066052C5BAC40009A5A7C /* SUIT-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.ttf"; sourceTree = "<group>"; };
 		094066062C5BAC40009A5A7C /* SUIT-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.ttf"; sourceTree = "<group>"; };
 		094066072C5BAC40009A5A7C /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				095D6F992C4FE78E007E3C1F /* SearchLocationReactor.swift */,
+				092D91B82C77645700818B5F /* CurrentLocationReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
+				092D91B92C77645800818B5F /* CurrentLocationReactor.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
