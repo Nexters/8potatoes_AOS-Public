@@ -8,12 +8,14 @@
 import Foundation
 
 // MARK: - 좌표 정보
+
 struct Coordinate {
     let lat: Double
     let lon: Double
 }
 
 // MARK: - 경로 정보
+
 struct Route {
     let trafast: [Trafast]
 }

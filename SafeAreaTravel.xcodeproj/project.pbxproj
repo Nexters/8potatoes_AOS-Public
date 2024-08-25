@@ -74,6 +74,8 @@
 		09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490E2C563E1900688197 /* UITextField+Extension.swift */; };
 		09C049112C563E4800688197 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049102C563E4800688197 /* SearchBar.swift */; };
 		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
+		933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E12C7B659F00E60512 /* GlobalStateManger.swift */; };
+		933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E42C7B68DA00E60512 /* UIImageView+kf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,8 @@
 		09C0490E2C563E1900688197 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		09C049102C563E4800688197 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
+		933003E12C7B659F00E60512 /* GlobalStateManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStateManger.swift; sourceTree = "<group>"; };
+		933003E42C7B68DA00E60512 /* UIImageView+kf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+kf.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +307,7 @@
 		0944F2A62C4BDD6B00AB22F7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				933003E02C7B658F00E60512 /* Global */,
 				0952B0972C4D314F0025BB7C /* Entity */,
 				0944F2BC2C4BDE5800AB22F7 /* Interface */,
 				0944F2BB2C4BDE5100AB22F7 /* UseCase */,
@@ -511,12 +516,8 @@
 		095D6FA32C4FECCB007E3C1F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				933003E32C7B68BF00E60512 /* Extension */,
 				09C048FD2C5602B900688197 /* DesignSystem */,
-				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
-				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
-				09C049072C5624A700688197 /* UILabel+Extension.swift */,
-				09C0490E2C563E1900688197 /* UITextField+Extension.swift */,
-				0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -611,6 +612,27 @@
 				095D6F9B2C4FE895007E3C1F /* SafeAreaBottomSheet.swift */,
 			);
 			path = Section;
+			sourceTree = "<group>";
+		};
+		933003E02C7B658F00E60512 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				933003E12C7B659F00E60512 /* GlobalStateManger.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		933003E32C7B68BF00E60512 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
+				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
+				09C049072C5624A700688197 /* UILabel+Extension.swift */,
+				09C0490E2C563E1900688197 /* UITextField+Extension.swift */,
+				0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */,
+				933003E42C7B68DA00E60512 /* UIImageView+kf.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -784,6 +806,7 @@
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
 				0940660F2C5BB20A009A5A7C /* UIFont+Extension.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
+				933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */,
 				09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */,
 				09C0490D2C5634FC00688197 /* RoundView.swift in Sources */,
 				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
@@ -810,6 +833,7 @@
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
+				933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */,
 				09C049112C563E4800688197 /* SearchBar.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
 				09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */,
