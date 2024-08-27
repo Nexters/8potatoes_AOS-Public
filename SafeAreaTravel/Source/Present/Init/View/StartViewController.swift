@@ -23,7 +23,7 @@ final class StartViewController: BaseViewController, View {
     
     private let scrollView = UIScrollView()
     private let welecomeLabel = UILabel().then {
-        $0.text = "쥬쥬와 함께\n휴게소 맛집을 찾아보세요!"
+        $0.text = "여행길에 딱 맞는\n휴게소를 찾아보세요."
         $0.font = .suit(.Bold, size: 24)
         $0.numberOfLines = 0
         $0.sizeToFit()
