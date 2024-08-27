@@ -63,7 +63,7 @@ final class StartViewController: BaseViewController, View {
         $0.image = UIImage(named: "sideLocateImg")
     }
     private let chagneLocateBtn = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "arrow-switch-horizontal"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "swap"), for: .normal)
     }
     private let searchBtn = UIButton().then {
         $0.setTitle("휴게소 찾기", for: .normal)
