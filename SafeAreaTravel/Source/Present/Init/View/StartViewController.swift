@@ -14,6 +14,7 @@ import RxSwift
 import ReactorKit
 
 final class StartViewController: BaseViewController, View {
+    
     // MARK: - Properties
 
     private let reactor: StartReactor
@@ -29,8 +30,8 @@ final class StartViewController: BaseViewController, View {
         $0.sizeToFit()
     }
     private let welecomeImg = UIImageView().then {
-       // $0.image = UIImage(named: "")
-        $0.backgroundColor = .red
+        $0.image = UIImage(named: "dayTimeStartBackgroundImg")
+        $0.contentMode = .scaleAspectFill
     }
     private let startInputDesLabel = UILabel().then {
         $0.text = "출발지 입력*"
@@ -91,7 +92,7 @@ final class StartViewController: BaseViewController, View {
     // MARK: - SetUpUI
     
     override func configure() {
-        navigationItem.title = "경로입력"
+        navigationController?.navigationBar.isHidden = true
         searchBtn.isEnabled = false
         bind(reactor: reactor)
     }
@@ -150,7 +151,7 @@ final class StartViewController: BaseViewController, View {
                     .horizontally(0)
                     .height(327)
                 flex.addItem(welecomeLabel)
-                    .marginTop(40)
+                    .marginTop(60)
                     .marginLeft(20)
                 flex.addItem(locateHorizontalFlexContainer)
                     .marginTop(32)
