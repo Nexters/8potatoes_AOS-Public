@@ -95,7 +95,7 @@ final class StartViewController: BaseViewController, View {
     override func configure() {
         navigationController?.navigationBar.isHidden = true
         searchBtn.isEnabled = false
-        setUIBind()
+        bindUI()
         reactor.action.onNext(.viewDidLoad)
     }
     
@@ -209,7 +209,11 @@ final class StartViewController: BaseViewController, View {
                     self?.chagneLocateBtn.setImage(UIImage(named: "emptySwap"), for: .normal)
                     self?.divideLine.updateColor(.bik5)
                 }
-  reactor.state
+            }
+            )
+            .disposed(by: disposeBag)
+            
+        reactor.state
             .asDriver(onErrorJustReturn: reactor.initialState)
             .drive(onNext: {  [weak self]  res in
                 self?.welecomeImg.image = res.startImg
