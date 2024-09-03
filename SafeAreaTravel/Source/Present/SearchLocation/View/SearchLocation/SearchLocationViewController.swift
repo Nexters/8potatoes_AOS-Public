@@ -11,12 +11,12 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 
-final class SearchLocationViewController: BaseViewController {
+final class SearchLocationViewController: BaseViewController, View {
 
     // MARK: - Properties
     
     private let reactor: SearchLocationReactor
-    private var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     private var isFirstInput = true
     
     // MARK: - UI
@@ -35,33 +35,23 @@ final class SearchLocationViewController: BaseViewController {
     }
     private let divideView = DivideLine(type: .dot)
     private let searchTipInfoImg = UIImageView().then {
-        $0.image = UIImage(named: "searchTipInfo")
+        $0.image = UIImage(named: "needInputLocation")
         $0.contentMode = .scaleAspectFit
         $0.backgroundColor = .clear
     }
     private let searchResultTabelView = UITableView(frame: .zero, style: .plain).then {
         $0.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         $0.backgroundColor = .clear
-        $0.isUserInteractionEnabled = true // 상호작용 허용
+        $0.isUserInteractionEnabled = true 
     }
-    private let resultContentLabel = UILabel().then {
-        $0.text = ""
-        $0.sizeToFit()
+    private let searchToCurrentLocationBtn = UIButton().then {
+        $0.setTitle(" 현재 위치로 주소 찾기", for: .normal)
+        $0.setTitleColor(.bik60, for: .normal)
+        $0.titleLabel?.font = .suit(.SemiBold, size: 14)
+        $0.setImage(UIImage(named: "filLocationBtn"), for: .normal)
     }
     
     // MARK: - Init & LifeCycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addView()
-        configure()
-        bind(reactor: reactor)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.layout()
-    }
     
     init(reactor: SearchLocationReactor) {
         self.reactor = reactor
@@ -75,15 +65,14 @@ final class SearchLocationViewController: BaseViewController {
     // MARK: - SetUpUI
     
     override func configure() {
-        self.view.backgroundColor = UIColor(hexString: "FFFCF6")
         searchResultTabelView.delegate = self
-        searchResultTabelView.tableFooterView = UIView() // 이 부분을 추가합니다.
-        searchResultTabelView.allowsSelection = true // 셀 선택을 허용합니다.
-        bindUI()
+        searchResultTabelView.tableFooterView = UIView()
+        searchResultTabelView.allowsSelection = true
+        bind(reactor: reactor)
     }
     
     override func addView() {
-         [titleLabel, backBtn, searchBar, divideView, searchResultTabelView, resultContentLabel].forEach {
+         [titleLabel, backBtn, searchBar, divideView, searchResultTabelView, searchToCurrentLocationBtn].forEach {
              self.view.addSubview($0)
          }
         searchResultTabelView.addSubview(searchTipInfoImg)
@@ -106,14 +95,16 @@ final class SearchLocationViewController: BaseViewController {
             .horizontally(20)
             .height(48)
         
-         resultContentLabel.pin
-             .below(of: searchBar)
-             .marginTop(40)
-             .left(20)
-         
-        divideView.pin
-            .below(of: resultContentLabel)
+        searchToCurrentLocationBtn.pin
+            .below(of: searchBar)
             .marginTop(20)
+            .left(20)
+            .width(149)
+            .height(48)
+        
+        divideView.pin
+            .below(of: searchToCurrentLocationBtn)
+            .marginTop(40)
             .horizontally(20)
             .height(2)
          
@@ -125,16 +116,15 @@ final class SearchLocationViewController: BaseViewController {
              .bottom(self.view.safeAreaInsets.bottom)
         
         searchTipInfoImg.pin
-            .below(of: divideView)
-            .marginTop(2)
-            .left()
-            .right()
-            .height(300)
+            .below(of: divideView, aligned: .center)
+            .marginTop(120)
+            .width(131)
+            .height(91)
     }
     
     // MARK: - Bind
     
-    private func bind(reactor: SearchLocationReactor) {
+    func bind(reactor: SearchLocationReactor) {
         
         searchBar.rx.text.orEmpty
             .distinctUntilChanged()
@@ -147,7 +137,6 @@ final class SearchLocationViewController: BaseViewController {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        
         reactor.state
             .map { $0.searchResults }
             .bind(to: searchResultTabelView.rx.items(cellIdentifier: SearchResultTableViewCell.identifier, cellType: SearchResultTableViewCell.self)) { index, model, cell in
@@ -159,9 +148,7 @@ final class SearchLocationViewController: BaseViewController {
             .map { !$0.searchResults.isEmpty }
             .bind(to: searchBar.searchResultExists)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindUI() {
+        
         searchBar.rx.controlEvent(.editingChanged)
             .subscribe(onNext: { [weak self] in
                 if self?.isFirstInput == true {
@@ -169,6 +156,16 @@ final class SearchLocationViewController: BaseViewController {
                     self?.searchTipInfoImg.isHidden = true
                 }
             })
+            .disposed(by: disposeBag)
+        
+        searchToCurrentLocationBtn.rx.tap
+            .map { SearchLocationReactor.Action.currentLocationTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        backBtn.rx.tap
+            .map { SearchLocationReactor.Action.dismissTapped}
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
 }

@@ -18,6 +18,7 @@ protocol StartCoordinatorProtocol {
     func presentSearchViewController(reactor: SearchLocationReactor)
     func dismissSearchViewController()
     func pushMainMapViewController()
+    func pushCurrentLocationViewController()
 }
 
 final class StartCoordinator: StartCoordinatorProtocol {
@@ -41,6 +42,13 @@ final class StartCoordinator: StartCoordinatorProtocol {
         navigationController.present(vc, animated: true)
     }
     
+    func pushCurrentLocationViewController() {
+        let reactor = CurrentLocationReactor(usecase: LocationInfoUseCase(repository: LocationInfoDAO(network: Networking())), coordinator: self)
+        let vc = CurrentLocationViewController(reactor: reactor)
+        vc.modalPresentationStyle = .fullScreen
+        navigationController.presentedViewController?.present(vc, animated: true, completion: nil)
+    }
+    
     func dismissSearchViewController() {
         navigationController.dismiss(animated: true)
     }
@@ -48,6 +56,10 @@ final class StartCoordinator: StartCoordinatorProtocol {
     func pushMainMapViewController() {
         let mainMapFlowCoordinator = dependencies.makeMainMapFlowCoordinator(navigationController: navigationController)
         mainMapFlowCoordinator.start()
+    }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
     }
 }
 
