@@ -202,7 +202,7 @@ final class StartViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
     
-    private func setUIBind() {
+    private func bindUI() {
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)

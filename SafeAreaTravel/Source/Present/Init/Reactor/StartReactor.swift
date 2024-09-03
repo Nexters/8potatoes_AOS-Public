@@ -68,14 +68,9 @@ final class StartReactor: Reactor {
         case .goalLocationTapped:
             return .just(.setGoalLocationTapped)
         case .chageBtnTapped:
-            return .just(.swapLocation)
+            return .just(.swapLocation).concat(checkCompleteSetLocation())
         case .setSelectedLocation(let location):
-            if currentState.isStartLocationTapped {
-                return .just(.setStartLocation(location))
-            } else if currentState.isGoalLocationTapped {
-                return .just(.setGoalLocation(location))
-            }
-            return .just(.setSelectedLocation(location))
+            return updateLocation(location: location)
         case .searchBtnTapped:
             return .empty()
         case .viewDidLoad:
@@ -130,7 +125,22 @@ final class StartReactor: Reactor {
     // MARK: - Private Method
  
 extension StartReactor {
-    func getSearchReactor() -> SearchLocationReactor {
+    
+    private func updateLocation(location: SearchLocationModel) -> Observable<Mutation> {
+        if currentState.isStartLocationTapped {
+            return Observable.just(.setStartLocation(location)).concat(checkCompleteSetLocation())
+        } else if currentState.isGoalLocationTapped {
+            return Observable.just(.setGoalLocation(location)).concat(checkCompleteSetLocation())
+        }
+        return Observable.just(.setSelectedLocation(location)).concat(checkCompleteSetLocation())
+    }
+    
+    private func checkCompleteSetLocation() -> Observable<Mutation> {
+        let isComplete = currentState.startLocation.name != "" && currentState.goalLocation.name != ""
+        return Observable.just(.setCompleteSetLocation(isComplete))
+    }
+    
+    private func getSearchReactor() -> SearchLocationReactor {
         return SearchLocationReactor(usecase: usecase, coordinator: coordinator)
     }
     
