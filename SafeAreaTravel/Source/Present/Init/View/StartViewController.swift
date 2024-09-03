@@ -192,6 +192,20 @@ final class StartViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
         
+        reactor.state
+            .map { $0.completeSetLocation}
+            .bind(onNext: {  [weak self]  isCompleted in
+                if isCompleted {
+                    log.info(isCompleted)
+                    self?.searchBtn.isEnabled = false
+                    self?.searchBtn.backgroundColor = .main100
+                    self?.chagneLocateBtn.tintColor = .main100
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUI() {
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)
