@@ -74,13 +74,9 @@ final class Logger {
         let message = message(from: items)
         let formattedMessage = LogFormatter.format(level: level, fileName: "\(file)", function: "\(function)", line: Int(line), message: message)
         
-        // Print to console
-        print(formattedMessage)
-        
-        // Write to log file
-        logQueue.async {
-            self.writeToFile(message: formattedMessage)
-        }
+        #if DEBUG
+            print(formattedMessage)
+        #endif
     }
     
     private func message(from items: [Any]) -> String {

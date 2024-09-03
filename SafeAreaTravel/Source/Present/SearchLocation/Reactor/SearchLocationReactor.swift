@@ -9,16 +9,23 @@ import ReactorKit
 import RxSwift
 
 final class SearchLocationReactor: Reactor {
+    
+    // MARK: - Properties
+
     let initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: StartCoordinatorProtocol
     private var disposeBag = DisposeBag()
     
+    // MARK: - Init
+
     init(usecase: LocationInfoUseCaseProtocol, coordinator: StartCoordinatorProtocol) {
         self.usecase = usecase
         self.coordinator = coordinator
         self.initialState = State()
     }
+    
+    // MARK: - State, Action, Mutation
     
     struct State {
         var location = SearchLocationModel(frontLat: 0.0, frontLon: 0.0, name: "", fullAddressRoad: "", fullAddressNum: "")
@@ -28,13 +35,19 @@ final class SearchLocationReactor: Reactor {
     enum Action {
         case searchLocation(String)
         case selectLocation(SearchLocationModel)
+        case currentLocationTapped
+        case dismissTapped
     }
     
     enum Mutation {
         case setSearchResults([SearchLocationModel])
         case selectedLocation(SearchLocationModel)
+        case setCurrentLocationTapped
+        case setDismissViewController
     }
     
+    // MARK: - Reactor Method
+
     func mutate(action: SearchLocationReactor.Action) -> Observable<SearchLocationReactor.Mutation> {
         switch action {
         case .searchLocation(let text):
@@ -49,6 +62,10 @@ final class SearchLocationReactor: Reactor {
                 })
                 .disposed(by: disposeBag)
             return .empty()
+        case .currentLocationTapped:
+            return .just(.setCurrentLocationTapped)
+        case .dismissTapped:
+            return .just(.setDismissViewController)
         }
     }
     
@@ -59,7 +76,20 @@ final class SearchLocationReactor: Reactor {
             newState.searchResults = results
         case .selectedLocation(let location):
             newState.location = location
+        case .setCurrentLocationTapped:
+            coordinator.pushCurrentLocationViewController()
+        case .setDismissViewController:
+            coordinator.dismissSearchViewController()
         }
         return newState
+    }
+}
+
+// MARK: - Private Method
+
+extension SearchLocationReactor {
+    private func pushCurrentLocation() {
+        coordinator.pushCurrentLocationViewController()
+        
     }
 }

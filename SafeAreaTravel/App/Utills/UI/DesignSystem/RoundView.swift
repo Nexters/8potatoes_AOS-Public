@@ -13,6 +13,8 @@ final class RoundView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.numberOfLines = 0
+        $0.font = .suit(.Medium, size: 14)
+        $0.textColor = .bik60
     }
     
     func configre(backgroundColor: UIColor, title: String, titleColor: UIColor) {
@@ -23,13 +25,12 @@ final class RoundView: UIView {
     }
     
     override func layoutSubviews() {
-        titleLabel.pin
-            .top(4)
-            .horizontally(8)
-        
         self.pin
             .height(26)
             .width(titleLabel.frame.width + 20)
+        
+        titleLabel.pin
+            .center()
     }
     
     override init(frame: CGRect) {

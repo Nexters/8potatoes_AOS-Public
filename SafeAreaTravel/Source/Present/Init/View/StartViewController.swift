@@ -14,6 +14,7 @@ import RxSwift
 import ReactorKit
 
 final class StartViewController: BaseViewController, View {
+    
     // MARK: - Properties
 
     private let reactor: StartReactor
@@ -23,14 +24,14 @@ final class StartViewController: BaseViewController, View {
     
     private let scrollView = UIScrollView()
     private let welecomeLabel = UILabel().then {
-        $0.text = "쥬쥬와 함께\n휴게소 맛집을 찾아보세요!"
+        $0.text = "여행길에 딱 맞는\n휴게소를 찾아보세요."
         $0.font = .suit(.Bold, size: 24)
         $0.numberOfLines = 0
         $0.sizeToFit()
     }
     private let welecomeImg = UIImageView().then {
-       // $0.image = UIImage(named: "")
-        $0.backgroundColor = .red
+        $0.image = UIImage(named: "dayTimeStartBackgroundImg")
+        $0.contentMode = .scaleAspectFill
     }
     private let startInputDesLabel = UILabel().then {
         $0.text = "출발지 입력*"
@@ -63,7 +64,7 @@ final class StartViewController: BaseViewController, View {
         $0.image = UIImage(named: "sideLocateImg")
     }
     private let chagneLocateBtn = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "arrow-switch-horizontal"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "swap"), for: .normal)
     }
     private let searchBtn = UIButton().then {
         $0.setTitle("휴게소 찾기", for: .normal)
@@ -88,13 +89,12 @@ final class StartViewController: BaseViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - SetUpUI
     
     override func configure() {
-        navigationItem.title = "경로입력"
+        navigationController?.navigationBar.isHidden = true
+        searchBtn.isEnabled = false
         bind(reactor: reactor)
-        bindUI()
     }
     
     override func addView() {
@@ -151,7 +151,7 @@ final class StartViewController: BaseViewController, View {
                     .horizontally(0)
                     .height(327)
                 flex.addItem(welecomeLabel)
-                    .marginTop(40)
+                    .marginTop(60)
                     .marginLeft(20)
                 flex.addItem(locateHorizontalFlexContainer)
                     .marginTop(32)

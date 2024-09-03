@@ -9,7 +9,7 @@ import ReactorKit
 import RxSwift
 import RxCocoa
 
-final class MainMapReactor: DetectDeinit, Reactor {
+final class MainMapReactor: Reactor {
     
     var initialState: State
     private let usecase: LocationInfoUseCaseProtocol

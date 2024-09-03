@@ -4,6 +4,8 @@
 //
 //  Created by 최지철 on 7/28/24.
 //
+import Foundation
+import UIKit
 
 import ReactorKit
 import RxSwift
@@ -105,7 +107,6 @@ final class StartReactor: Reactor {
             .map { event -> Mutation in
                 switch event {
                 case .selectLocation(let location):
-                    log.debug("Transform - selectLocation: \(location)")
                     if self.currentState.isStartLocationTapped {
                         return .setStartLocation(location)
                     } else {
@@ -118,7 +119,7 @@ final class StartReactor: Reactor {
 }
 
     // MARK: - Private Method
-
+ 
 extension StartReactor {
     
     private func updateLocation(location: SearchLocationModel) -> Observable<Mutation> {
@@ -137,5 +138,22 @@ extension StartReactor {
     
     private func getSearchReactor() -> SearchLocationReactor {
         return SearchLocationReactor(usecase: usecase, coordinator: coordinator)
+    }
+    
+    /// 시간대별 다른 이미지표시를 위한 함수
+    private func setWelcomeImage() -> UIImage? {
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        let timeImage: TimeImageEnum
+        
+        switch hour {
+        case 6..<18:
+            timeImage = .dayTime
+        case 18..<21:
+            timeImage = .evening
+        default:
+            timeImage = .night
+        }
+        return timeImage.image
     }
 }
