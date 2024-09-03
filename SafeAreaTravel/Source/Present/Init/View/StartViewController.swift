@@ -193,13 +193,19 @@ final class StartViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state
-            .map { $0.completeSetLocation}
-            .bind(onNext: {  [weak self]  isCompleted in
+            .map { $0.completeSetLocation }
+            .bind(onNext: { [weak self] isCompleted in
                 if isCompleted {
                     log.info(isCompleted)
                     self?.searchBtn.isEnabled = false
                     self?.searchBtn.backgroundColor = .main100
-                    self?.chagneLocateBtn.tintColor = .main100
+                    self?.chagneLocateBtn.setImage(UIImage(named: "Swap"), for: .normal)
+                    self?.divideLine.updateColor(.main100)
+                } else {
+                    self?.searchBtn.isEnabled = true
+                    self?.searchBtn.backgroundColor = .bik20
+                    self?.chagneLocateBtn.setImage(UIImage(named: "emptySwap"), for: .normal)
+                    self?.divideLine.updateColor(.bik5)
                 }
             })
             .disposed(by: disposeBag)

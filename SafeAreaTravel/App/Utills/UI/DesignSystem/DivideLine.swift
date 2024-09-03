@@ -18,6 +18,7 @@ enum DivideType {
 class DivideLine: UIView {
     
     private let type: DivideType
+    private var colorSet = UIColor.bik5
     
     private let lineView = UIView().then {
         $0.backgroundColor = .bik5
@@ -41,6 +42,7 @@ class DivideLine: UIView {
             lineView.pin
                 .height(1)
                 .horizontally()
+            lineView.backgroundColor = colorSet
         } else if type == .dot {
             shapeLayer.frame = self.bounds
             let path = CGMutablePath()
@@ -59,5 +61,10 @@ class DivideLine: UIView {
         } else {
             self.addSubview(lineView)
         }
+    }
+    
+    func updateColor(_ color: UIColor) {
+        colorSet = color
+        setNeedsLayout()
     }
 }
