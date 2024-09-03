@@ -83,6 +83,7 @@ final class StartViewController: BaseViewController, View {
     init(reactor: StartReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
+        bind(reactor: reactor)
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +95,8 @@ final class StartViewController: BaseViewController, View {
     override func configure() {
         navigationController?.navigationBar.isHidden = true
         searchBtn.isEnabled = false
-        bind(reactor: reactor)
+        setUIBind()
+        reactor.action.onNext(.viewDidLoad)
     }
     
     override func addView() {
@@ -207,6 +209,11 @@ final class StartViewController: BaseViewController, View {
                     self?.chagneLocateBtn.setImage(UIImage(named: "emptySwap"), for: .normal)
                     self?.divideLine.updateColor(.bik5)
                 }
+  reactor.state
+            .asDriver(onErrorJustReturn: reactor.initialState)
+            .drive(onNext: {  [weak self]  res in
+                self?.welecomeImg.image = res.startImg
+                           
             })
             .disposed(by: disposeBag)
     }
