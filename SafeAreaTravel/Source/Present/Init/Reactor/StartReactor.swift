@@ -56,6 +56,7 @@ final class StartReactor: Reactor {
         case setStartLocation(SearchLocationModel)
         case setGoalLocation(SearchLocationModel)
         case swapLocation
+        case setCompleteSetLocation(Bool)
         case setStartImg
     }
     
@@ -102,7 +103,10 @@ final class StartReactor: Reactor {
         case .setStartImg:
             let img = setWelcomeImage()
             newState.startImg = img!
+        case .setCompleteSetLocation(let isComplete):
+            newState.completeSetLocation = isComplete
         }
+        newState.completeSetLocation = newState.startLocation.name != "" && newState.goalLocation.name != ""
         return newState
     }
 
