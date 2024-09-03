@@ -49,6 +49,7 @@ final class SearchLocationViewController: BaseViewController, View {
         $0.setTitleColor(.bik60, for: .normal)
         $0.titleLabel?.font = .suit(.SemiBold, size: 14)
         $0.setImage(UIImage(named: "filLocationBtn"), for: .normal)
+        $0.setImage(UIImage(named: "filLocationBtn"), for: .highlighted)
     }
     
     // MARK: - Init & LifeCycle
