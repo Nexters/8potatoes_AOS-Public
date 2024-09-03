@@ -37,9 +37,11 @@ final class StartReactor: Reactor {
         var isStartLocationTapped: Bool = false
         var isGoalLocationTapped: Bool = false
         var completeSetLocation: Bool = false
+        var startImg: UIImage = UIImage(named: "dayTimeStartBackgroundImg")!
     }
 
     enum Action {
+        case viewDidLoad
         case startLocationTapped
         case goalLocationTapped
         case chageBtnTapped
@@ -54,6 +56,7 @@ final class StartReactor: Reactor {
         case setStartLocation(SearchLocationModel)
         case setGoalLocation(SearchLocationModel)
         case swapLocation
+        case setStartImg
     }
     
     // MARK: - Reactor Method
@@ -75,6 +78,8 @@ final class StartReactor: Reactor {
             return .just(.setSelectedLocation(location))
         case .searchBtnTapped:
             return .empty()
+        case .viewDidLoad:
+            return .just(.setStartImg)
         }
     }
 
@@ -99,6 +104,9 @@ final class StartReactor: Reactor {
             let temp = newState.startLocation
             newState.startLocation = newState.goalLocation
             newState.goalLocation = temp
+        case .setStartImg:
+            let img = setWelcomeImage()
+            newState.startImg = img!
         }
         return newState
     }
@@ -131,7 +139,6 @@ extension StartReactor {
         let hour = Calendar.current.component(.hour, from: Date())
         
         let timeImage: TimeImageEnum
-        
         switch hour {
         case 6..<18:
             timeImage = .dayTime
