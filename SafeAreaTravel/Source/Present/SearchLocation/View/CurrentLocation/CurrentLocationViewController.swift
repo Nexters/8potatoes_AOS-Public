@@ -17,10 +17,11 @@ final class CurrentLocationViewController: BaseViewController {
     var disposeBag = DisposeBag()
     private let reactor: CurrentLocationReactor
     private let locationManager = CLLocationManager()
-    private let mapView = NMFMapView()
-    private let marker = NMFMarker()
     
     // MARK: - UI
+    
+    private let marker = CurrentMarker()
+    private let mapView = NMFMapView()
     private let naviBar = UIView().then {
         $0.backgroundColor = .white
     }
@@ -165,16 +166,17 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         let coordinate = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
         
-        // 마커 설정
+        /// 마커 설정
         marker.position = coordinate
         marker.mapView = mapView
+        marker.showInfoWindow()
         
-        // 지도 중심을 현재 위치로 이동
+        /// 지도 중심을 현재 위치로 이동
         let cameraUpdate = NMFCameraUpdate(scrollTo: coordinate)
         mapView.moveCamera(cameraUpdate)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("위치 정보를 가져오지 못했습니다: \(error.localizedDescription)")
+        log.error("위치 정보를 가져오지 못했습니다: \(error.localizedDescription)")
     }
 }
