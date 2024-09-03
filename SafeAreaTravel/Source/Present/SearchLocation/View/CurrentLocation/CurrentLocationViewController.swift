@@ -49,6 +49,7 @@ final class CurrentLocationViewController: BaseViewController {
     }
     private let reloadLoctionBtn = UIButton().then {
         $0.setImage(UIImage(named: "reloadLocationBtn"), for: .normal)
+        $0.setImage(UIImage(named: "reloadLocationBtn"), for: .highlighted)
         $0.backgroundColor = .clear
     }
     private let setLocationBtn = UIButton().then {
