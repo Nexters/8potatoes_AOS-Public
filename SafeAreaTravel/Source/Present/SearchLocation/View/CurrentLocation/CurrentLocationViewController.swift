@@ -75,7 +75,7 @@ final class CurrentLocationViewController: BaseViewController {
     // MARK: - SetupUI
     
     override func configure() {
-
+        bindUI()
     }
     
     override func addView() {
@@ -134,8 +134,19 @@ final class CurrentLocationViewController: BaseViewController {
             .bottom(28)
     }
     
-    private func bind(reactor: CurrentLocationReactor) {
-        
+    func bind(reactor: CurrentLocationReactor) {
+        reactor.state
+            .map { $0.location }
+            .asDriver(onErrorJustReturn: SearchLocationModel(frontLat: 0.0, frontLon: 0.0, name: "", fullAddressRoad: "", fullAddressNum: ""))
+            .drive(onNext: {  [weak self] location in
+                log.debug(location)
+                self?.locationNameLabel.text = location.fullAddressRoad
+                self?.view.setNeedsLayout()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUI() {
         backButton.rx.tap
             .map { CurrentLocationReactor.Action.backButtonTapped}
             .bind(to: reactor.action)
@@ -174,7 +185,9 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         
         /// 지도 중심을 현재 위치로 이동
         let cameraUpdate = NMFCameraUpdate(scrollTo: coordinate)
+        reactor.action.onNext(.viewDidLoad(location.coordinate.latitude, location.coordinate.longitude))
         mapView.moveCamera(cameraUpdate)
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

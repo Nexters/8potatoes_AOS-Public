@@ -37,7 +37,7 @@ final class LocationInfoDAO: LocationInfoRepository {
                     let decoder = JSONDecoder()
                     return try decoder.decode(SearchPoiInfoRootDTO.self, from: response.data)
                 } catch {
-                    log.error("Decoding error: \(error)")
+                        log.error("Decoding error: \(error)")
                     if let jsonString = String(data: response.data, encoding: .utf8) {
                         log.error("Received JSON: \(jsonString)")
                     }
@@ -51,5 +51,35 @@ final class LocationInfoDAO: LocationInfoRepository {
                 log.error("Error occurred during searchLocation request DAO: \(error.localizedDescription)")
             })
     }
+    
+    func searchLocationToCoordinate(lat: Double, lon: Double) -> Single<SearchLocationModel> {
+        return network
+            .request(.fetchReverseGeocoding(lat: lat, lon: lon))
+            .flatMap { response -> Single<ReverseLocationDTO> in
+                if response.statusCode == 204 {
+                    // 204 No Content: 빈 응답 처리
+                    log.error("Received 204 No Content: No data available.")
+                    throw NSError(domain: "NoDataError", code: 204, userInfo: [NSLocalizedDescriptionKey: "No data available for the requested location."])
+                }
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedData = try decoder.decode(ReverseLocationDTO.self, from: response.data)
+                    return .just(decodedData)
+                } catch {
+                    log.error("Decoding error: \(error)")
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        log.error("Received JSON: \(jsonString)")
+                    }
+                    throw error
+                }
+            }
+            .map { $0.toDomain(lat: lat, lon: lon) }
+            .do(onSuccess: { (location) in
+                log.debug("response searchLocationToCoordinate")
+            }, onError: { error in
+                log.error("Error occurred during searchLocationToCoordinate request DAO: \(error.localizedDescription)")
+            })
+    }
+
 }
 

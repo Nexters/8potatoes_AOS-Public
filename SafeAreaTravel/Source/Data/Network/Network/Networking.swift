@@ -13,13 +13,20 @@ final class Networking {
     
     private let provider = MoyaProvider<SafeAraAPI>()
 
-func request(
-    _ target: SafeAraAPI,
-    file: StaticString = #file,
-    function: StaticString = #function,
-    line: UInt = #line
-) -> Single<Response> {
+    func request(
+        _ target: SafeAraAPI,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: UInt = #line
+    ) -> Single<Response> {
         let requestString = "\(target.method.rawValue) \(target.path)"
+        
+        if case let .requestParameters(parameters, encoding) = target.task {
+            log.debug("REQUEST PARAMETERS: \(parameters), ENCODING: \(encoding)", file: file, function: function, line: line)
+        } else if case let .requestJSONEncodable(encodable) = target.task {
+            log.debug("💪🏻 REQUEST BODY: \(encodable)", file: file, function: function, line: line)
+        }
+
         return provider.rx.request(target)
             .catchAPIError(APIErrorResponse.self)
             .filterSuccessfulStatusCodes()

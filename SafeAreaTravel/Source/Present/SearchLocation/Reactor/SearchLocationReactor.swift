@@ -57,7 +57,6 @@ final class SearchLocationReactor: Reactor {
         case .selectLocation(let location):
             usecase.selectLocation(location: location)
                 .subscribe(onNext: { res in
-                    log.debug("SelectLocation - result: \(res)")
                     self.coordinator.dismissSearchViewController()
                 })
                 .disposed(by: disposeBag)
@@ -77,7 +76,7 @@ final class SearchLocationReactor: Reactor {
         case .selectedLocation(let location):
             newState.location = location
         case .setCurrentLocationTapped:
-            coordinator.pushCurrentLocationViewController()
+            coordinator.pushCurrentLocationViewController(reactor: getCurrentSearchReactor())
         case .setDismissViewController:
             coordinator.dismissSearchViewController()
         }
@@ -88,8 +87,7 @@ final class SearchLocationReactor: Reactor {
 // MARK: - Private Method
 
 extension SearchLocationReactor {
-    private func pushCurrentLocation() {
-        coordinator.pushCurrentLocationViewController()
-        
+    private func getCurrentSearchReactor() -> CurrentLocationReactor {
+        return CurrentLocationReactor(usecase: usecase, coordinator: coordinator)
     }
 }
