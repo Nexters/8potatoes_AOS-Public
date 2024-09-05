@@ -199,12 +199,12 @@ final class StartViewController: BaseViewController, View {
             .bind(onNext: { [weak self] isCompleted in
                 if isCompleted {
                     log.info(isCompleted)
-                    self?.searchBtn.isEnabled = false
+                    self?.searchBtn.isEnabled = true
                     self?.searchBtn.backgroundColor = .main100
                     self?.chagneLocateBtn.setImage(UIImage(named: "Swap"), for: .normal)
                     self?.divideLine.updateColor(.main100)
                 } else {
-                    self?.searchBtn.isEnabled = true
+                    self?.searchBtn.isEnabled = false
                     self?.searchBtn.backgroundColor = .bik20
                     self?.chagneLocateBtn.setImage(UIImage(named: "emptySwap"), for: .normal)
                     self?.divideLine.updateColor(.bik5)
@@ -223,6 +223,11 @@ final class StartViewController: BaseViewController, View {
     }
     
     private func bindUI() {
+        searchBtn.rx.tap
+            .map { StartReactor.Action.searchBtnTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         startLocateBtn.rx.tap
             .map { StartReactor.Action.startLocationTapped }
             .bind(to: reactor.action)
@@ -237,5 +242,6 @@ final class StartViewController: BaseViewController, View {
             .map { StartReactor.Action.chageBtnTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
     }
 }

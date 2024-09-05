@@ -8,11 +8,13 @@
 import UIKit
 
 protocol MainMapCoordinatorDependencies {
-    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol) -> MainMapViewController
+    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol,
+                                   startLocation: SearchLocationModel,
+                                   goalLocation: SearchLocationModel) -> MainMapViewController
 }
 
 protocol MainMapCoordinatorProtocol {
-    func start()
+    func start(startLocation: SearchLocationModel, goalLocation: SearchLocationModel)
 }
 
 final class MainMapCoordinator: MainMapCoordinatorProtocol {
@@ -26,8 +28,11 @@ final class MainMapCoordinator: MainMapCoordinatorProtocol {
         self.dependencies = dependencies
     }
 
-    func start() {
-        let vc = dependencies.makeMainMapViewController(coordinator: self)
+    func start(startLocation: SearchLocationModel,
+               goalLocation: SearchLocationModel) {
+        let vc = dependencies.makeMainMapViewController(coordinator: self,
+                                                        startLocation: startLocation,
+                                                        goalLocation: goalLocation)
         navigationController.pushViewController(vc, animated: false)
     }
 }

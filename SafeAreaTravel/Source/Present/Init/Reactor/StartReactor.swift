@@ -73,6 +73,8 @@ final class StartReactor: Reactor {
         case .setSelectedLocation(let location):
             return updateLocation(location: location)
         case .searchBtnTapped:
+            log.info("검색탭")
+            coordinator.pushMainMapViewController(startLocation: currentState.startLocation, goalLocation: currentState.goalLocation)
             return .empty()
         case .viewDidLoad:
             return .just(.setStartImg)
