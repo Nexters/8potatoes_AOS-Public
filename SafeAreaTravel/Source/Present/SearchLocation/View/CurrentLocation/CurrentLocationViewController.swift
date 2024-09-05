@@ -14,6 +14,7 @@ import ReactorKit
 final class CurrentLocationViewController: BaseViewController {
 
     // MARK: - Properties
+    
     var disposeBag = DisposeBag()
     private let reactor: CurrentLocationReactor
     private let locationManager = CLLocationManager()
@@ -59,6 +60,7 @@ final class CurrentLocationViewController: BaseViewController {
         $0.layer.cornerRadius = 16
         $0.backgroundColor = .main100
     }
+    private let indicatorView = UIActivityIndicatorView()
     
     // MARK: - LifeCycle
     init(reactor: CurrentLocationReactor) {
@@ -157,6 +159,11 @@ final class CurrentLocationViewController: BaseViewController {
                 self?.requestCurrentLocation()
             }
             .disposed(by: disposeBag)
+        
+        setLocationBtn.rx.tap
+            .map { CurrentLocationReactor.Action.setLocationTapped}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     private func setupLocationManager() {
@@ -187,6 +194,7 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         let cameraUpdate = NMFCameraUpdate(scrollTo: coordinate)
         reactor.action.onNext(.viewDidLoad(location.coordinate.latitude, location.coordinate.longitude))
         mapView.moveCamera(cameraUpdate)
+        
         locationManager.stopUpdatingLocation()
     }
     

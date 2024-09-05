@@ -34,6 +34,7 @@ final class CurrentLocationReactor: Reactor {
     enum Action {
         case backButtonTapped
         case viewDidLoad(Double, Double)
+        case setLocationTapped
     }
     
     enum Mutation {
@@ -50,7 +51,6 @@ final class CurrentLocationReactor: Reactor {
         case .viewDidLoad(let lat, let lng):
             return usecase.searchLocationToCoordinate(lat: lat, lon: lng)
                 .map { model in
-                    /// 모델을 클린 처리
                     return .setCurrentLocation(SearchLocationModel(frontLat: model.frontLat,
                                                                    frontLon: model.frontLon,
                                                                    name: model.name,
@@ -58,6 +58,14 @@ final class CurrentLocationReactor: Reactor {
                                                                    fullAddressNum: model.fullAddressNum))
                 }
                 .asObservable()
+        case .setLocationTapped:
+            let currentLocation = self.currentState.location
+            usecase.selectLocation(location: currentLocation)
+                .subscribe(onNext: { res in
+                    self.coordinator.dismissSearchViewController()
+                })
+                .disposed(by: disposeBag)
+            return .empty()
         }
     }
     
