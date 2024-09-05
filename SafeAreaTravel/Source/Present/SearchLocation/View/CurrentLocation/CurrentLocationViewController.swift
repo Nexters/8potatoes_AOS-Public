@@ -14,13 +14,15 @@ import ReactorKit
 final class CurrentLocationViewController: BaseViewController {
 
     // MARK: - Properties
+    
     var disposeBag = DisposeBag()
     private let reactor: CurrentLocationReactor
     private let locationManager = CLLocationManager()
-    private let mapView = NMFMapView()
-    private let marker = NMFMarker()
     
     // MARK: - UI
+    
+    private let marker = CurrentMarker()
+    private let mapView = NMFMapView()
     private let naviBar = UIView().then {
         $0.backgroundColor = .white
     }
@@ -48,6 +50,7 @@ final class CurrentLocationViewController: BaseViewController {
     }
     private let reloadLoctionBtn = UIButton().then {
         $0.setImage(UIImage(named: "reloadLocationBtn"), for: .normal)
+        $0.setImage(UIImage(named: "reloadLocationBtn"), for: .highlighted)
         $0.backgroundColor = .clear
     }
     private let setLocationBtn = UIButton().then {
@@ -57,6 +60,7 @@ final class CurrentLocationViewController: BaseViewController {
         $0.layer.cornerRadius = 16
         $0.backgroundColor = .main100
     }
+    private let indicatorView = UIActivityIndicatorView()
     
     // MARK: - LifeCycle
     init(reactor: CurrentLocationReactor) {
@@ -73,7 +77,7 @@ final class CurrentLocationViewController: BaseViewController {
     // MARK: - SetupUI
     
     override func configure() {
-
+        bindUI()
     }
     
     override func addView() {
@@ -132,8 +136,19 @@ final class CurrentLocationViewController: BaseViewController {
             .bottom(28)
     }
     
-    private func bind(reactor: CurrentLocationReactor) {
-        
+    func bind(reactor: CurrentLocationReactor) {
+        reactor.state
+            .map { $0.location }
+            .asDriver(onErrorJustReturn: SearchLocationModel(frontLat: 0.0, frontLon: 0.0, name: "", fullAddressRoad: "", fullAddressNum: ""))
+            .drive(onNext: {  [weak self] location in
+                log.debug(location)
+                self?.locationNameLabel.text = location.fullAddressRoad
+                self?.view.setNeedsLayout()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUI() {
         backButton.rx.tap
             .map { CurrentLocationReactor.Action.backButtonTapped}
             .bind(to: reactor.action)
@@ -143,6 +158,11 @@ final class CurrentLocationViewController: BaseViewController {
             .bind { [weak self] in
                 self?.requestCurrentLocation()
             }
+            .disposed(by: disposeBag)
+        
+        setLocationBtn.rx.tap
+            .map { CurrentLocationReactor.Action.setLocationTapped}
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
@@ -165,16 +185,20 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         let coordinate = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
         
-        // 마커 설정
+        /// 마커 설정
         marker.position = coordinate
         marker.mapView = mapView
+        marker.showInfoWindow()
         
-        // 지도 중심을 현재 위치로 이동
+        /// 지도 중심을 현재 위치로 이동
         let cameraUpdate = NMFCameraUpdate(scrollTo: coordinate)
+        reactor.action.onNext(.viewDidLoad(location.coordinate.latitude, location.coordinate.longitude))
         mapView.moveCamera(cameraUpdate)
+        
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("위치 정보를 가져오지 못했습니다: \(error.localizedDescription)")
+        log.error("위치 정보를 가져오지 못했습니다: \(error.localizedDescription)")
     }
 }

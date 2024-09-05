@@ -14,11 +14,13 @@ enum LocationEvent {
 protocol LocationInfoUseCaseProtocol {
     func fetchRouteInfo(start: Coordinate, goal: Coordinate) -> Single<Route>
     func searchLocation(location: String, page: Int) -> Single<[SearchLocationModel]>
+    func searchLocationToCoordinate(lat: Double, lon: Double) -> Single<SearchLocationModel>
     var event: PublishSubject<LocationEvent> { get }
     func selectLocation(location: SearchLocationModel) -> Observable<SearchLocationModel>
 }
 
 final class LocationInfoUseCase: LocationInfoUseCaseProtocol {
+    
     func selectLocation(location: SearchLocationModel) -> RxSwift.Observable<SearchLocationModel> {
         log.debug("LocationInfoUseCase - selectLocation: \(location)")
         event.onNext(.selectLocation(location))
@@ -39,9 +41,12 @@ final class LocationInfoUseCase: LocationInfoUseCaseProtocol {
     func searchLocation(location: String, page: Int) -> Single<[SearchLocationModel]> {
         return repository.searchLocation(location: location, page: page)
             .map { models in
-                /// 모델의 주소를 처리하여 반환
                 return models.map { $0.cleaned() }
             }
+    }
+    
+    func searchLocationToCoordinate(lat: Double, lon: Double) -> RxSwift.Single<SearchLocationModel> {
+        return repository.searchLocationToCoordinate(lat: lat, lon: lon)
     }
 }
 

@@ -39,4 +39,19 @@ extension SearchLocationModel {
     func cleaned() -> SearchLocationModel {
         return SearchLocationModel(frontLat: frontLat, frontLon: frontLon, name: name, fullAddressRoad: cleanedFullAddressRoad, fullAddressNum: cleanedFullAddressNum)
     }
+    
+    /// 주소 문자열에서 마지막 주소만 반환하는 함수
+    func extractLastAddress(from address: String) -> String {
+        let addressComponents = address.split(separator: ",").map { String($0) }
+        return addressComponents.last ?? address
+    }
+    
+    /// 마지막 주소만 반환하는 계산 프로퍼티
+    var lastAddressRoad: String {
+        return extractLastAddress(from: fullAddressRoad)
+    }
+    
+    var lastAddressNum: String {
+        return extractLastAddress(from: fullAddressNum)
+    }
 }
