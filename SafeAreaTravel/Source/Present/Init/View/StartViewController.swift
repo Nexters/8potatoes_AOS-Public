@@ -8,8 +8,6 @@
 import UIKit
 
 import Then
-import PinLayout
-import FlexLayout
 import RxSwift
 import ReactorKit
 
@@ -18,7 +16,7 @@ final class StartViewController: BaseViewController, View {
     // MARK: - Properties
 
     private let reactor: StartReactor
-    var disposeBag = DisposeBag()
+    var disposeBag: DisposeBag = .init()
 
     // MARK: - UI
     
@@ -95,7 +93,6 @@ final class StartViewController: BaseViewController, View {
     override func configure() {
         navigationController?.navigationBar.isHidden = true
         searchBtn.isEnabled = false
-        bindUI()
         reactor.action.onNext(.viewDidLoad)
     }
     
@@ -149,8 +146,8 @@ final class StartViewController: BaseViewController, View {
             .alignItems(.stretch)
             .define {  flex in
                 flex.addItem(welecomeImg)
-                    .marginTop(12)
-                    .horizontally(0)
+                    .marginLeft(0)
+                    .marginRight(0)
                     .height(327)
                 flex.addItem(welecomeLabel)
                     .marginTop(60)
@@ -175,7 +172,11 @@ final class StartViewController: BaseViewController, View {
     // MARK: - Bind
     
     func bind(reactor: StartReactor) {
-        
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    private func bindState(reactor: StartReactor) {
         reactor.state
             .map{ $0.startLocation}
             .distinctUntilChanged()
@@ -222,7 +223,7 @@ final class StartViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
     
-    private func bindUI() {
+    private func bindAction(reactor: StartReactor) {
         searchBtn.rx.tap
             .map { StartReactor.Action.searchBtnTapped }
             .bind(to: reactor.action)
