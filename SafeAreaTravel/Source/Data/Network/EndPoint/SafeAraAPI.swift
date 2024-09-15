@@ -12,12 +12,13 @@ import Moya
 enum SafeAraAPI {
     case fetchDirction(start: Coordinate, goal: Coordinate)
     case fetchSearchLocationInfo(location: String, page:Int)
+    case fetchReverseGeocoding(lat: Double, lon: Double)
 }
 extension SafeAraAPI: TargetType {
     
     var baseURL: URL {
         switch self {
-        case .fetchSearchLocationInfo:
+        case .fetchSearchLocationInfo, .fetchReverseGeocoding:
             return URL(string: "https://apis.openapi.sk.com")!
         case .fetchDirction:
             return URL(string: "https://naveropenapi.apigw.ntruss.com")!
@@ -30,6 +31,8 @@ extension SafeAraAPI: TargetType {
             return "/tmap/pois"
         case .fetchDirction:
             return "/map-direction/v1/driving"
+        case .fetchReverseGeocoding:
+            return "/tmap/geo/reversegeocoding"
         }
     }
     
@@ -58,6 +61,20 @@ extension SafeAraAPI: TargetType {
                 "multiPoint": "",
                 "callback": "",
             ], encoding: URLEncoding.default)
+        case .fetchReverseGeocoding(let lat, let lon):
+            return .requestParameters(parameters: [
+                "version": "1",
+                "lat": lat,
+                "lon": lon,
+                "coordType": "WGS84GEO",  // 경위도
+                "addressType": "A10", // 주소 타입 - A00: 행정동,법정동 주소 - A01: 행정동 주소 - A02: 법정동 주소 - A03: 도로명 주소 - A04: 건물 번호 - A10: 행정동, 법정동, 도로명 주소
+            ], encoding: URLEncoding.default)
+            
+        case .fetchDirction(let start, let goal):
+            return .requestParameters(parameters: [
+                "start": "127.12345,37.12345",
+                "goal": "127.8157298,35.5597367"
+            ], encoding: URLEncoding.default)
             
         default :
             return .requestPlain
@@ -68,10 +85,14 @@ extension SafeAraAPI: TargetType {
         switch self {
             
         case .fetchDirction:
-            return ["X-NCP-APIGW-API-KEY-ID " : APIKeyManager.shared.nClientID,
-                    "X-NCP-APIGW-API-KEY" : APIKeyManager.shared.nClientSecret]
+            return ["X-NCP-APIGW-API-KEY-ID" : APIKeyManager.shared.nClientID,
+                    "X-NCP-APIGW-API-KEY" : APIKeyManager.shared.nClientSecret,
+            ]
         case .fetchSearchLocationInfo:
             return ["appKey": APIKeyManager.shared.tmapAPIKey]
+        case .fetchReverseGeocoding:
+            return [ "accept" : "application/json",
+                     "appKey": APIKeyManager.shared.tmapAPIKey]
 
         }
     }

@@ -11,7 +11,6 @@ struct SearchPoiInfoRootDTO: ModelType {
     let searchPoiInfo: SearchPoiInfoDTO
 }
 
-// Level 1 DTO
 struct SearchPoiInfoDTO: ModelType {
     let totalCount: String
     let count: String
@@ -19,12 +18,10 @@ struct SearchPoiInfoDTO: ModelType {
     let pois: PoisDTO
 }
 
-// Level 2 DTO
 struct PoisDTO: ModelType {
     let poi: [PoiDTO]
 }
 
-// Level 3 DTO
 struct PoiDTO: ModelType {
     let id: String
     let pkey: String

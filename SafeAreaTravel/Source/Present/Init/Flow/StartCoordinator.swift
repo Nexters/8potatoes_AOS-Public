@@ -10,15 +10,20 @@ import UIKit
 protocol StartCoordinatorDependencies {
     func makeStartViewController(coordinator: StartCoordinatorProtocol) -> StartViewController
     func makeSearchLocationViewController(coordinator: StartCoordinatorProtocol) -> SearchLocationViewController
-    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol) -> MainMapViewController
+    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol,
+                                        startLocation: SearchLocationModel,
+                                        goalLocation: SearchLocationModel,
+                                   route: Route) -> MainMapViewController
     func makeMainMapFlowCoordinator(navigationController: UINavigationController) -> MainMapCoordinator
 }
+
 protocol StartCoordinatorProtocol {
     func start()
     func presentSearchViewController(reactor: SearchLocationReactor)
     func dismissSearchViewController()
-    func pushMainMapViewController()
-    func pushCurrentLocationViewController()
+    func pushMainMapViewController(startLocation: SearchLocationModel, goalLocation: SearchLocationModel, route: Route)
+    func pushCurrentLocationViewController(reactor: CurrentLocationReactor)
+    func dismissOnlyTopViewController()
 }
 
 final class StartCoordinator: StartCoordinatorProtocol {
@@ -42,8 +47,7 @@ final class StartCoordinator: StartCoordinatorProtocol {
         navigationController.present(vc, animated: true)
     }
     
-    func pushCurrentLocationViewController() {
-        let reactor = CurrentLocationReactor(usecase: LocationInfoUseCase(repository: LocationInfoDAO(network: Networking())), coordinator: self)
+    func pushCurrentLocationViewController(reactor: CurrentLocationReactor) {
         let vc = CurrentLocationViewController(reactor: reactor)
         vc.modalPresentationStyle = .fullScreen
         navigationController.presentedViewController?.present(vc, animated: true, completion: nil)
@@ -53,9 +57,17 @@ final class StartCoordinator: StartCoordinatorProtocol {
         navigationController.dismiss(animated: true)
     }
     
-    func pushMainMapViewController() {
+    func dismissOnlyTopViewController() {
+        if let topController = navigationController.presentedViewController {
+            topController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func pushMainMapViewController(startLocation: SearchLocationModel,
+                                   goalLocation: SearchLocationModel,
+                                   route: Route) {
         let mainMapFlowCoordinator = dependencies.makeMainMapFlowCoordinator(navigationController: navigationController)
-        mainMapFlowCoordinator.start()
+        mainMapFlowCoordinator.start(startLocation: startLocation, goalLocation: goalLocation, route: route)
     }
     
     func dismissViewController() {

@@ -11,45 +11,56 @@ import RxCocoa
 
 final class MainMapReactor: Reactor {
     
+    // MARK: - Properties
+
     var initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: MainMapCoordinator
+    private var startLocation: SearchLocationModel
+    private var goalLocation: SearchLocationModel
     
-    init(usecase: LocationInfoUseCaseProtocol, coordinator: MainMapCoordinator) {
+    // MARK: - Init
+
+    init(usecase: LocationInfoUseCaseProtocol,
+         coordinator: MainMapCoordinator,
+         startLocation: SearchLocationModel,
+         goalLocation: SearchLocationModel,
+         route: Route) {
         self.usecase = usecase
         self.coordinator = coordinator
-        self.initialState = State()
+        self.startLocation = startLocation
+        self.goalLocation = goalLocation
+        self.initialState = State(route: route)
     }
     
+    // MARK: - State, Action, Mutation
+
     struct State {
-        var locations: [Route] = []
+        var route: Route
     }
     
     enum Action {
-        case fetchData(start: Coordinate, goal: Coordinate)
-    }
+        case fetchData(locationInfo: String, route: Route)
+    } 
     
     enum Mutation {
-        case setLocations([Route])
+        case setRoute(Route)
     }
-       
     
+    // MARK: - Reactor Method
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .fetchData(let start, let goal):
-            return usecase.fetchRouteInfo(start: start, goal: goal)
-                .asObservable() // Single을 Observable로 변환
-                .map { locations in
-                    return Mutation.setLocations([locations])
-                }
+        case .fetchData(let locationInfo, let route):
+            return .empty()
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setLocations(let locations):
-            newState.locations = locations
+        case .setRoute(let locations):
+            newState.route = locations
         }
         return newState
     }
