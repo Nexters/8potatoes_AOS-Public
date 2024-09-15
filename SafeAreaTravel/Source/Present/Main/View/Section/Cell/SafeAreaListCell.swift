@@ -14,7 +14,8 @@ import Then
 final class SafeAreaListCell: UICollectionViewCell {
     
     static let identifier = "SafeAreaListCell"
-    
+    private var isLastCell: Bool = false
+
     private let safeAreaNameLabel = UILabel().then {
         $0.font = .suit(.Bold, size: 18)
         $0.textColor = .black
@@ -34,9 +35,17 @@ final class SafeAreaListCell: UICollectionViewCell {
         $0.font = .suit(.SemiBold, size: 14)
         $0.sizeToFit()
     }
-    private let priceInfoFlexContainer = UIView()
+    private let priceInfoFlexContainer = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 12
+    }
 
-    private let directionInfoLabel = UILabel()
+    private let directionInfoLabel = UILabel().then {
+        $0.textColor = .bik60
+        $0.text = "부산방면 | "
+        $0.font = .suit(.Bold, size: 12)
+        $0.sizeToFit()
+    }
     private let starRateLabel = UILabel().then {
         $0.textColor = UIColor(hexString: "34C11D")
         $0.text = "네이버 평점 ★ "
@@ -45,69 +54,108 @@ final class SafeAreaListCell: UICollectionViewCell {
     }
     private let rateFelxContainer = UIView()
     
-    func configureCell(oilInfo: String, rateInfo: String, menuCount: String, title: String, open: Bool) {
+    func configureCell(oilInfo: String,
+                       rateInfo: String,
+                       menuCount: String,
+                       title: String,
+                       open: Bool,
+                       isLast: Bool) {
         safeAreaNameLabel.text  = title
-        oilPriceLabel.text = oilInfo
+        oilPriceLabel.text = "휘발유: \(oilInfo)  경유: \(oilInfo)"
+        starRateLabel.text = "네이버 평점 ★ \(rateInfo)"
         oilPriceLabel.setColorForText(textForAttribute: "휘발유", withColor: .bik40)
         oilPriceLabel.setColorForText(textForAttribute: "경유", withColor: .bik40)
         menuCountLabel.text = "메뉴 \(menuCount)가지"
+        menuCountLabel.setColorForText(textForAttribute: "메뉴", withColor: .bik40)
+        menuCountLabel.sizeToFit()
+        oilPriceLabel.sizeToFit()
+        starRateLabel.sizeToFit()
+        isLastCell = isLast
+        openInfoView.configre(open: open)
     }
     
     private func layout() {
         self.backgroundColor = UIColor(hexString: "FFF1E7")
         [safeAreaNameLabel, openInfoView, rateFelxContainer, priceInfoFlexContainer].forEach {
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
+
         rateFelxContainer.flex
             .direction(.row)
-            .alignItems(.stretch)
-            .define {  flex in
+            .alignItems(.baseline)
+            .define { flex in
                 flex.addItem(directionInfoLabel)
+                    .marginLeft(20)
                 flex.addItem(starRateLabel)
                     .marginLeft(8)
             }
+
         priceInfoFlexContainer.flex
             .direction(.row)
-            .alignItems(.stretch)
-            .define {  define in
+            .alignItems(.center)
+            .define { flex in
                 flex.addItem(oilPriceLabel)
+                    .marginLeft(20)
+                flex.addItem(divideLabel)
+                    .marginLeft(16)
+                flex.addItem(menuCountLabel)
+                    .marginLeft(16)
             }
-        
+
         safeAreaNameLabel.pin
             .top(32)
             .left(20)
             .sizeToFit()
-        
+
         openInfoView.pin
+            .width(91)
+            .height(31)
             .top(32)
-            .left(20)
+            .right(20)
 
         rateFelxContainer.pin
             .below(of: safeAreaNameLabel)
+            .height(12)
+            .width(200)
             .marginTop(16)
-        
+            .marginLeft(20)
+
+
         priceInfoFlexContainer.pin
             .below(of: rateFelxContainer)
-            .horizontally(20)
+            .height(36)
             .marginTop(20)
-            .marginBottom(32)
-        
-        
-        
-    }
+            .horizontally(20)
     
-    override func draw(_ rect: CGRect) {
-         super.draw(rect)
-         
-         // 겹쳐지는 부분에 라인 그리기
-         let linePath = UIBezierPath()
-         linePath.move(to: CGPoint(x: 0, y: rect.height - 10))
-         linePath.addLine(to: CGPoint(x: rect.width, y: rect.height - 10))
-         linePath.lineWidth = 2.0
+        rateFelxContainer.flex.layout()
+        priceInfoFlexContainer.flex.layout()
 
-         UIColor.red.setStroke() // 라인 색상 설정
-         linePath.stroke()
-     }
+    }
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        guard !isLastCell else { return } /// 마지막 셀이면 선을 그리지 않음
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        context.saveGState()
+        
+        /// 선 색깔
+        context.setStrokeColor(UIColor.main30.cgColor)
+        
+        /// 선 굵기
+        context.setLineWidth(2.0)
+        
+        /// 선의 패턴 : [점선의 크기, 사이간격]
+        let dashPattern: [CGFloat] = [9, 9]
+        context.setLineDash(phase: 0, lengths: dashPattern)
+        
+        /// 선그리기
+        context.move(to: CGPoint(x: 0, y: rect.height))
+        context.addLine(to: CGPoint(x: rect.width, y: rect.height))
+        context.strokePath()
+        
+        context.restoreGState()
+    }
+
     
     override func layoutSubviews() {
         layout()

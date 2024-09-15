@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol SafeAreaInfoUseCaseProtocol {
+    
+}
+final class SafeAreaInfoUseCase: SafeAreaInfoUseCaseProtocol {
+    
+}

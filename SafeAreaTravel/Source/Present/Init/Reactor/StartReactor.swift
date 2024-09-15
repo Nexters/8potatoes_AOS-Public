@@ -73,8 +73,18 @@ final class StartReactor: Reactor {
         case .setSelectedLocation(let location):
             return updateLocation(location: location)
         case .searchBtnTapped:
-            log.info("검색탭")
-            coordinator.pushMainMapViewController(startLocation: currentState.startLocation, goalLocation: currentState.goalLocation)
+            let start = Coordinate(lat: currentState.startLocation.frontLat, lon: currentState.startLocation.frontLon)
+            let goal = Coordinate(lat: currentState.goalLocation.frontLat, lon: currentState.goalLocation.frontLon)
+
+            usecase.fetchRouteInfo(start: start, goal: goal)
+                .asObservable()
+                .subscribe(onNext: {  [weak self]  res in
+                    self?.coordinator.pushMainMapViewController(startLocation: (self?.currentState.startLocation)!,
+                                                                goalLocation: (self?.currentState.goalLocation)!,
+                                                                route: res)
+
+                })
+                .disposed(by: disposeBag)
             return .empty()
         case .viewDidLoad:
             return .just(.setStartImg)

@@ -24,47 +24,43 @@ final class MainMapReactor: Reactor {
     init(usecase: LocationInfoUseCaseProtocol,
          coordinator: MainMapCoordinator,
          startLocation: SearchLocationModel,
-         goalLocation: SearchLocationModel) {
+         goalLocation: SearchLocationModel,
+         route: Route) {
         self.usecase = usecase
         self.coordinator = coordinator
         self.startLocation = startLocation
         self.goalLocation = goalLocation
-        log.debug(startLocation, goalLocation)
-        self.initialState = State()
+        self.initialState = State(route: route)
     }
     
     // MARK: - State, Action, Mutation
 
     struct State {
-        var locations: [Route] = []
+        var route: Route
     }
     
     enum Action {
-        case fetchData(start: Coordinate, goal: Coordinate)
-    }
+        case fetchData(locationInfo: String, route: Route)
+    } 
     
     enum Mutation {
-        case setLocations([Route])
+        case setRoute(Route)
     }
     
     // MARK: - Reactor Method
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .fetchData(let start, let goal):
-            return usecase.fetchRouteInfo(start: start, goal: goal)
-                .asObservable() 
-                .map { locations in
-                    return Mutation.setLocations([locations])
-                }
+        case .fetchData(let locationInfo, let route):
+            return .empty()
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setLocations(let locations):
-            newState.locations = locations
+        case .setRoute(let locations):
+            newState.route = locations
         }
         return newState
     }

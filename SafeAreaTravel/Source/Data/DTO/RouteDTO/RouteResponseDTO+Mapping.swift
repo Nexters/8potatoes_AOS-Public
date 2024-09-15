@@ -17,7 +17,7 @@ struct RouteResponseDTO: ModelType {
 }
 extension RouteResponseDTO {
     struct RouteDTO: ModelType {
-        let trafast: [TrafastDTO]
+        let traoptimal: [TrafastDTO]?
     }
 }
 
@@ -72,13 +72,13 @@ extension RouteResponseDTO.RouteDTO.TrafastDTO {
 
 extension RouteResponseDTO {
     func toDomain() -> Route {
-        return .init(trafast: route.trafast.map { $0.toDomain() })
+        return .init(trafast: route.traoptimal?.map { $0.toDomain() } ?? [])
     }
 }
 
 extension RouteResponseDTO.RouteDTO {
     func toDomain() -> Route {
-        return .init(trafast: trafast.map { $0.toDomain() })
+        return .init(trafast: traoptimal?.map { $0.toDomain() } ?? [])
     }
 }
 

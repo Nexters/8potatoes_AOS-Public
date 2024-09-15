@@ -51,7 +51,7 @@
 		0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */; };
 		0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */; };
 		0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0932C4D2E710025BB7C /* APIKeyManager.swift */; };
-		0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0982C4D315A0025BB7C /* LocationModel.swift */; };
+		0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0982C4D315A0025BB7C /* RouteModel.swift */; };
 		0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B09C2C4D34A30025BB7C /* Networking.swift */; };
 		0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */; };
 		095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */; };
@@ -73,13 +73,20 @@
 		09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0490E2C563E1900688197 /* UITextField+Extension.swift */; };
 		09C049112C563E4800688197 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C049102C563E4800688197 /* SearchBar.swift */; };
 		09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */; };
-		9317206D2C87420700AA0BDB /* NMapMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317206C2C87420700AA0BDB /* NMapMaker.swift */; };
+		9317206D2C87420700AA0BDB /* CurrentMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317206C2C87420700AA0BDB /* CurrentMarker.swift */; };
 		93239C662C8897D700CCD55F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 93239C652C8897D700CCD55F /* .gitignore */; };
 		93239C682C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */; };
 		933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E12C7B659F00E60512 /* GlobalStateManger.swift */; };
 		933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E42C7B68DA00E60512 /* UIImageView+kf.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
+		9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */; };
+		93D254F32C89E592009BA1B3 /* StartMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F22C89E592009BA1B3 /* StartMaker.swift */; };
+		93D254F52C89E59E009BA1B3 /* GoalMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F42C89E59E009BA1B3 /* GoalMaker.swift */; };
+		93D254F82C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */; };
+		93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */; };
+		93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254FB2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift */; };
+		93D254FE2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254FD2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift */; };
 		93F241FA2C7E0D34002CBD6E /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 93F241F92C7E0D34002CBD6E /* NMapsMap */; };
 /* End PBXBuildFile section */
 
@@ -143,7 +150,7 @@
 		0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDIContainer.swift; sourceTree = "<group>"; };
 		0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCoordinator.swift; sourceTree = "<group>"; };
 		0952B0932C4D2E710025BB7C /* APIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyManager.swift; sourceTree = "<group>"; };
-		0952B0982C4D315A0025BB7C /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		0952B0982C4D315A0025BB7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		0952B09C2C4D34A30025BB7C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		0952B09E2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		095D6F952C4FE764007E3C1F /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
@@ -163,13 +170,20 @@
 		09C0490E2C563E1900688197 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		09C049102C563E4800688197 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		09E922A02C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchFloatingBtn.swift; sourceTree = "<group>"; };
-		9317206C2C87420700AA0BDB /* NMapMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMapMaker.swift; sourceTree = "<group>"; };
+		9317206C2C87420700AA0BDB /* CurrentMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarker.swift; sourceTree = "<group>"; };
 		93239C652C8897D700CCD55F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReverseLocationDTO+Mapping.swift"; sourceTree = "<group>"; };
 		933003E12C7B659F00E60512 /* GlobalStateManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStateManger.swift; sourceTree = "<group>"; };
 		933003E42C7B68DA00E60512 /* UIImageView+kf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+kf.swift"; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
+		9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfo.swift; sourceTree = "<group>"; };
+		93D254F22C89E592009BA1B3 /* StartMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMaker.swift; sourceTree = "<group>"; };
+		93D254F42C89E59E009BA1B3 /* GoalMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMaker.swift; sourceTree = "<group>"; };
+		93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaDTO+Mapping.swift"; sourceTree = "<group>"; };
+		93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDAO.swift; sourceTree = "<group>"; };
+		93D254FB2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfoRepository.swift; sourceTree = "<group>"; };
+		93D254FD2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfoUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */,
+				93D254FD2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -367,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */,
+				93D254FB2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -375,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */,
+				93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -413,6 +430,7 @@
 		0944F2CC2C4BE1B100AB22F7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				93D254F62C89E5DC009BA1B3 /* SafeAreaDTO */,
 				93239C6A2C889D6200CCD55F /* RouteDTO */,
 				93239C692C889D5500CCD55F /* LocationDTO */,
 			);
@@ -475,8 +493,9 @@
 		0952B0972C4D314F0025BB7C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				0952B0982C4D315A0025BB7C /* LocationModel.swift */,
+				0952B0982C4D315A0025BB7C /* RouteModel.swift */,
 				09834DE22C57BCF700120358 /* SearchLocationModel.swift */,
+				9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -596,7 +615,9 @@
 				09C0490C2C5634FC00688197 /* RoundView.swift */,
 				09C049102C563E4800688197 /* SearchBar.swift */,
 				094066182C5DED7B009A5A7C /* TimeInfoView.swift */,
-				9317206C2C87420700AA0BDB /* NMapMaker.swift */,
+				9317206C2C87420700AA0BDB /* CurrentMarker.swift */,
+				93D254F22C89E592009BA1B3 /* StartMaker.swift */,
+				93D254F42C89E59E009BA1B3 /* GoalMaker.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -672,6 +693,14 @@
 				937844B22C84BF0800DA21BA /* TimeImageEnum.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		93D254F62C89E5DC009BA1B3 /* SafeAreaDTO */ = {
+			isa = PBXGroup;
+			children = (
+				93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */,
+			);
+			path = SafeAreaDTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -837,10 +866,12 @@
 				09C048FF2C5602D700688197 /* DivideLine.swift in Sources */,
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
+				93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
-				0952B0992C4D315A0025BB7C /* LocationModel.swift in Sources */,
+				0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */,
 				09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */,
 				0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */,
+				93D254F52C89E59E009BA1B3 /* GoalMaker.swift in Sources */,
 				09834DE32C57BCF700120358 /* SearchLocationModel.swift in Sources */,
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
@@ -855,21 +886,25 @@
 				0944F2732C4BDD4000AB22F7 /* AppDelegate.swift in Sources */,
 				0944F2D12C4BE27600AB22F7 /* Logger.swift in Sources */,
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
+				93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
 				092D91B92C77645800818B5F /* CurrentLocationReactor.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
+				93D254F82C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
 				092D91B62C624FF900818B5F /* CurrentLocationViewController.swift in Sources */,
-				9317206D2C87420700AA0BDB /* NMapMaker.swift in Sources */,
+				9317206D2C87420700AA0BDB /* CurrentMarker.swift in Sources */,
 				094066192C5DED7B009A5A7C /* TimeInfoView.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
 				09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */,
+				93D254F32C89E592009BA1B3 /* StartMaker.swift in Sources */,
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
+				9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */,
@@ -884,6 +919,7 @@
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
 				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
+				93D254FE2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift in Sources */,
 				095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1056,6 +1092,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA7UDVTQBU;
@@ -1076,6 +1113,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JC.SafeAreaTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1087,6 +1125,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JA7UDVTQBU;
@@ -1106,6 +1145,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JC.SafeAreaTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

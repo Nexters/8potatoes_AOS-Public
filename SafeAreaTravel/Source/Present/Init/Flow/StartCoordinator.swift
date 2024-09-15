@@ -12,7 +12,8 @@ protocol StartCoordinatorDependencies {
     func makeSearchLocationViewController(coordinator: StartCoordinatorProtocol) -> SearchLocationViewController
     func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol,
                                         startLocation: SearchLocationModel,
-                                        goalLocation: SearchLocationModel) -> MainMapViewController
+                                        goalLocation: SearchLocationModel,
+                                   route: Route) -> MainMapViewController
     func makeMainMapFlowCoordinator(navigationController: UINavigationController) -> MainMapCoordinator
 }
 
@@ -20,7 +21,7 @@ protocol StartCoordinatorProtocol {
     func start()
     func presentSearchViewController(reactor: SearchLocationReactor)
     func dismissSearchViewController()
-    func pushMainMapViewController(startLocation: SearchLocationModel, goalLocation: SearchLocationModel)
+    func pushMainMapViewController(startLocation: SearchLocationModel, goalLocation: SearchLocationModel, route: Route)
     func pushCurrentLocationViewController(reactor: CurrentLocationReactor)
     func dismissOnlyTopViewController()
 }
@@ -63,9 +64,10 @@ final class StartCoordinator: StartCoordinatorProtocol {
     }
     
     func pushMainMapViewController(startLocation: SearchLocationModel,
-                                   goalLocation: SearchLocationModel) {
+                                   goalLocation: SearchLocationModel,
+                                   route: Route) {
         let mainMapFlowCoordinator = dependencies.makeMainMapFlowCoordinator(navigationController: navigationController)
-        mainMapFlowCoordinator.start(startLocation: startLocation, goalLocation: goalLocation)
+        mainMapFlowCoordinator.start(startLocation: startLocation, goalLocation: goalLocation, route: route)
     }
     
     func dismissViewController() {
