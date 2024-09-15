@@ -52,12 +52,22 @@ final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinato
     
     // MARK: - Present (MainMap)
     
-    func makeMainMapReactor(coordinator: MainMapCoordinator) -> MainMapReactor {
-        return MainMapReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator)
+    func makeMainMapReactor(coordinator: MainMapCoordinator,
+                            startLocation: SearchLocationModel,
+                            goalLocation: SearchLocationModel,
+                            route: Route) -> MainMapReactor {
+        return MainMapReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator,
+                              startLocation: startLocation, goalLocation: goalLocation, route: route)
     }
     
-    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol) -> MainMapViewController {
-        return MainMapViewController(reactor: makeMainMapReactor(coordinator: coordinator as! MainMapCoordinator))
+    func makeMainMapViewController(coordinator: MainMapCoordinatorProtocol,
+                                   startLocation: SearchLocationModel,
+                                   goalLocation: SearchLocationModel,
+                                   route: Route) -> MainMapViewController {
+        return MainMapViewController(reactor: makeMainMapReactor(coordinator: coordinator as! MainMapCoordinator,
+                                                                 startLocation: startLocation,
+                                                                 goalLocation: goalLocation,
+                                                                 route: route))
     }
     
     // MARK: - Flow Coordinators

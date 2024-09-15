@@ -20,7 +20,18 @@ final class LocationInfoDAO: LocationInfoRepository {
     func fetchRouteInfo(start: Coordinate, goal: Coordinate) -> Single<Route>  {
         return network
             .request(.fetchDirction(start: start, goal: goal))
-            .map(RouteResponseDTO.self)
+            .map { response -> RouteResponseDTO in
+                do {
+                    let decoder = JSONDecoder()
+                    return try decoder.decode(RouteResponseDTO.self, from: response.data)
+                } catch {
+                        log.error("Decoding error: \(error)")
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        log.error("Received JSON: \(jsonString)")
+                    }
+                    throw error
+                }
+            }           
             .map { $0.route.toDomain() }
             .do(onSuccess: { (route) in
                 log.debug("response FetchRouteInfo \(route)")

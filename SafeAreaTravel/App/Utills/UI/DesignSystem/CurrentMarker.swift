@@ -1,5 +1,5 @@
 //
-//  NMapMaker.swift
+//  CurrentMarker.swift
 //  SafeAreaTravel
 //
 //  Created by 최지철 on 9/3/24.

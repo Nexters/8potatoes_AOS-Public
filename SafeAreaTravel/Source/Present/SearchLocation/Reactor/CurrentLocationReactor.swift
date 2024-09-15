@@ -62,6 +62,7 @@ final class CurrentLocationReactor: Reactor {
             let currentLocation = self.currentState.location
             usecase.selectLocation(location: currentLocation)
                 .subscribe(onNext: { res in
+                    log.debug(res)
                     self.coordinator.dismissSearchViewController()
                 })
                 .disposed(by: disposeBag)

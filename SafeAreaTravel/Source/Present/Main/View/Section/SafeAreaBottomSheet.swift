@@ -18,9 +18,16 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - UI
     
     private let countLabel = UILabel().then {
-        $0.text = "n개의"
+        $0.text = "총 n개의 휴게소를 들릴 수 있어요."
         $0.textColor = .bik100
+        $0.font = .suit(.Bold, size: 18)
         $0.sizeToFit()
+    }
+    private let desLabel =  UILabel().then {
+        $0.text = "전국 휴게소의 주차 시설 및 화장실은 24시간 이용 가능합니다."
+        $0.font = .suit(.Medium, size: 12)
+        $0.sizeToFit()
+        $0.textColor = UIColor(hexString: "A69F95")
     }
     private let safeAreaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 161)
@@ -44,7 +51,7 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - SetupUI
 
     override func addView() {
-        [countLabel, safeAreaCollectionView].forEach {
+        [countLabel, desLabel, safeAreaCollectionView].forEach {
             self.view.addSubview($0)
         }
     }
@@ -53,9 +60,13 @@ final class SafeAreaBottomSheet: BaseViewController {
         countLabel.pin
             .top(28)
             .hCenter()
-        safeAreaCollectionView.pin
+        desLabel.pin
             .below(of: countLabel)
-            .marginTop(25)
+            .marginTop(24)
+            .hCenter()
+        safeAreaCollectionView.pin
+            .below(of: desLabel)
+            .marginTop(20)
             .horizontally()
             .bottom()
     }
@@ -71,12 +82,24 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - bind
 
     private func bindUI() {
-        Observable.just([1,2,3,4,5,6])
-            .bind(to: safeAreaCollectionView.rx.items(cellIdentifier: SafeAreaListCell.identifier, cellType: SafeAreaListCell.self))
-        {  index, cell, item in
-
+        let items = [
+            SafeAreaInfo(oilInfo: "1999원", rateInfo: "4.0", menuCount: "5", title: "홍길동 휴게소", isOpen: true),
+            SafeAreaInfo(oilInfo: "2099원", rateInfo: "4.5", menuCount: "6", title: "이순신 휴게소", isOpen: false),
+            SafeAreaInfo(oilInfo: "2099원", rateInfo: "4.5", menuCount: "6", title: "최지철 휴게소", isOpen: false),
+            SafeAreaInfo(oilInfo: "1999원", rateInfo: "4.0", menuCount: "5", title: "강감찬 휴게소", isOpen: true),
+        ]
+        
+        Observable.just(items)
+        .bind(to: safeAreaCollectionView.rx.items(cellIdentifier: SafeAreaListCell.identifier, cellType: SafeAreaListCell.self)) { index, item, cell in
+            cell.configureCell(oilInfo: item.oilInfo,
+                               rateInfo: item.rateInfo,
+                               menuCount: item.menuCount,
+                               title: item.title,
+                               open: item.isOpen,
+                               isLast: index == items.count - 1)
         }
         .disposed(by: disposeBag)
+
     }
 }
 extension SafeAreaBottomSheet: UICollectionViewDelegate {

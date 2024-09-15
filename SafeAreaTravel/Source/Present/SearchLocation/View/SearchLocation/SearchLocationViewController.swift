@@ -128,6 +128,7 @@ final class SearchLocationViewController: BaseViewController, View {
     func bind(reactor: SearchLocationReactor) {
         
         searchBar.rx.text.orEmpty
+            .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .map { SearchLocationReactor.Action.searchLocation($0) }
             .bind(to: reactor.action)
