@@ -45,5 +45,5 @@ extension UIColor {
     
     static let main100 = UIColor(hexString: "FF7512")
     static let main30 = UIColor(hexString: "FFD6B8")
-
+    static let main50 = UIColor(hexString: "FFBA89")
 }
