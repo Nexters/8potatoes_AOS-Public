@@ -35,7 +35,7 @@ extension RouteMaker {
         case .start:
             makerImage = NMFOverlayImage(name: "startMaker")
         case .goal:
-            makerImage = NMFOverlayImage(name: "goalMaker")
+            makerImage = NMFOverlayImage(name: "goalMarker")
         }
 
         self.iconImage = makerImage

@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum SafeAraAPI {
-    case fetchDirction(start: Coordinate, goal: Coordinate)
+    case fetchDirction(start: String, goal: String)
     case fetchSearchLocationInfo(location: String, page:Int)
     case fetchReverseGeocoding(lat: Double, lon: Double)
     case fetchSafeAreaList(start: String, goal: String, route: Route)
@@ -77,8 +77,8 @@ extension SafeAraAPI: TargetType {
             
         case .fetchDirction(let start, let goal):
             return .requestParameters(parameters: [
-                "start": "127.12345,37.12345",
-                "goal": "127.8157298,35.5597367"
+                "start": start,
+                "goal": goal
             ], encoding: URLEncoding.default)
             
         default :
