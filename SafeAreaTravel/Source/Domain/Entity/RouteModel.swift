@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - 좌표 정보
 
-struct Coordinate {
+struct Coordinate: Equatable {
     let lat: Double
     let lon: Double
 }

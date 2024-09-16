@@ -81,7 +81,7 @@
 		936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
-		9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */; };
+		9391E5122C968FB1000963E7 /* SafeAreaListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */; };
 		93D254F32C89E592009BA1B3 /* RouteMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F22C89E592009BA1B3 /* RouteMaker.swift */; };
 		93D254F82C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */; };
 		93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */; };
@@ -178,7 +178,7 @@
 		936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaCoordinator.swift; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
-		9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfo.swift; sourceTree = "<group>"; };
+		9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaListInfo.swift; sourceTree = "<group>"; };
 		93D254F22C89E592009BA1B3 /* RouteMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMaker.swift; sourceTree = "<group>"; };
 		93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaDTO+Mapping.swift"; sourceTree = "<group>"; };
 		93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDAO.swift; sourceTree = "<group>"; };
@@ -496,7 +496,7 @@
 			children = (
 				0952B0982C4D315A0025BB7C /* RouteModel.swift */,
 				09834DE22C57BCF700120358 /* SearchLocationModel.swift */,
-				9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */,
+				9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -928,7 +928,7 @@
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
-				9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */,
+				9391E5122C968FB1000963E7 /* SafeAreaListInfo.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */,

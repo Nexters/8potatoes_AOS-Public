@@ -31,7 +31,7 @@ final class SafeAreaBottomSheet: BaseViewController {
     }
     private let safeAreaCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 161)
-        $0.minimumLineSpacing = 0 // 줄 간격 설정
+        $0.minimumLineSpacing = 0 /// 줄 간격 설정
         $0.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }).then {
         $0.backgroundColor = .clear

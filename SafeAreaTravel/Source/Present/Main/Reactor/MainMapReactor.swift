@@ -45,6 +45,7 @@ final class MainMapReactor: Reactor {
     
     enum Mutation {
         case setRoute(Route)
+        case setSafeAreaList(SafeAreaListInfo)
     }
     
     // MARK: - Reactor Method
@@ -61,6 +62,8 @@ final class MainMapReactor: Reactor {
         switch mutation {
         case .setRoute(let locations):
             newState.route = locations
+        case .setSafeAreaList(let safeAreas):
+            break
         }
         return newState
     }

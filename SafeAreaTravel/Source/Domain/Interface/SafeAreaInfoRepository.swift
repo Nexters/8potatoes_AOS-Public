@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol SafeAreaInfoRepository {
-    
+    func fetchSafeAreaList(start: Coordinate, goal: Coordinate, route: Route) -> Single<SafeAreaListInfo>
 }

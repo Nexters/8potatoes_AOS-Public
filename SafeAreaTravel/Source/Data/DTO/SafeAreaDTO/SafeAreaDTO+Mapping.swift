@@ -37,3 +37,29 @@ extension SafeAreaDTO.ReststopDTO {
 }
 
 // MARK: - Mappings to Domain
+
+extension SafeAreaDTO {
+    func toDomain() -> SafeAreaListInfo {
+        return .init(
+            totalReststopCount: totalReststopCount,
+            reststops: reststops.map { $0.toDomain() }  // ReststopDTO 배열을 SafeAreaInfo 배열로 변환
+        )
+    }
+}
+extension SafeAreaDTO.ReststopDTO {
+    func toDomain() -> SafeAreaListInfo.SafeAreaInfo {
+        return .init(
+            name: name,
+            direction: direction,
+            code: code,
+            isOperating: isOperating,
+            gasolinePrice: gasolinePrice,
+            dieselPrice: dieselPrice,
+            lpgPrice: lpgPrice,
+            naverRating: naverRating,
+            foodMenusCount: foodMenusCount,
+            location: .init(lat: location.latitude, lon: location.longitude),
+            isRecommend: isRecommend
+        )
+    }
+}
