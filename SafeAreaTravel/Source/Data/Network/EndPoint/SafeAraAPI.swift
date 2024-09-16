@@ -13,6 +13,7 @@ enum SafeAraAPI {
     case fetchDirction(start: Coordinate, goal: Coordinate)
     case fetchSearchLocationInfo(location: String, page:Int)
     case fetchReverseGeocoding(lat: Double, lon: Double)
+    case fetchSafeAreaList(start: String, goal: String, route: Route)
 }
 extension SafeAraAPI: TargetType {
     
@@ -22,6 +23,8 @@ extension SafeAraAPI: TargetType {
             return URL(string: "https://apis.openapi.sk.com")!
         case .fetchDirction:
             return URL(string: "https://naveropenapi.apigw.ntruss.com")!
+        case .fetchSafeAreaList:
+            return URL(string: "http://server-hyusik-matju.site/api")!
         }
     }
     
@@ -33,6 +36,8 @@ extension SafeAraAPI: TargetType {
             return "/map-direction/v1/driving"
         case .fetchReverseGeocoding:
             return "/tmap/geo/reversegeocoding"
+        case .fetchSafeAreaList:
+            return "/highways/reststops"
         }
     }
     
@@ -66,8 +71,8 @@ extension SafeAraAPI: TargetType {
                 "version": "1",
                 "lat": lat,
                 "lon": lon,
-                "coordType": "WGS84GEO",  // 경위도
-                "addressType": "A10", // 주소 타입 - A00: 행정동,법정동 주소 - A01: 행정동 주소 - A02: 법정동 주소 - A03: 도로명 주소 - A04: 건물 번호 - A10: 행정동, 법정동, 도로명 주소
+                "coordType": "WGS84GEO",  /// 경위도
+                "addressType": "A10", /// 주소 타입 - A00: 행정동,법정동 주소 - A01: 행정동 주소 - A02: 법정동 주소 - A03: 도로명 주소 - A04: 건물 번호 - A10: 행정동, 법정동, 도로명 주소
             ], encoding: URLEncoding.default)
             
         case .fetchDirction(let start, let goal):
@@ -94,6 +99,8 @@ extension SafeAraAPI: TargetType {
             return [ "accept" : "application/json",
                      "appKey": APIKeyManager.shared.tmapAPIKey]
 
+        default:
+            return nil
         }
     }
 }

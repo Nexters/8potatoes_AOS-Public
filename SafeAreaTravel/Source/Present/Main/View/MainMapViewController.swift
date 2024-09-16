@@ -20,6 +20,9 @@ final class MainMapViewController: BaseViewController, View {
     var disposeBag =  DisposeBag()
 
     // MARK: - UI
+    
+    private let startMaker = RouteMaker(type: .start)
+    private let goalMaker = RouteMaker(type: .goal)
     private let nMapView = NMFMapView()
     private var bottomSheet =  SafeAreaBottomSheet()
     private let searchBtn = LocationSearchFloatingBtn()
@@ -33,6 +36,7 @@ final class MainMapViewController: BaseViewController, View {
     init(reactor: MainMapReactor) {
         self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
+        bind(reactor: reactor)
     }
     
     required init?(coder: NSCoder) {
@@ -64,9 +68,46 @@ final class MainMapViewController: BaseViewController, View {
     // MARK: - Bind
     
     func bind(reactor: MainMapReactor) {
-        
+        bindState(reactor: reactor)
+        bindAction(reactor: reactor)
     }
     
+    private func bindState(reactor: MainMapReactor) {
+        reactor.state
+            .map {$0.startLocation}
+            .asDriver(onErrorJustReturn: reactor.initialState.startLocation)
+            .drive(onNext: {  [weak self] startLocation in
+                self?.searchBtn.startBtn.setTitle(startLocation.name, for: .normal)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map {$0.goalLocation}
+            .asDriver(onErrorJustReturn: reactor.initialState.goalLocation)
+            .drive(onNext: {  [weak self] goalLocation in
+                self?.searchBtn.goalBtn.setTitle(goalLocation.name, for: .normal)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindAction(reactor: MainMapReactor) {
+        searchBtn.startBtn.rx.tap
+            .bind(onNext: {
+                
+            })
+            .disposed(by: disposeBag)
+        
+        searchBtn.goalBtn.rx.tap
+            .bind(onNext: {
+                
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+//MARK: - presentBottomSheet
+
+extension MainMapViewController {
     private func presentBottomSheet() {
         let bottomSheet = SafeAreaBottomSheet()
         bottomSheet.modalPresentationStyle = .pageSheet

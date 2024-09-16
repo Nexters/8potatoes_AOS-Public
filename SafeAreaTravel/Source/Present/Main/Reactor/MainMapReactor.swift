@@ -16,8 +16,6 @@ final class MainMapReactor: Reactor {
     var initialState: State
     private let usecase: LocationInfoUseCaseProtocol
     private let coordinator: MainMapCoordinator
-    private var startLocation: SearchLocationModel
-    private var goalLocation: SearchLocationModel
     
     // MARK: - Init
 
@@ -28,20 +26,22 @@ final class MainMapReactor: Reactor {
          route: Route) {
         self.usecase = usecase
         self.coordinator = coordinator
-        self.startLocation = startLocation
-        self.goalLocation = goalLocation
-        self.initialState = State(route: route)
+        self.initialState = State(route: route,
+                                  startLocation: startLocation,
+                                  goalLocation: goalLocation)
     }
     
     // MARK: - State, Action, Mutation
 
     struct State {
         var route: Route
+        var startLocation: SearchLocationModel
+        var goalLocation: SearchLocationModel
     }
     
     enum Action {
         case fetchData(locationInfo: String, route: Route)
-    } 
+    }
     
     enum Mutation {
         case setRoute(Route)
