@@ -18,12 +18,14 @@ final class LocationSearchFloatingBtn: UIView {
         $0.setTitle("어디서 출발하세요?", for: .normal)
         $0.backgroundColor = .clear
         $0.setTitleColor(.bik60, for: .normal)
+        $0.titleLabel?.font = .suit(.Medium, size: 18)
         $0.sizeToFit()
     }
     var goalBtn = UIButton().then {
         $0.setTitle("어디까지 가세요?", for: .normal)
         $0.backgroundColor = .clear
         $0.setTitleColor(.bik60, for: .normal)
+        $0.titleLabel?.font = .suit(.Medium, size: 18)
         $0.sizeToFit()
     }
     private let divideImg = UIImageView().then {
@@ -38,14 +40,18 @@ final class LocationSearchFloatingBtn: UIView {
         rootFlexContainer.flex
             .direction(.row)
             .alignItems(.center)
+            .justifyContent(.center)
             .define { flex in
-            flex.addItem(startBtn)
-                .marginLeft(16)
-            flex.addItem(divideImg)
-                .size(CGSize(width: 24, height: 24))
-                .marginHorizontal(16)
-            flex.addItem(goalBtn)
-                .marginRight(16)
+                flex.addItem(startBtn)
+                    .width(131)
+                    .height(48)
+                    .marginHorizontal(16)
+                flex.addItem(divideImg)
+                    .size(CGSize(width: 24, height: 24))  /// 중앙에 고정된 이미지
+                flex.addItem(goalBtn)
+                    .width(131)
+                    .height(48)
+                    .marginHorizontal(16)
         }
     }
     
