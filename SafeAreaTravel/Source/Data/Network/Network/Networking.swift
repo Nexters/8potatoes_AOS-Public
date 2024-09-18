@@ -22,7 +22,7 @@ final class Networking {
         let requestString = "\(target.method.rawValue) \(target.path)"
         
         if case let .requestParameters(parameters, encoding) = target.task {
-            log.debug("REQUEST PARAMETERS: \(parameters), ENCODING: \(encoding)", file: file, function: function, line: line)
+            log.debug("✈️ REQUEST PARAMETERS: \(parameters), ENCODING: \(encoding)", file: file, function: function, line: line)
         } else if case let .requestJSONEncodable(encodable) = target.task {
             log.debug("💪🏻 REQUEST BODY: \(encodable)", file: file, function: function, line: line)
         }

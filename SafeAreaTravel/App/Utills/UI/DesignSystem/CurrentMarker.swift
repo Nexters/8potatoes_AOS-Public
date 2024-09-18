@@ -12,7 +12,7 @@ import Then
 
 final class CurrentMarker: NMFMarker {
     
-    // MARK: - UI & Layout
+    // MARK: - UI
     
     let startInfoWindow = NMFInfoWindow()
     
@@ -25,7 +25,7 @@ final class CurrentMarker: NMFMarker {
     }
 }
 
-// MARK: - UI & Layout
+// MARK: - SetUI
 
 extension CurrentMarker {
     private func setUI() {

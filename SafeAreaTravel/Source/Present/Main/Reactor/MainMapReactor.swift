@@ -14,44 +14,60 @@ final class MainMapReactor: Reactor {
     // MARK: - Properties
 
     var initialState: State
-    private let usecase: LocationInfoUseCaseProtocol
+    private let usecase: SafeAreaInfoUseCaseProtocol
     private let coordinator: MainMapCoordinator
-    private var startLocation: SearchLocationModel
-    private var goalLocation: SearchLocationModel
     
     // MARK: - Init
 
-    init(usecase: LocationInfoUseCaseProtocol,
+    init(usecase: SafeAreaInfoUseCaseProtocol,
          coordinator: MainMapCoordinator,
          startLocation: SearchLocationModel,
          goalLocation: SearchLocationModel,
          route: Route) {
         self.usecase = usecase
         self.coordinator = coordinator
-        self.startLocation = startLocation
-        self.goalLocation = goalLocation
-        self.initialState = State(route: route)
+        self.initialState = State(route: route,
+                                  startLocation: startLocation,
+                                  goalLocation: goalLocation)
     }
     
     // MARK: - State, Action, Mutation
 
     struct State {
         var route: Route
+        var startLocation: SearchLocationModel
+        var goalLocation: SearchLocationModel
+        var safeAreaList: SafeAreaListInfo = SafeAreaListInfo(totalReststopCount: 0,
+                                                              reststops: [])
     }
     
     enum Action {
-        case fetchData(locationInfo: String, route: Route)
-    } 
+        case viewDidLoad
+        case changeStartLocation
+        case changeGoalLocation
+    }
     
     enum Mutation {
         case setRoute(Route)
+        case setSafeAreaList(SafeAreaListInfo)
     }
     
     // MARK: - Reactor Method
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .fetchData(let locationInfo, let route):
+        case .viewDidLoad:
+            let startCoord = Coordinate(lat: currentState.startLocation.frontLat,
+                                        lon: currentState.startLocation.frontLon)
+            let goalCoord = Coordinate(lat: currentState.goalLocation.frontLat,
+                                        lon: currentState.goalLocation.frontLon)
+            return usecase
+                .fetchSafeAreaList(start: startCoord, goal: goalCoord, route: currentState.route)
+                .asObservable()
+                .map {Mutation.setSafeAreaList($0)}
+        case .changeStartLocation:
+            return .empty()
+        case .changeGoalLocation:
             return .empty()
         }
     }
@@ -61,6 +77,8 @@ final class MainMapReactor: Reactor {
         switch mutation {
         case .setRoute(let locations):
             newState.route = locations
+        case .setSafeAreaList(let safeAreas):
+            newState.safeAreaList = safeAreas
         }
         return newState
     }

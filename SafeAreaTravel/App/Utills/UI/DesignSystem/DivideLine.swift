@@ -56,7 +56,7 @@ class DivideLine: UIView {
         if type == .dot {
             shapeLayer.strokeColor = UIColor.bik5.cgColor
             shapeLayer.lineWidth = 2
-            shapeLayer.lineDashPattern = [9, 9] // 점선 패턴: [길이, 간격]
+            shapeLayer.lineDashPattern = [9, 9] /// 점선 패턴: [길이, 간격]
             self.layer.addSublayer(shapeLayer)
         } else {
             self.addSubview(lineView)

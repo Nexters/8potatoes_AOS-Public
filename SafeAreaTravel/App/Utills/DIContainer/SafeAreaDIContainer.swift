@@ -24,10 +24,18 @@ final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinato
         return LocationInfoDAO(network: dependencies.networking)
     }
     
+    func makeSafeAreaInfoRepository() -> SafeAreaInfoRepository {
+        return SafeAreaDAO(network: dependencies.networking)
+    }
+    
     // MARK: - Use Cases
     
     func makeLocationInfoUseCase() -> LocationInfoUseCaseProtocol {
         return LocationInfoUseCase(repository: makeLocationInfoRepository())
+    }
+    
+    func makeSafeAreaInfoUseCase() -> SafeAreaInfoUseCaseProtocol {
+        return SafeAreaInfoUseCase(repository: makeSafeAreaInfoRepository())
     }
     
     // MARK: - Present (Start)
@@ -56,7 +64,7 @@ final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinato
                             startLocation: SearchLocationModel,
                             goalLocation: SearchLocationModel,
                             route: Route) -> MainMapReactor {
-        return MainMapReactor(usecase: makeLocationInfoUseCase(), coordinator: coordinator,
+        return MainMapReactor(usecase: makeSafeAreaInfoUseCase(), coordinator: coordinator,
                               startLocation: startLocation, goalLocation: goalLocation, route: route)
     }
     
