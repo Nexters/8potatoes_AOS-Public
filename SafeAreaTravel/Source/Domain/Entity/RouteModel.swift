@@ -25,6 +25,7 @@ extension Route {
         let path: [[Double]]
         let section: [Section]
         let guide: [Guide]
+        let highWayInfo: [String: [[[Double]]]]
     }
 
     struct Summary {
@@ -62,5 +63,16 @@ extension Route {
         let instructions: String
         let distance: Int
         let duration: Int
+    }
+}
+extension Route.Trafast {
+    func updatedHighWayInfo(_ newHighWayInfo: [String: [[[Double]]]]) -> Route.Trafast {
+        return .init(
+            summary: self.summary,
+            path: self.path,
+            section: self.section,
+            guide: self.guide,
+            highWayInfo: newHighWayInfo
+        )
     }
 }

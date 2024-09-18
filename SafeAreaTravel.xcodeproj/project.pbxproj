@@ -76,8 +76,9 @@
 		9317206D2C87420700AA0BDB /* CurrentMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317206C2C87420700AA0BDB /* CurrentMarker.swift */; };
 		93239C662C8897D700CCD55F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 93239C652C8897D700CCD55F /* .gitignore */; };
 		93239C682C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */; };
-		933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E12C7B659F00E60512 /* GlobalStateManger.swift */; };
 		933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E42C7B68DA00E60512 /* UIImageView+kf.swift */; };
+		934D7CBA2C9994AB00C32D50 /* RequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CB92C9994AB00C32D50 /* RequestRoute.swift */; };
+		934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */; };
 		936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
@@ -173,8 +174,9 @@
 		9317206C2C87420700AA0BDB /* CurrentMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarker.swift; sourceTree = "<group>"; };
 		93239C652C8897D700CCD55F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReverseLocationDTO+Mapping.swift"; sourceTree = "<group>"; };
-		933003E12C7B659F00E60512 /* GlobalStateManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStateManger.swift; sourceTree = "<group>"; };
 		933003E42C7B68DA00E60512 /* UIImageView+kf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+kf.swift"; sourceTree = "<group>"; };
+		934D7CB92C9994AB00C32D50 /* RequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRoute.swift; sourceTree = "<group>"; };
+		934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaCoordinator.swift; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
@@ -332,7 +334,7 @@
 		0944F2A62C4BDD6B00AB22F7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				933003E02C7B658F00E60512 /* Global */,
+				934D7CB82C99947B00C32D50 /* Request */,
 				0952B0972C4D314F0025BB7C /* Entity */,
 				0944F2BC2C4BDE5800AB22F7 /* Interface */,
 				0944F2BB2C4BDE5100AB22F7 /* UseCase */,
@@ -665,14 +667,6 @@
 			path = RouteDTO;
 			sourceTree = "<group>";
 		};
-		933003E02C7B658F00E60512 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				933003E12C7B659F00E60512 /* GlobalStateManger.swift */,
-			);
-			path = Global;
-			sourceTree = "<group>";
-		};
 		933003E32C7B68BF00E60512 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,8 +677,17 @@
 				0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */,
 				933003E42C7B68DA00E60512 /* UIImageView+kf.swift */,
 				9372A11D2C8737AC00154868 /* UIButton+Extension.swift */,
+				934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		934D7CB82C99947B00C32D50 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				934D7CB92C9994AB00C32D50 /* RequestRoute.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		9366785E2C982E8900948CC4 /* View */ = {
@@ -890,6 +893,7 @@
 				09C048FF2C5602D700688197 /* DivideLine.swift in Sources */,
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
+				934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */,
 				93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
 				0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */,
@@ -924,6 +928,7 @@
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
 				09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */,
+				934D7CBA2C9994AB00C32D50 /* RequestRoute.swift in Sources */,
 				93D254F32C89E592009BA1B3 /* RouteMaker.swift in Sources */,
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
@@ -934,7 +939,6 @@
 				937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
-				933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */,
 				9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */,
 				09C049112C563E4800688197 /* SearchBar.swift in Sources */,
 				93239C682C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift in Sources */,

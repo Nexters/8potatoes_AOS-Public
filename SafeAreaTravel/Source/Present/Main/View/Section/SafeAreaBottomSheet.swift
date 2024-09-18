@@ -14,11 +14,12 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - Properties
     
     private var disposeBag = DisposeBag()
-    
+    private let safeAreaList = BehaviorSubject<SafeAreaListInfo>(value: SafeAreaListInfo(totalReststopCount: 0, reststops: [])) // 초기값 설정
+
     // MARK: - UI
     
     private let countLabel = UILabel().then {
-        $0.text = "총 n개의 휴게소를 들릴 수 있어요."
+        $0.text = "총 000개의 휴게소를 들릴 수 있어요."
         $0.textColor = .bik100
         $0.font = .suit(.Bold, size: 18)
         $0.sizeToFit()
@@ -40,8 +41,9 @@ final class SafeAreaBottomSheet: BaseViewController {
 
     // MARK: - Init & LifeCycle
     
-    init() {
+    init(info: SafeAreaListInfo) {
         super.init(nibName: nil, bundle: nil)
+        safeAreaList.onNext(info)  // 데이터를 subject에 전달
     }
     
     required init?(coder: NSCoder) {
@@ -82,25 +84,41 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - bind
 
     private func bindUI() {
-        let items = [
-            SafeAreaInfo(oilInfo: "1999원", rateInfo: "4.0", menuCount: "5", title: "홍길동 휴게소", isOpen: true),
-            SafeAreaInfo(oilInfo: "2099원", rateInfo: "4.5", menuCount: "6", title: "이순신 휴게소", isOpen: false),
-            SafeAreaInfo(oilInfo: "2099원", rateInfo: "4.5", menuCount: "6", title: "최지철 휴게소", isOpen: false),
-            SafeAreaInfo(oilInfo: "1999원", rateInfo: "4.0", menuCount: "5", title: "강감찬 휴게소", isOpen: true),
-        ]
         
-        Observable.just(items)
-        .bind(to: safeAreaCollectionView.rx.items(cellIdentifier: SafeAreaListCell.identifier, cellType: SafeAreaListCell.self)) { index, item, cell in
-            cell.configureCell(oilInfo: item.oilInfo,
-                               rateInfo: item.rateInfo,
-                               menuCount: item.menuCount,
-                               title: item.title,
-                               open: item.isOpen,
-                               isLast: index == items.count - 1)
-        }
-        .disposed(by: disposeBag)
+        safeAreaList
+            .bind(onNext: { [weak self] info in
+                self?.countLabel.text = "총 \(info.totalReststopCount)개의 휴게소를 들릴 수 있어요."
+            })
+            .disposed(by: disposeBag)
+           let reststopsObservable = safeAreaList
+               .map { $0.reststops }
 
-    }
+            reststopsObservable
+               .bind(to: safeAreaCollectionView.rx.items(cellIdentifier: SafeAreaListCell.identifier, cellType: SafeAreaListCell.self)) { [weak self] index, item, cell in
+                   guard let self = self else { return }
+                   
+                   let oilInfo = "\(item.gasolinePrice ?? "정보없음")"
+                   let diselInfo = "\(item.dieselPrice ?? "정보없음")"
+                   let rateInfo = "\(item.naverRating)"
+                   let menuCount = "\(item.foodMenusCount)"
+                   let title = item.name
+                   let open = item.isOperating
+                   let isLast = index == (try! self.safeAreaList.value().reststops.count) - 1  // 마지막 셀인지 확인
+
+                   // 셀 구성
+                   cell.configureCell(
+                    oilInfo: oilInfo,
+                    diselInfo: diselInfo,
+                       rateInfo: rateInfo,
+                       menuCount: menuCount,
+                       title: title,
+                       open: open,
+                       isLast: isLast
+                   )
+               }
+               .disposed(by: disposeBag)
+       }
+
 }
 extension SafeAreaBottomSheet: UICollectionViewDelegate {
     

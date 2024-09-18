@@ -88,7 +88,8 @@ extension RouteResponseDTO.RouteDTO.TrafastDTO {
             summary: summary.toDomain(),
             path: path,
             section: section.map { $0.toDomain() },
-            guide: guide.map { $0.toDomain() }
+            guide: guide.map { $0.toDomain() },
+            highWayInfo: [:]
         )
     }
 }

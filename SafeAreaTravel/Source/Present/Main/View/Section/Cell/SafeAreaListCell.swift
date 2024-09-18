@@ -55,13 +55,14 @@ final class SafeAreaListCell: UICollectionViewCell {
     private let rateFelxContainer = UIView()
     
     func configureCell(oilInfo: String,
+                       diselInfo: String,
                        rateInfo: String,
                        menuCount: String,
                        title: String,
                        open: Bool,
                        isLast: Bool) {
         safeAreaNameLabel.text  = title
-        oilPriceLabel.text = "휘발유: \(oilInfo)  경유: \(oilInfo)"
+        oilPriceLabel.text = "휘발유: \(oilInfo)  경유: \(diselInfo)"
         starRateLabel.text = "네이버 평점 ★ \(rateInfo)"
         oilPriceLabel.setColorForText(textForAttribute: "휘발유", withColor: .bik40)
         oilPriceLabel.setColorForText(textForAttribute: "경유", withColor: .bik40)
@@ -72,6 +73,7 @@ final class SafeAreaListCell: UICollectionViewCell {
         starRateLabel.sizeToFit()
         isLastCell = isLast
         openInfoView.configre(open: open)
+        setNeedsDisplay()
     }
     
     private func layout() {
@@ -142,8 +144,8 @@ final class SafeAreaListCell: UICollectionViewCell {
         context.setStrokeColor(UIColor.main30.cgColor)
         
         /// 선 굵기
-        context.setLineWidth(2.0)
-        
+        context.setLineWidth(4.0)
+
         /// 선의 패턴 : [점선의 크기, 사이간격]
         let dashPattern: [CGFloat] = [9, 9]
         context.setLineDash(phase: 0, lengths: dashPattern)
@@ -154,6 +156,19 @@ final class SafeAreaListCell: UICollectionViewCell {
         context.strokePath()
         
         context.restoreGState()
+    }
+
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        // 재사용될 때 이전 상태 초기화
+        safeAreaNameLabel.text = ""
+        oilPriceLabel.text = ""
+        starRateLabel.text = ""
+        menuCountLabel.text = ""
+        openInfoView.configre(open: false)  // 기본값 설정
+        isLastCell = true
     }
 
     

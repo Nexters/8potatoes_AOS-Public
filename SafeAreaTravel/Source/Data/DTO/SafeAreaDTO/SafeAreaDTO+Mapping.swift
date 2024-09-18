@@ -8,6 +8,7 @@
 import Foundation
 
 /// 경로상 존재하는 휴게소정보 DTO
+
 struct SafeAreaDTO: ModelType {
     let totalReststopCount: Int
     let reststops: [ReststopDTO]
@@ -42,10 +43,11 @@ extension SafeAreaDTO {
     func toDomain() -> SafeAreaListInfo {
         return .init(
             totalReststopCount: totalReststopCount,
-            reststops: reststops.map { $0.toDomain() }  // ReststopDTO 배열을 SafeAreaInfo 배열로 변환
+            reststops: reststops.map { $0.toDomain() }
         )
     }
 }
+
 extension SafeAreaDTO.ReststopDTO {
     func toDomain() -> SafeAreaListInfo.SafeAreaInfo {
         return .init(

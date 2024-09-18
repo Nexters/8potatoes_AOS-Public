@@ -14,12 +14,12 @@ final class MainMapReactor: Reactor {
     // MARK: - Properties
 
     var initialState: State
-    private let usecase: LocationInfoUseCaseProtocol
+    private let usecase: SafeAreaInfoUseCaseProtocol
     private let coordinator: MainMapCoordinator
     
     // MARK: - Init
 
-    init(usecase: LocationInfoUseCaseProtocol,
+    init(usecase: SafeAreaInfoUseCaseProtocol,
          coordinator: MainMapCoordinator,
          startLocation: SearchLocationModel,
          goalLocation: SearchLocationModel,
@@ -37,10 +37,14 @@ final class MainMapReactor: Reactor {
         var route: Route
         var startLocation: SearchLocationModel
         var goalLocation: SearchLocationModel
+        var safeAreaList: SafeAreaListInfo = SafeAreaListInfo(totalReststopCount: 0,
+                                                              reststops: [])
     }
     
     enum Action {
-        case fetchData(locationInfo: String, route: Route)
+        case viewDidLoad
+        case changeStartLocation
+        case changeGoalLocation
     }
     
     enum Mutation {
@@ -52,7 +56,18 @@ final class MainMapReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .fetchData(let locationInfo, let route):
+        case .viewDidLoad:
+            let startCoord = Coordinate(lat: currentState.startLocation.frontLat,
+                                        lon: currentState.startLocation.frontLon)
+            let goalCoord = Coordinate(lat: currentState.goalLocation.frontLat,
+                                        lon: currentState.goalLocation.frontLon)
+            return usecase
+                .fetchSafeAreaList(start: startCoord, goal: goalCoord, route: currentState.route)
+                .asObservable()
+                .map {Mutation.setSafeAreaList($0)}
+        case .changeStartLocation:
+            return .empty()
+        case .changeGoalLocation:
             return .empty()
         }
     }
@@ -63,7 +78,7 @@ final class MainMapReactor: Reactor {
         case .setRoute(let locations):
             newState.route = locations
         case .setSafeAreaList(let safeAreas):
-            break
+            newState.safeAreaList = safeAreas
         }
         return newState
     }

@@ -28,17 +28,18 @@ final class MainMapViewController: BaseViewController, View {
         $0.color = .main100
         $0.width = 5
     }
-    private var bottomSheet =  SafeAreaBottomSheet()
+    //private var bottomSheet =  SafeAreaBottomSheet(info: SafeAreaListInfo(totalReststopCount: 0, reststops: []))
     private let searchBtn = LocationSearchFloatingBtn()
     
     // MARK: - Init & LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
-        presentBottomSheet()
+
     }
     
     init(reactor: MainMapReactor) {
         self.reactor = reactor
+        reactor.action.onNext(.viewDidLoad)
         super.init(nibName: nil, bundle: nil)
         bind(reactor: reactor)
     }
@@ -117,19 +118,26 @@ final class MainMapViewController: BaseViewController, View {
                 self?.pathOverlay.path = NMGLineString(points: points)
             })
             .disposed(by: disposeBag)
-
+        
+        reactor.state
+            .map {$0.safeAreaList}
+            .asDriver(onErrorJustReturn: reactor.initialState.safeAreaList)
+            .drive(onNext: {  [weak self] info in
+                self?.presentBottomSheet(info: info)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindAction(reactor: MainMapReactor) {
         searchBtn.startBtn.rx.tap
             .bind(onNext: {
-                
+                reactor.action.onNext(.changeStartLocation)
             })
             .disposed(by: disposeBag)
         
         searchBtn.goalBtn.rx.tap
             .bind(onNext: {
-                
+                reactor.action.onNext(.changeGoalLocation)
             })
             .disposed(by: disposeBag)
     }
@@ -138,8 +146,8 @@ final class MainMapViewController: BaseViewController, View {
 //MARK: - presentBottomSheet
 
 extension MainMapViewController {
-    private func presentBottomSheet() {
-        let bottomSheet = SafeAreaBottomSheet()
+    private func presentBottomSheet(info: SafeAreaListInfo) {
+        let bottomSheet = SafeAreaBottomSheet(info: info)
         bottomSheet.modalPresentationStyle = .pageSheet
         bottomSheet.modalTransitionStyle = .coverVertical
 

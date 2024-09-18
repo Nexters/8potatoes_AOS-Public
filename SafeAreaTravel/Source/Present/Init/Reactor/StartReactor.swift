@@ -105,6 +105,7 @@ final class StartReactor: Reactor {
             newState.isGoalLocationTapped = true
             coordinator.presentSearchViewController(reactor: getSearchReactor())
         case .setStartLocation(let location):
+            log.debug(location)
             newState.startLocation = location
         case .setGoalLocation(let location):
             newState.goalLocation = location
@@ -118,7 +119,7 @@ final class StartReactor: Reactor {
         case .setCompleteSetLocation(let isComplete):
             newState.completeSetLocation = isComplete
         }
-        newState.completeSetLocation = newState.startLocation.name != "" && newState.goalLocation.name != ""
+        newState.completeSetLocation = newState.startLocation.fullAddressRoad != "" && newState.goalLocation.fullAddressRoad != ""
         return newState
     }
 

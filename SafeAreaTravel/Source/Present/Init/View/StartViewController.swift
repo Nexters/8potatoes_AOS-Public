@@ -181,7 +181,6 @@ final class StartViewController: BaseViewController, View {
             .map{ $0.startLocation}
             .distinctUntilChanged()
             .bind(onNext: {  [weak self] location in
-                log.warning(location)
                 self?.startLocateBtn.setTitle(location.name == "" ? location.fullAddressRoad : location.name, for: .normal)
                 self?.startLocateBtn.setTitleColor(.bik100, for: .normal)
             })
@@ -200,7 +199,6 @@ final class StartViewController: BaseViewController, View {
             .map { $0.completeSetLocation }
             .bind(onNext: { [weak self] isCompleted in
                 if isCompleted {
-                    log.info(isCompleted)
                     self?.searchBtn.isEnabled = true
                     self?.searchBtn.backgroundColor = .main100
                     self?.chagneLocateBtn.setImage(UIImage(named: "Swap"), for: .normal)

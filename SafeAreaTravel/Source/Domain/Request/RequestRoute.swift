@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct RequestRoute: Encodable {
+    let highways: [String: [[[Double]]]]
+}

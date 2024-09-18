@@ -13,18 +13,19 @@ enum SafeAraAPI {
     case fetchDirction(start: String, goal: String)
     case fetchSearchLocationInfo(location: String, page:Int)
     case fetchReverseGeocoding(lat: Double, lon: Double)
-    case fetchSafeAreaList(start: String, goal: String, route: Route)
+    case fetchSafeAreaList(start: String, goal: String, highWayInfo: [String: [[[Double]]]])
+    case fetchSafeAreaInfo(code: String)
 }
 extension SafeAraAPI: TargetType {
     
     var baseURL: URL {
         switch self {
         case .fetchSearchLocationInfo, .fetchReverseGeocoding:
-            return URL(string: "https://apis.openapi.sk.com")!
+            return URL(string: "https://apis.openapi.sk.com")!  /// TmapAPI baseURL
         case .fetchDirction:
-            return URL(string: "https://naveropenapi.apigw.ntruss.com")!
-        case .fetchSafeAreaList:
-            return URL(string: "http://server-hyusik-matju.site/api")!
+            return URL(string: "https://naveropenapi.apigw.ntruss.com")!    ///NaverMap baseURL
+        default :
+            return URL(string: "https://server-hyusik-matju.site/api")!     /// 휴식맞쥬 baseURL
         }
     }
     
@@ -38,12 +39,20 @@ extension SafeAraAPI: TargetType {
             return "/tmap/geo/reversegeocoding"
         case .fetchSafeAreaList:
             return "/highways/reststops"
+        case .fetchSafeAreaInfo:
+            return "/reststop/info"
         }
     }
     
     
     var method: Moya.Method {
-        return .get
+        switch self {
+        case .fetchSafeAreaList:
+            return .post
+        
+        default:
+            return .get
+        }
     }
     
     var task: Moya.Task {
@@ -81,6 +90,149 @@ extension SafeAraAPI: TargetType {
                 "goal": goal
             ], encoding: URLEncoding.default)
             
+        case .fetchSafeAreaList(let start, let goal, let highWayInfo):
+            // 좌표를 URL 인코딩하여 쿼리 파라미터로 설정
+            let parameters: [String: String] = [
+                "from": start.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? start,
+                "to": goal.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? goal
+            ]
+            let highWayInfos: [String: [[[Double]]]] = [
+                "경부 고속도로": [
+                    [
+                        [127.08543779752235, 37.21774152026536],
+                        [127.09485641007603, 37.21774152026536],
+                        [127.08543779752235, 37.21632224543946],
+                        [127.09485641007603, 37.21632224543946]
+                    ],
+                    [
+                        [127.0871670924697, 37.21640850022002],
+                        [127.09624519973312, 37.21640850022002],
+                        [127.0871670924697, 37.15722910006451],
+                        [127.09624519973312, 37.15722910006451]
+                    ],
+                    [
+                        [127.08338161645169, 37.15722910006451],
+                        [127.12021299657435, 37.15722910006451],
+                        [127.08338161645169, 37.097153303863195],
+                        [127.12021299657435, 37.097153303863195]
+                    ],
+                    [
+                        [127.12021299657435, 37.097153303863195],
+                        [127.18206690562984, 37.097153303863195],
+                        [127.12021299657435, 36.95515413954567],
+                        [127.18206690562984, 36.95515413954567]
+                    ],
+                    [
+                        [127.18206690562984, 36.95515413954567],
+                        [127.18941657136901, 36.95515413954567],
+                        [127.18206690562984, 36.91536996091402],
+                        [127.18941657136901, 36.91536996091402]
+                    ],
+                    [
+                        [127.16500035086526, 36.91536996091402],
+                        [127.42900810258438, 36.91536996091402],
+                        [127.16500035086526, 36.56970289866972],
+                        [127.42900810258438, 36.56970289866972]
+                    ],
+                    [
+                        [129.00405029959754, 35.9232721259512],
+                        [129.1969267252899, 35.9232721259512],
+                        [129.00405029959754, 35.59629209533116],
+                        [129.1969267252899, 35.59629209533116]
+                    ],
+                    [
+                        [129.0439018077258, 35.59629209533116],
+                        [129.13935314471962, 35.59629209533116],
+                        [129.0439018077258, 35.344940811027634],
+                        [129.13935314471962, 35.344940811027634]
+                    ],
+                    [
+                        [129.03975235183123, 35.344940811027634],
+                        [129.0439018077258, 35.344940811027634],
+                        [129.03975235183123, 35.33833869788435],
+                        [129.0439018077258, 35.33833869788435]
+                    ],
+                    [
+                        [129.03964406257919, 35.33833869788435],
+                        [129.10871479516058, 35.33833869788435],
+                        [129.03964406257919, 35.25344378370259],
+                        [129.10871479516058, 35.25344378370259]
+                    ],
+                    [
+                        [129.0967886603519, 35.25344378370259],
+                        [129.09981890169848, 35.25344378370259],
+                        [129.0967886603519, 35.24898872371351],
+                        [129.09981890169848, 35.24898872371351]
+                    ]
+                ],
+                "당진영덕 고속도로": [
+                    [
+                        [127.42799995760286, 36.56970289866972],
+                        [127.65675981308195, 36.56970289866972],
+                        [127.42799995760286, 36.47322637666793],
+                        [127.65675981308195, 36.47322637666793]
+                    ],
+                    [
+                        [127.65675981308195, 36.47322637666793],
+                        [127.76940304158524, 36.47322637666793],
+                        [127.65675981308195, 36.454399922268784],
+                        [127.76940304158524, 36.454399922268784]
+                    ],
+                    [
+                        [127.76940304158524, 36.45565115826513],
+                        [128.0696164660673, 36.45565115826513],
+                        [127.76940304158524, 36.4075913757038],
+                        [128.0696164660673, 36.4075913757038]
+                    ],
+                    [
+                        [128.0696164660673, 36.4075913757038],
+                        [128.2290589820288, 36.4075913757038],
+                        [128.0696164660673, 36.366696191104445],
+                        [128.2290589820288, 36.366696191104445]
+                    ]
+                ],
+                "상주영천 고속도로": [
+                    [
+                        [128.2290589820288, 36.37514040610051],
+                        [128.26926350407288, 36.37514040610051],
+                        [128.2290589820288, 36.36613804288008],
+                        [128.26926350407288, 36.36613804288008]
+                    ],
+                    [
+                        [128.26926350407288, 36.37513485695989],
+                        [128.49417246283525, 36.37513485695989],
+                        [128.26926350407288, 36.23631594393996],
+                        [128.49417246283525, 36.23631594393996]
+                    ],
+                    [
+                        [128.49417246283525, 36.23631594393996],
+                        [128.90958920169857, 36.23631594393996],
+                        [128.49417246283525, 36.01723190040396],
+                        [128.90958920169857, 36.01723190040396]
+                    ],
+                    [
+                        [128.90958920169857, 36.01723190040396],
+                        [129.01976480604, 36.01723190040396],
+                        [128.90958920169857, 35.9232721259512],
+                        [129.01976480604, 35.9232721259512]
+                    ]
+                ]
+            ]
+
+            // 바디에 고속도로 데이터를 포함 (JSON 포맷)
+            let bodyParameters: [String: Any] = [
+                "highways": highWayInfos
+            ]
+            log.info(parameters)
+
+            log.info("highways : \(bodyParameters)")
+            
+            // 쿼리 파라미터와 바디 파라미터를 함께 전송
+            return .requestCompositeParameters(
+                bodyParameters: bodyParameters,
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: parameters
+            )
         default :
             return .requestPlain
         }
@@ -88,7 +240,6 @@ extension SafeAraAPI: TargetType {
     
     var headers: [String : String]? {
         switch self {
-            
         case .fetchDirction:
             return ["X-NCP-APIGW-API-KEY-ID" : APIKeyManager.shared.nClientID,
                     "X-NCP-APIGW-API-KEY" : APIKeyManager.shared.nClientSecret,
@@ -98,9 +249,11 @@ extension SafeAraAPI: TargetType {
         case .fetchReverseGeocoding:
             return [ "accept" : "application/json",
                      "appKey": APIKeyManager.shared.tmapAPIKey]
-
+        case .fetchSafeAreaInfo:
+            return [ "accept" : "application/json"]
         default:
-            return nil
+            return [ "accept" : "application/json",
+                     "Content-Type": "application/json"]
         }
     }
 }
