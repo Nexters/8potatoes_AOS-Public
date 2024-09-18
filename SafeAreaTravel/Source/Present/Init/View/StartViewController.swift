@@ -181,7 +181,8 @@ final class StartViewController: BaseViewController, View {
             .map{ $0.startLocation}
             .distinctUntilChanged()
             .bind(onNext: {  [weak self] location in
-                self?.startLocateBtn.setTitle(location.name, for: .normal)
+                log.warning(location)
+                self?.startLocateBtn.setTitle(location.name == "" ? location.fullAddressRoad : location.name, for: .normal)
                 self?.startLocateBtn.setTitleColor(.bik100, for: .normal)
             })
             .disposed(by: disposeBag)
@@ -190,7 +191,7 @@ final class StartViewController: BaseViewController, View {
             .map{ $0.goalLocation}
             .distinctUntilChanged()
             .bind(onNext: {  [weak self] location in
-                self?.goalLocateBtn.setTitle(location.name, for: .normal)
+                self?.goalLocateBtn.setTitle(location.name == "" ? location.fullAddressRoad : location.name, for: .normal)
                 self?.goalLocateBtn.setTitleColor(.bik100, for: .normal)
             })
             .disposed(by: disposeBag)
