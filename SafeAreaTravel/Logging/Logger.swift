@@ -68,6 +68,10 @@ final class Logger {
         log(level: "💜 VERBOSE", items: items, file: file, function: function, line: line)
     }
     
+    func info(_ items: Any..., file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+        log(level: "📡 APICall", items: items, file: file, function: function, line: line)
+    }
+    
     // MARK: - Private methods
     
     private func log(level: String, items: [Any], file: StaticString, function: StaticString, line: UInt) {
