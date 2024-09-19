@@ -21,12 +21,15 @@ final class Networking {
     ) -> Single<Response> {
         let requestString = "\(target.method.rawValue) \(target.path)"
         
-        if case let .requestParameters(parameters, encoding) = target.task {
-            log.debug("✈️ REQUEST PARAMETERS: \(parameters), ENCODING: \(encoding)", file: file, function: function, line: line)
-        } else if case let .requestJSONEncodable(encodable) = target.task {
-            log.debug("💪🏻 REQUEST BODY: \(encodable)", file: file, function: function, line: line)
+        /// 요청 바디를 추출하여 로그 출력
+        var requestBody: String = ""
+        if let request = try? provider.endpoint(target).urlRequest(),
+        let httpBody = request.httpBody {
+        requestBody = String(data: httpBody, encoding: .utf8) ?? "Cannot parse body"
+        } else {
+        requestBody = "No body"
         }
-
+        
         return provider.rx.request(target)
             .catchAPIError(APIErrorResponse.self)
             .filterSuccessfulStatusCodes()
@@ -53,8 +56,11 @@ final class Networking {
                     }
                 },
                 onSubscribed: {
-                    let message = "REQUEST: \(requestString)"
-                    log.debug(message, file: file, function: function, line: line)
+                    let message = """
+                    ✈️ REQUEST API : \(requestString)
+                    💪🏻 Body: \(requestBody)
+                    """
+                    log.info(message)
                 }
             )
     }
