@@ -105,5 +105,7 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 # 특정 파일 제외 (APIKeyManager.swift)
 Source/Data/Network/APIKeyManager.swift
+# macOS system files
+.DS_Store
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager
