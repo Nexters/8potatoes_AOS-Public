@@ -79,6 +79,13 @@
 		933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E42C7B68DA00E60512 /* UIImageView+kf.swift */; };
 		934D7CBA2C9994AB00C32D50 /* RequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CB92C9994AB00C32D50 /* RequestRoute.swift */; };
 		934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */; };
+		93646CBD2C9D8A6300BEDCCC /* HusikSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */; };
+		93646CBF2C9D8B3500BEDCCC /* FoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */; };
+		93646CC12C9D8B4000BEDCCC /* OilInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */; };
+		93646CC32C9D8B4700BEDCCC /* EtcInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */; };
+		93646CC52C9D8DF700BEDCCC /* UINavigationbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */; };
+		93646CC72C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */; };
+		93646CCA2C9D99DD00BEDCCC /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 93646CC92C9D99DD00BEDCCC /* SkeletonView */; };
 		936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
@@ -177,6 +184,12 @@
 		933003E42C7B68DA00E60512 /* UIImageView+kf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+kf.swift"; sourceTree = "<group>"; };
 		934D7CB92C9994AB00C32D50 /* RequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRoute.swift; sourceTree = "<group>"; };
 		934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HusikSegment.swift; sourceTree = "<group>"; };
+		93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoView.swift; sourceTree = "<group>"; };
+		93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilInfoView.swift; sourceTree = "<group>"; };
+		93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtcInfoView.swift; sourceTree = "<group>"; };
+		93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationbar+Extension.swift"; sourceTree = "<group>"; };
+		93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailSafeAreaInfoDTO+Mapping.swift"; sourceTree = "<group>"; };
 		936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaCoordinator.swift; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
@@ -197,6 +210,7 @@
 				0944F2AE2C4BDDCA00AB22F7 /* RxCocoa in Frameworks */,
 				0944F2CB2C4BE0CE00AB22F7 /* Moya in Frameworks */,
 				095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */,
+				93646CCA2C9D99DD00BEDCCC /* SkeletonView in Frameworks */,
 				93F241FA2C7E0D34002CBD6E /* NMapsMap in Frameworks */,
 				0944F2B72C4BDE0500AB22F7 /* PinLayout in Frameworks */,
 				0944F2BA2C4BDE1F00AB22F7 /* ReactorKit in Frameworks */,
@@ -614,6 +628,7 @@
 		09C048FD2C5602B900688197 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */,
 				09C048FE2C5602D600688197 /* DivideLine.swift */,
 				09C0490C2C5634FC00688197 /* RoundView.swift */,
 				09C049102C563E4800688197 /* SearchBar.swift */,
@@ -678,6 +693,7 @@
 				933003E42C7B68DA00E60512 /* UIImageView+kf.swift */,
 				9372A11D2C8737AC00154868 /* UIButton+Extension.swift */,
 				934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */,
+				93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -690,9 +706,20 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		93646CBB2C9D8A4600BEDCCC /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */,
+				93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */,
+				93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		9366785E2C982E8900948CC4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				93646CBB2C9D8A4600BEDCCC /* Section */,
 				0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */,
 			);
 			path = View;
@@ -726,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */,
+				93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */,
 			);
 			path = SafeAreaDTO;
 			sourceTree = "<group>";
@@ -756,6 +784,7 @@
 				0983BF1C2C4E964600F438A2 /* RxMoya */,
 				095D6FA12C4FEAB4007E3C1F /* Kingfisher */,
 				93F241F92C7E0D34002CBD6E /* NMapsMap */,
+				93646CC92C9D99DD00BEDCCC /* SkeletonView */,
 			);
 			productName = SafeAreaTravel;
 			productReference = 0944F26F2C4BDD4000AB22F7 /* SafeAreaTravel.app */;
@@ -838,6 +867,7 @@
 				0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */,
 				095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				93F241F82C7E0D34002CBD6E /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
+				93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 0944F2702C4BDD4000AB22F7 /* Products */;
 			projectDirPath = "";
@@ -892,8 +922,10 @@
 			files = (
 				09C048FF2C5602D700688197 /* DivideLine.swift in Sources */,
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
+				93646CC32C9D8B4700BEDCCC /* EtcInfoView.swift in Sources */,
 				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
 				934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */,
+				93646CC52C9D8DF700BEDCCC /* UINavigationbar+Extension.swift in Sources */,
 				93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
 				0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */,
@@ -905,6 +937,7 @@
 				0940660F2C5BB20A009A5A7C /* UIFont+Extension.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
 				933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */,
+				93646CC12C9D8B4000BEDCCC /* OilInfoView.swift in Sources */,
 				09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */,
 				09C0490D2C5634FC00688197 /* RoundView.swift in Sources */,
 				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
@@ -915,6 +948,7 @@
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
+				93646CBF2C9D8B3500BEDCCC /* FoodInfoView.swift in Sources */,
 				092D91B92C77645800818B5F /* CurrentLocationReactor.swift in Sources */,
 				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
@@ -934,6 +968,7 @@
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
 				9391E5122C968FB1000963E7 /* SafeAreaListInfo.swift in Sources */,
+				93646CC72C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */,
@@ -945,6 +980,7 @@
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
 				09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */,
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
+				93646CBD2C9D8A6300BEDCCC /* HusikSegment.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
 				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
 				93D254FE2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift in Sources */,
@@ -1354,6 +1390,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 		93F241F82C7E0D34002CBD6E /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM";
@@ -1404,6 +1448,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		93646CC92C9D99DD00BEDCCC /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		93F241F92C7E0D34002CBD6E /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
