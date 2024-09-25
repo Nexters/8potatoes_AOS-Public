@@ -28,7 +28,7 @@ final class MainMapViewController: BaseViewController, View {
         $0.color = .main100
         $0.width = 5
     }
-    //private var bottomSheet =  SafeAreaBottomSheet(info: SafeAreaListInfo(totalReststopCount: 0, reststops: []))
+    private var bottomSheet =  SafeAreaBottomSheet(info: SafeAreaListInfo(totalReststopCount: 0, reststops: []))
     private let searchBtn = LocationSearchFloatingBtn()
     
     // MARK: - Init & LifeCycle
@@ -147,9 +147,16 @@ final class MainMapViewController: BaseViewController, View {
 
 extension MainMapViewController {
     private func presentBottomSheet(info: SafeAreaListInfo) {
-        let bottomSheet = SafeAreaBottomSheet(info: info)
+        bottomSheet = SafeAreaBottomSheet(info: info)
         bottomSheet.modalPresentationStyle = .pageSheet
         bottomSheet.modalTransitionStyle = .coverVertical
+        
+        bottomSheet.selectedCellRelay
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: {  [weak self]  code in
+                self?.reactor.action.onNext(.safeAreaListTapped(code))
+            })
+            .disposed(by: disposeBag)
 
         if let sheetPresentationController = bottomSheet.sheetPresentationController {
             let customMediumDetent = UISheetPresentationController.Detent.custom { context in

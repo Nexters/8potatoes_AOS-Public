@@ -15,12 +15,12 @@ final class MainMapReactor: Reactor {
 
     var initialState: State
     private let usecase: SafeAreaInfoUseCaseProtocol
-    private let coordinator: MainMapCoordinator
+    private let coordinator: MainMapCoordinatorProtocol
     
     // MARK: - Init
 
     init(usecase: SafeAreaInfoUseCaseProtocol,
-         coordinator: MainMapCoordinator,
+         coordinator: MainMapCoordinatorProtocol,
          startLocation: SearchLocationModel,
          goalLocation: SearchLocationModel,
          route: Route) {
@@ -45,6 +45,7 @@ final class MainMapReactor: Reactor {
         case viewDidLoad
         case changeStartLocation
         case changeGoalLocation
+        case safeAreaListTapped(String)
     }
     
     enum Mutation {
@@ -68,6 +69,8 @@ final class MainMapReactor: Reactor {
         case .changeStartLocation:
             return .empty()
         case .changeGoalLocation:
+            return .empty()
+        case .safeAreaListTapped(let code):
             return .empty()
         }
     }
