@@ -9,4 +9,5 @@ import RxSwift
 
 protocol SafeAreaInfoRepository {
     func fetchSafeAreaList(start: Coordinate, goal: Coordinate, route: Route) -> Single<SafeAreaListInfo>
+    func fetchSafeAreaDetailInfo(code: String) -> Single<DetailSafeArea>
 }

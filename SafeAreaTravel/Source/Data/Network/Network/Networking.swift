@@ -4,6 +4,7 @@
 //
 //  Created by 최지철 on 7/21/24.
 //
+import Foundation
 
 import RxSwift
 import Moya
@@ -60,8 +61,23 @@ final class Networking {
                     ✈️ REQUEST API : \(requestString)
                     💪🏻 Body: \(requestBody)
                     """
-                    log.info(message)
+                    log.APICall(message)
                 }
             )
+    }
+    
+    /// JSON 데이터를 디코딩하는 재사용 가능한 함수
+    func decodeJSON<T: Decodable>(from data: Data, to type: T.Type) throws -> T {
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            // 에러 로깅 처리
+            log.error("Decoding error: \(error)")
+            if let jsonString = String(data: data, encoding: .utf8) {
+                log.error("Received JSON: \(jsonString)")
+            }
+            throw error
+        }
     }
 }

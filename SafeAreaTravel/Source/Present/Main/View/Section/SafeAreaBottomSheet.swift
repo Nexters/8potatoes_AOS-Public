@@ -15,7 +15,8 @@ final class SafeAreaBottomSheet: BaseViewController {
     
     private var disposeBag = DisposeBag()
     private let safeAreaList = BehaviorSubject<SafeAreaListInfo>(value: SafeAreaListInfo(totalReststopCount: 0, reststops: [])) // 초기값 설정
-
+    let selectedCellRelay = PublishRelay<String>()
+    
     // MARK: - UI
     
     private let countLabel = UILabel().then {
@@ -84,7 +85,6 @@ final class SafeAreaBottomSheet: BaseViewController {
     // MARK: - bind
 
     private func bindUI() {
-        
         safeAreaList
             .bind(onNext: { [weak self] info in
                 self?.countLabel.text = "총 \(info.totalReststopCount)개의 휴게소를 들릴 수 있어요."
@@ -105,7 +105,6 @@ final class SafeAreaBottomSheet: BaseViewController {
                    let open = item.isOperating
                    let isLast = index == (try! self.safeAreaList.value().reststops.count) - 1  // 마지막 셀인지 확인
 
-                   // 셀 구성
                    cell.configureCell(
                     oilInfo: oilInfo,
                     diselInfo: diselInfo,
@@ -117,6 +116,13 @@ final class SafeAreaBottomSheet: BaseViewController {
                    )
                }
                .disposed(by: disposeBag)
+        
+        safeAreaCollectionView.rx
+            .modelSelected(SafeAreaListInfo.SafeAreaInfo.self)
+            .subscribe(onNext: { [weak self] selectedItem in
+                self?.selectedCellRelay.accept(selectedItem.code)
+            })
+            .disposed(by: disposeBag)
        }
 
 }

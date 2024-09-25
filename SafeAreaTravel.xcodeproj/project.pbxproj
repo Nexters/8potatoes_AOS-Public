@@ -86,6 +86,7 @@
 		93646CC52C9D8DF700BEDCCC /* UINavigationbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */; };
 		93646CC72C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */; };
 		93646CCA2C9D99DD00BEDCCC /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 93646CC92C9D99DD00BEDCCC /* SkeletonView */; };
+		93646CCC2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */; };
 		936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
@@ -151,7 +152,7 @@
 		0944F2D82C4BE9ED00AB22F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		0944F2DA2C4BE9FA00AB22F7 /* MainMapReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapReactor.swift; sourceTree = "<group>"; };
 		0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaViewController.swift; sourceTree = "<group>"; };
-		0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaReactor.swift; sourceTree = "<group>"; };
+		0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = DetailRestAreaReactor.swift; sourceTree = "<group>"; };
 		0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoRepository.swift; sourceTree = "<group>"; };
 		0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoUseCase.swift; sourceTree = "<group>"; };
 		0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoDAO.swift; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 		93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtcInfoView.swift; sourceTree = "<group>"; };
 		93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationbar+Extension.swift"; sourceTree = "<group>"; };
 		93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailSafeAreaInfoDTO+Mapping.swift"; sourceTree = "<group>"; };
+		93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSafeAreaInfo.swift; sourceTree = "<group>"; };
 		936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaCoordinator.swift; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				0952B0982C4D315A0025BB7C /* RouteModel.swift */,
 				09834DE22C57BCF700120358 /* SearchLocationModel.swift */,
 				9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */,
+				93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
 				93646CBD2C9D8A6300BEDCCC /* HusikSegment.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
+				93646CCC2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift in Sources */,
 				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
 				93D254FE2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift in Sources */,
 				095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */,

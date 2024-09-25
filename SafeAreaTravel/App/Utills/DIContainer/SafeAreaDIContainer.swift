@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinatorDependencies {
+final class SafeAreaDIContainer: StartCoordinatorDependencies,
+                                 MainMapCoordinatorDependencies,
+                                 DetailRestAreaDependencies {
     struct Dependencies {
         let networking: Networking
     }
@@ -60,7 +62,7 @@ final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinato
     
     // MARK: - Present (MainMap)
     
-    func makeMainMapReactor(coordinator: MainMapCoordinator,
+    func makeMainMapReactor(coordinator: MainMapCoordinatorProtocol,
                             startLocation: SearchLocationModel,
                             goalLocation: SearchLocationModel,
                             route: Route) -> MainMapReactor {
@@ -77,6 +79,21 @@ final class SafeAreaDIContainer: StartCoordinatorDependencies, MainMapCoordinato
                                                                  goalLocation: goalLocation,
                                                                  route: route))
     }
+    
+    // MARK: - Present (DetailSafeArea)
+    
+    func makeDetailReactor(coordinator: DetailRestAreaCoordinatorProtocol,
+                           code: String) -> DetailRestAreaReactor {
+        return DetailRestAreaReactor(usecase: makeSafeAreaInfoUseCase(),
+                                     coordinator: coordinator,
+                                     code: code)
+    }
+    
+    func makeDetailSafeAreaViewController(reacotr: DetailRestAreaReactor) -> DetailRestAreaViewController {
+        return DetailRestAreaViewController()
+    }
+    
+
     
     // MARK: - Flow Coordinators
     
