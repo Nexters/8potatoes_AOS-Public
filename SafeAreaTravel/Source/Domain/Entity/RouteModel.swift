@@ -25,7 +25,7 @@ extension Route {
         let path: [[Double]]
         let section: [Section]
         let guide: [Guide]
-        let highWayInfo: [String: [[[Double]]]]
+        let highWayInfos: [String: [[[Double]]]]
     }
 
     struct Summary {
@@ -72,7 +72,7 @@ extension Route.Trafast {
             path: self.path,
             section: self.section,
             guide: self.guide,
-            highWayInfo: newHighWayInfo
+            highWayInfos: newHighWayInfo
         )
     }
 }

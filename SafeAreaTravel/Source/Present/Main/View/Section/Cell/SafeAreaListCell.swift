@@ -59,6 +59,7 @@ final class SafeAreaListCell: UICollectionViewCell {
                        rateInfo: String,
                        menuCount: String,
                        title: String,
+                       direction: String,
                        open: Bool,
                        isLast: Bool) {
         safeAreaNameLabel.text  = title
@@ -68,6 +69,7 @@ final class SafeAreaListCell: UICollectionViewCell {
         oilPriceLabel.setColorForText(textForAttribute: "경유", withColor: .bik40)
         menuCountLabel.text = "메뉴 \(menuCount)가지"
         menuCountLabel.setColorForText(textForAttribute: "메뉴", withColor: .bik40)
+        directionInfoLabel.text = direction
         menuCountLabel.sizeToFit()
         oilPriceLabel.sizeToFit()
         starRateLabel.sizeToFit()
