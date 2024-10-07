@@ -20,7 +20,7 @@ final class SafeAreaDAO: SafeAreaInfoRepository {
         let startCoord = "\(start.lat),\(start.lon)"
         let goalCoord = "\(goal.lat),\(goal.lon)"
         return network
-            .request(.fetchSafeAreaList(start: "37.5431112,126.9821125", goal: "35.5597367,127.8157298", highWayInfo: route.trafast[0].highWayInfo))
+            .request(.fetchSafeAreaList(start: startCoord, goal: goalCoord, highWayInfo: route.trafast[0].highWayInfos))
             .map { response -> SafeAreaDTO in
                 do {
                     let decoder = JSONDecoder()
