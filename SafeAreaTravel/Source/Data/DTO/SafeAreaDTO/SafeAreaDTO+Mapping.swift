@@ -17,7 +17,7 @@ struct SafeAreaDTO: ModelType {
 extension SafeAreaDTO {
     struct ReststopDTO: ModelType {
         let name: String
-        let direction: String
+        let direction: String?
         let code: String
         let isOperating: Bool
         let gasolinePrice: String?
@@ -52,7 +52,7 @@ extension SafeAreaDTO.ReststopDTO {
     func toDomain() -> SafeAreaListInfo.SafeAreaInfo {
         return .init(
             name: name,
-            direction: direction,
+            direction: direction ?? "",
             code: code,
             isOperating: isOperating,
             gasolinePrice: gasolinePrice,

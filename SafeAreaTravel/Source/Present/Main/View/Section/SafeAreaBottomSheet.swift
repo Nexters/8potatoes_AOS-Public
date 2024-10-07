@@ -104,13 +104,14 @@ final class SafeAreaBottomSheet: BaseViewController {
                    let title = item.name
                    let open = item.isOperating
                    let isLast = index == (try! self.safeAreaList.value().reststops.count) - 1  // 마지막 셀인지 확인
-
+                   let direction = item.direction == "" ? "정보없음" : "\(item.direction) 방면 | "
                    cell.configureCell(
                     oilInfo: oilInfo,
                     diselInfo: diselInfo,
                        rateInfo: rateInfo,
                        menuCount: menuCount,
-                       title: title,
+                    title: title,
+                    direction: direction,
                        open: open,
                        isLast: isLast
                    )

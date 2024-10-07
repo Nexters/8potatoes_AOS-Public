@@ -37,7 +37,6 @@ final class Networking {
             .do(
                 onSuccess: { value in
                     let message = "SUCCESS: \(requestString) (\(value.statusCode))"
-                    log.debug(message, file: file, function: function, line: line)
                 },
                 onError: { error in
                     if let response = (error as? MoyaError)?.response {
