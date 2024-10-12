@@ -64,7 +64,9 @@ final class Networking {
                 }
             )
     }
-    
+}
+
+extension Networking {
     /// JSON 데이터를 디코딩하는 재사용 가능한 함수
     func decodeJSON<T: Decodable>(from data: Data, to type: T.Type) throws -> T {
         do {

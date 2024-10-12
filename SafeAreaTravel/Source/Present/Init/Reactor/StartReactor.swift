@@ -105,7 +105,6 @@ final class StartReactor: Reactor {
             newState.isGoalLocationTapped = true
             coordinator.presentSearchViewController(reactor: getSearchReactor())
         case .setStartLocation(let location):
-            log.debug(location)
             newState.startLocation = location
         case .setGoalLocation(let location):
             newState.goalLocation = location
