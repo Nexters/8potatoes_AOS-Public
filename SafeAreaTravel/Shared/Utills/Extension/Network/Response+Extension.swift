@@ -7,4 +7,6 @@
 
 import Moya
 
-extension Response: DataResponse {}
+extension Response: DataResponse {
+    
+}
