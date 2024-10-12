@@ -23,6 +23,7 @@ final class MainMapViewController: BaseViewController, View {
     
     private let startMaker = RouteMaker(type: .start)
     private let goalMaker = RouteMaker(type: .goal)
+    private let safeAreaList = 
     private let nMapView = NMFMapView()
     private let pathOverlay = NMFPath().then {
         $0.color = .main100
@@ -53,13 +54,13 @@ final class MainMapViewController: BaseViewController, View {
     override func  configure() {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         pathOverlay.mapView = nMapView
-        /// 대한민국 중심 좌표를 설정
+        // 대한민국 중심 좌표를 설정
         let koreaCenter = NMGLatLng(lat: 36.5, lng: 127.5)
          
-        /// 대한민국 전체가 보이도록 줌 레벨을 설정 (적절한 줌 레벨은 6~8 정도) 숫자가 낮을 수록 줌아웃
+        // 대한민국 전체가 보이도록 줌 레벨을 설정 (적절한 줌 레벨은 6~8 정도) 숫자가 낮을 수록 줌아웃
         let cameraUpdate = NMFCameraUpdate(scrollTo: koreaCenter, zoomTo: 6.4)
         nMapView.moveCamera(cameraUpdate)
-        /// 줌을 고정해서 사용자가 변경하지 못하도록 설정
+        // 줌을 고정해서 사용자가 변경하지 못하도록 설정
         nMapView.minZoomLevel = nMapView.cameraPosition.zoom
         nMapView.maxZoomLevel = nMapView.cameraPosition.zoom
     }

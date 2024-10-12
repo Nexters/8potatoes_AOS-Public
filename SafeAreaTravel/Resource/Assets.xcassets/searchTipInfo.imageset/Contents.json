@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "searchTipInfo 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "searchTipInfo 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
