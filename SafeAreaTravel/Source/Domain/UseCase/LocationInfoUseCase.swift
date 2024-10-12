@@ -78,9 +78,9 @@ extension LocationInfoUseCase {
         var currentHighwayName: String?
         var currentHighwayStartIndex: Int?
         
-        // 고속도로 진입과 출구를 나타내는 type 값의 집합 정의
-        let highwayEntranceTypes: Set<Int> = [50, 57, 66]
-        let highwayExitTypes: Set<Int> = [51, 58, 67]
+        // 고속도로 진입, 진출 type
+        let highwayEntranceTypes: Set<Int> = [50, 52, 54, 55, 56, 57, 59, 60, 62, 64, 66, 75, 76, 77]
+        let highwayExitTypes: Set<Int> = [51, 53, 58, 60, 62, 64, 66, 67, 78, 79, 80, 123]
         
         for guide in guides {
             let instruction = guide.instructions
@@ -92,6 +92,7 @@ extension LocationInfoUseCase {
                 // 새로운 고속도로 진입
                 currentHighwayName = highwayName
                 currentHighwayStartIndex = pointIndex
+                log.info("고속도로 진입: \(highwayName) at index \(pointIndex)")
             }
             // 고속도로 출구 여부 확인
             else if isHighwayExitGuide(type: type, highwayExitTypes: highwayExitTypes) {
@@ -105,6 +106,7 @@ extension LocationInfoUseCase {
                         
                         // 딕셔너리 업데이트
                         highwaySections[highwayName, default: []].append(contentsOf: quads)
+                        log.info("고속도로 섹션 추가: \(highwayName), 거리: \(highwaySectionPath.count) 포인트")
                     }
                     // 고속도로 종료
                     currentHighwayName = nil
@@ -118,13 +120,14 @@ extension LocationInfoUseCase {
     
     private func extractHighwayName(from instruction: String, type: Int, highwayEntranceTypes: Set<Int>) -> String? {
         if highwayEntranceTypes.contains(type) {
-            // "경부고속도로" 등의 고속도로 이름 추출
-            let pattern = "['\"]?([가-힣]+고속도로)['\"]?"
+            let pattern = "([가-힣]+고속도로)"
             if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
                 let range = NSRange(instruction.startIndex..., in: instruction)
                 if let match = regex.firstMatch(in: instruction, options: [], range: range) {
                     if let range = Range(match.range(at: 1), in: instruction) {
-                        return instruction[range].trimmingCharacters(in: .whitespaces)
+                        let highwayName = instruction[range].trimmingCharacters(in: .whitespaces)
+                        print("고속도로 이름 추출: \(highwayName)")
+                        return highwayName
                     }
                 }
             }
@@ -180,6 +183,7 @@ extension LocationInfoUseCase {
         return quad
     }
 }
+
 
 
 
