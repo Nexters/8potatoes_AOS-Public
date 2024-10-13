@@ -18,8 +18,11 @@ final class LocationInfoDAO: LocationInfoRepository {
     }
     
     func fetchRouteInfo(start: Coordinate, goal: Coordinate) -> Single<Route>  {
+        let startCoord = "\(start.lon),\(start.lat)"
+        let goalCoord = "\(goal.lon),\(goal.lat)"
+
         return network
-            .request(.fetchDirction(start: start, goal: goal))
+            .request(.fetchDirction(start: startCoord, goal: goalCoord))
             .map { response -> RouteResponseDTO in
                 do {
                     let decoder = JSONDecoder()

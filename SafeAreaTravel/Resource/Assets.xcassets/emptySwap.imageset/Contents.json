@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "arrow-switch-horizontal 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "arrow-switch-horizontal 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -34,7 +34,6 @@
 		0944F2BA2C4BDE1F00AB22F7 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0944F2B92C4BDE1F00AB22F7 /* ReactorKit */; };
 		0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2C02C4BDEF300AB22F7 /* BaseViewController.swift */; };
 		0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2C22C4BDF7A00AB22F7 /* AppFlowCoordinator.swift */; };
-		0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */; };
 		0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2C72C4BE0AC00AB22F7 /* SafeAraAPI.swift */; };
 		0944F2CB2C4BE0CE00AB22F7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0944F2CA2C4BE0CE00AB22F7 /* Moya */; };
 		0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2CD2C4BE1BD00AB22F7 /* ApiError.swift */; };
@@ -48,7 +47,6 @@
 		0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */; };
 		0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */; };
 		0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */; };
-		0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */; };
 		0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */; };
 		0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0932C4D2E710025BB7C /* APIKeyManager.swift */; };
 		0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952B0982C4D315A0025BB7C /* RouteModel.swift */; };
@@ -76,13 +74,29 @@
 		9317206D2C87420700AA0BDB /* CurrentMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317206C2C87420700AA0BDB /* CurrentMarker.swift */; };
 		93239C662C8897D700CCD55F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 93239C652C8897D700CCD55F /* .gitignore */; };
 		93239C682C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */; };
-		933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E12C7B659F00E60512 /* GlobalStateManger.swift */; };
 		933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933003E42C7B68DA00E60512 /* UIImageView+kf.swift */; };
+		934D7CBA2C9994AB00C32D50 /* RequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CB92C9994AB00C32D50 /* RequestRoute.swift */; };
+		934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */; };
+		93646CBD2C9D8A6300BEDCCC /* HusikSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */; };
+		93646CBF2C9D8B3500BEDCCC /* FoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */; };
+		93646CC12C9D8B4000BEDCCC /* OilInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */; };
+		93646CC32C9D8B4700BEDCCC /* EtcInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */; };
+		93646CC52C9D8DF700BEDCCC /* UINavigationbar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */; };
+		93646CC72C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */; };
+		93646CCA2C9D99DD00BEDCCC /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 93646CC92C9D99DD00BEDCCC /* SkeletonView */; };
+		93646CCC2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */; };
+		936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */; };
 		9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372A11D2C8737AC00154868 /* UIButton+Extension.swift */; };
 		937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937844B22C84BF0800DA21BA /* TimeImageEnum.swift */; };
-		9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */; };
-		93D254F32C89E592009BA1B3 /* StartMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F22C89E592009BA1B3 /* StartMaker.swift */; };
-		93D254F52C89E59E009BA1B3 /* GoalMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F42C89E59E009BA1B3 /* GoalMaker.swift */; };
+		93809CD52CBAB69300A91D83 /* Single+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CD42CBAB69300A91D83 /* Single+Extension.swift */; };
+		93809CD82CBAB6E900A91D83 /* Response+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CD72CBAB6E900A91D83 /* Response+Extension.swift */; };
+		93809CDA2CBAB71200A91D83 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CD92CBAB71200A91D83 /* DataResponse.swift */; };
+		93809CDC2CBAB8C100A91D83 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CDB2CBAB8C100A91D83 /* AppDIContainer.swift */; };
+		93809CDE2CBAB8C800A91D83 /* SafeAreaDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CDD2CBAB8C800A91D83 /* SafeAreaDIContainer.swift */; };
+		93809CE02CBABF5100A91D83 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CDF2CBABF5100A91D83 /* String+Extension.swift */; };
+		93809CE22CBAC0FC00A91D83 /* SafeAreaMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93809CE12CBAC0FC00A91D83 /* SafeAreaMaker.swift */; };
+		9391E5122C968FB1000963E7 /* SafeAreaListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */; };
+		93D254F32C89E592009BA1B3 /* RouteMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F22C89E592009BA1B3 /* RouteMaker.swift */; };
 		93D254F82C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */; };
 		93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */; };
 		93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D254FB2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift */; };
@@ -134,7 +148,6 @@
 		0944F2AA2C4BDD9E00AB22F7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		0944F2C02C4BDEF300AB22F7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0944F2C22C4BDF7A00AB22F7 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		0944F2C72C4BE0AC00AB22F7 /* SafeAraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAraAPI.swift; sourceTree = "<group>"; };
 		0944F2CD2C4BE1BD00AB22F7 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		0944F2D02C4BE27600AB22F7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -143,11 +156,10 @@
 		0944F2D82C4BE9ED00AB22F7 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		0944F2DA2C4BE9FA00AB22F7 /* MainMapReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapReactor.swift; sourceTree = "<group>"; };
 		0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaViewController.swift; sourceTree = "<group>"; };
-		0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaReactor.swift; sourceTree = "<group>"; };
+		0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = DetailRestAreaReactor.swift; sourceTree = "<group>"; };
 		0944F2E32C4BEC1000AB22F7 /* LocationInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoRepository.swift; sourceTree = "<group>"; };
 		0944F2E52C4BEC1800AB22F7 /* LocationInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoUseCase.swift; sourceTree = "<group>"; };
 		0944F2E72C4BEC2400AB22F7 /* LocationInfoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoDAO.swift; sourceTree = "<group>"; };
-		0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDIContainer.swift; sourceTree = "<group>"; };
 		0944F2EC2C4BEED300AB22F7 /* MainMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCoordinator.swift; sourceTree = "<group>"; };
 		0952B0932C4D2E710025BB7C /* APIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyManager.swift; sourceTree = "<group>"; };
 		0952B0982C4D315A0025BB7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
@@ -173,13 +185,28 @@
 		9317206C2C87420700AA0BDB /* CurrentMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarker.swift; sourceTree = "<group>"; };
 		93239C652C8897D700CCD55F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		93239C672C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReverseLocationDTO+Mapping.swift"; sourceTree = "<group>"; };
-		933003E12C7B659F00E60512 /* GlobalStateManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStateManger.swift; sourceTree = "<group>"; };
 		933003E42C7B68DA00E60512 /* UIImageView+kf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+kf.swift"; sourceTree = "<group>"; };
+		934D7CB92C9994AB00C32D50 /* RequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRoute.swift; sourceTree = "<group>"; };
+		934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HusikSegment.swift; sourceTree = "<group>"; };
+		93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoView.swift; sourceTree = "<group>"; };
+		93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilInfoView.swift; sourceTree = "<group>"; };
+		93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtcInfoView.swift; sourceTree = "<group>"; };
+		93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationbar+Extension.swift"; sourceTree = "<group>"; };
+		93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailSafeAreaInfoDTO+Mapping.swift"; sourceTree = "<group>"; };
+		93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSafeAreaInfo.swift; sourceTree = "<group>"; };
+		936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestAreaCoordinator.swift; sourceTree = "<group>"; };
 		9372A11D2C8737AC00154868 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		937844B22C84BF0800DA21BA /* TimeImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeImageEnum.swift; sourceTree = "<group>"; };
-		9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfo.swift; sourceTree = "<group>"; };
-		93D254F22C89E592009BA1B3 /* StartMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMaker.swift; sourceTree = "<group>"; };
-		93D254F42C89E59E009BA1B3 /* GoalMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMaker.swift; sourceTree = "<group>"; };
+		93809CD42CBAB69300A91D83 /* Single+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+Extension.swift"; sourceTree = "<group>"; };
+		93809CD72CBAB6E900A91D83 /* Response+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+Extension.swift"; sourceTree = "<group>"; };
+		93809CD92CBAB71200A91D83 /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
+		93809CDB2CBAB8C100A91D83 /* AppDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDIContainer.swift; path = SafeAreaTravel/Shared/Utills/DIContainer/AppDIContainer.swift; sourceTree = SOURCE_ROOT; };
+		93809CDD2CBAB8C800A91D83 /* SafeAreaDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SafeAreaDIContainer.swift; path = SafeAreaTravel/Shared/Utills/DIContainer/SafeAreaDIContainer.swift; sourceTree = SOURCE_ROOT; };
+		93809CDF2CBABF5100A91D83 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		93809CE12CBAC0FC00A91D83 /* SafeAreaMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaMaker.swift; sourceTree = "<group>"; };
+		9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaListInfo.swift; sourceTree = "<group>"; };
+		93D254F22C89E592009BA1B3 /* RouteMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMaker.swift; sourceTree = "<group>"; };
 		93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaDTO+Mapping.swift"; sourceTree = "<group>"; };
 		93D254F92C89E80E009BA1B3 /* SafeAreaDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaDAO.swift; sourceTree = "<group>"; };
 		93D254FB2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInfoRepository.swift; sourceTree = "<group>"; };
@@ -195,6 +222,7 @@
 				0944F2AE2C4BDDCA00AB22F7 /* RxCocoa in Frameworks */,
 				0944F2CB2C4BE0CE00AB22F7 /* Moya in Frameworks */,
 				095D6FA22C4FEAB4007E3C1F /* Kingfisher in Frameworks */,
+				93646CCA2C9D99DD00BEDCCC /* SkeletonView in Frameworks */,
 				93F241FA2C7E0D34002CBD6E /* NMapsMap in Frameworks */,
 				0944F2B72C4BDE0500AB22F7 /* PinLayout in Frameworks */,
 				0944F2BA2C4BDE1F00AB22F7 /* ReactorKit in Frameworks */,
@@ -262,8 +290,8 @@
 			children = (
 				0944F2A22C4BDD4E00AB22F7 /* App */,
 				0944F2A32C4BDD5800AB22F7 /* Source */,
+				93809CCF2CBAB5C600A91D83 /* Shared */,
 				0944F2D22C4BE82500AB22F7 /* Resource */,
-				0944F2CF2C4BE27000AB22F7 /* Logging */,
 			);
 			path = SafeAreaTravel;
 			sourceTree = "<group>";
@@ -292,7 +320,6 @@
 				0944F2742C4BDD4000AB22F7 /* SceneDelegate.swift */,
 				0944F2C22C4BDF7A00AB22F7 /* AppFlowCoordinator.swift */,
 				0944F2C42C4BDF9000AB22F7 /* DIContainer */,
-				0944F2BF2C4BDEE300AB22F7 /* Utills */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -332,7 +359,7 @@
 		0944F2A62C4BDD6B00AB22F7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				933003E02C7B658F00E60512 /* Global */,
+				934D7CB82C99947B00C32D50 /* Request */,
 				0952B0972C4D314F0025BB7C /* Entity */,
 				0944F2BC2C4BDE5800AB22F7 /* Interface */,
 				0944F2BB2C4BDE5100AB22F7 /* UseCase */,
@@ -363,8 +390,9 @@
 		0944F2A92C4BDD8700AB22F7 /* DetailRestArea */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */,
-				0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */,
+				936678602C982E9A00948CC4 /* Flow */,
+				9366785F2C982E9300948CC4 /* Reactor */,
+				9366785E2C982E8900948CC4 /* View */,
 			);
 			path = DetailRestArea;
 			sourceTree = "<group>";
@@ -410,7 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				095D6FA62C4FED05007E3C1F /* Base */,
-				095D6FA32C4FECCB007E3C1F /* UI */,
+				933003E32C7B68BF00E60512 /* Extension */,
 				0944F2D52C4BE9AD00AB22F7 /* Common */,
 				0944F2D32C4BE98500AB22F7 /* DetectDeinit.swift */,
 			);
@@ -420,8 +448,8 @@
 		0944F2C42C4BDF9000AB22F7 /* DIContainer */ = {
 			isa = PBXGroup;
 			children = (
-				0944F2C52C4BDF9E00AB22F7 /* AppDIContainer.swift */,
-				0944F2E92C4BEDB600AB22F7 /* SafeAreaDIContainer.swift */,
+				93809CDD2CBAB8C800A91D83 /* SafeAreaDIContainer.swift */,
+				93809CDB2CBAB8C100A91D83 /* AppDIContainer.swift */,
 			);
 			name = DIContainer;
 			path = Utills/DIContainer;
@@ -495,7 +523,8 @@
 			children = (
 				0952B0982C4D315A0025BB7C /* RouteModel.swift */,
 				09834DE22C57BCF700120358 /* SearchLocationModel.swift */,
-				9391E5112C968FB1000963E7 /* SafeAreaInfo.swift */,
+				9391E5112C968FB1000963E7 /* SafeAreaListInfo.swift */,
+				93646CCB2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -547,8 +576,8 @@
 		095D6FA32C4FECCB007E3C1F /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				933003E32C7B68BF00E60512 /* Extension */,
-				09C048FD2C5602B900688197 /* DesignSystem */,
+				93809CD12CBAB60600A91D83 /* UIKit */,
+				93809CD02CBAB5FC00A91D83 /* Kf+ */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -557,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				0944F2C02C4BDEF300AB22F7 /* BaseViewController.swift */,
+				93809CD92CBAB71200A91D83 /* DataResponse.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -611,13 +641,14 @@
 		09C048FD2C5602B900688197 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				93646CBC2C9D8A6300BEDCCC /* HusikSegment.swift */,
 				09C048FE2C5602D600688197 /* DivideLine.swift */,
 				09C0490C2C5634FC00688197 /* RoundView.swift */,
 				09C049102C563E4800688197 /* SearchBar.swift */,
 				094066182C5DED7B009A5A7C /* TimeInfoView.swift */,
 				9317206C2C87420700AA0BDB /* CurrentMarker.swift */,
-				93D254F22C89E592009BA1B3 /* StartMaker.swift */,
-				93D254F42C89E59E009BA1B3 /* GoalMaker.swift */,
+				93D254F22C89E592009BA1B3 /* RouteMaker.swift */,
+				93809CE12CBAC0FC00A91D83 /* SafeAreaMaker.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -665,26 +696,58 @@
 			path = RouteDTO;
 			sourceTree = "<group>";
 		};
-		933003E02C7B658F00E60512 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				933003E12C7B659F00E60512 /* GlobalStateManger.swift */,
-			);
-			path = Global;
-			sourceTree = "<group>";
-		};
 		933003E32C7B68BF00E60512 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
-				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
-				09C049072C5624A700688197 /* UILabel+Extension.swift */,
-				09C0490E2C563E1900688197 /* UITextField+Extension.swift */,
-				0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */,
-				933003E42C7B68DA00E60512 /* UIImageView+kf.swift */,
-				9372A11D2C8737AC00154868 /* UIButton+Extension.swift */,
+				93809CD62CBAB6D500A91D83 /* Network */,
+				93809CD32CBAB65200A91D83 /* Rx */,
+				93809CD22CBAB61400A91D83 /* Utilities */,
+				095D6FA32C4FECCB007E3C1F /* UI */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		934D7CB82C99947B00C32D50 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				934D7CB92C9994AB00C32D50 /* RequestRoute.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		93646CBB2C9D8A4600BEDCCC /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				93646CBE2C9D8B3500BEDCCC /* FoodInfoView.swift */,
+				93646CC02C9D8B4000BEDCCC /* OilInfoView.swift */,
+				93646CC22C9D8B4700BEDCCC /* EtcInfoView.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		9366785E2C982E8900948CC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93646CBB2C9D8A4600BEDCCC /* Section */,
+				0944F2DC2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9366785F2C982E9300948CC4 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				0944F2DE2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		936678602C982E9A00948CC4 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				936678612C982EA800948CC4 /* DetailRestAreaCoordinator.swift */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		937844B12C84BEF400DA21BA /* Enum */ = {
@@ -695,10 +758,68 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		93809CCF2CBAB5C600A91D83 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0944F2CF2C4BE27000AB22F7 /* Logging */,
+				09C048FD2C5602B900688197 /* DesignSystem */,
+				0944F2BF2C4BDEE300AB22F7 /* Utills */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		93809CD02CBAB5FC00A91D83 /* Kf+ */ = {
+			isa = PBXGroup;
+			children = (
+				933003E42C7B68DA00E60512 /* UIImageView+kf.swift */,
+			);
+			path = "Kf+";
+			sourceTree = "<group>";
+		};
+		93809CD12CBAB60600A91D83 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				09C048EE2C5299E500688197 /* UIColor+Extension.swift */,
+				09C048F42C54AB6F00688197 /* UIView+Extension.swift */,
+				93646CC42C9D8DF700BEDCCC /* UINavigationbar+Extension.swift */,
+				09C049072C5624A700688197 /* UILabel+Extension.swift */,
+				09C0490E2C563E1900688197 /* UITextField+Extension.swift */,
+				0940660E2C5BB20A009A5A7C /* UIFont+Extension.swift */,
+				9372A11D2C8737AC00154868 /* UIButton+Extension.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		93809CD22CBAB61400A91D83 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				934D7CBB2C9994DA00C32D50 /* Encodable+Extension.swift */,
+				93809CDF2CBABF5100A91D83 /* String+Extension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		93809CD32CBAB65200A91D83 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				93809CD42CBAB69300A91D83 /* Single+Extension.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		93809CD62CBAB6D500A91D83 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				93809CD72CBAB6E900A91D83 /* Response+Extension.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		93D254F62C89E5DC009BA1B3 /* SafeAreaDTO */ = {
 			isa = PBXGroup;
 			children = (
 				93D254F72C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift */,
+				93646CC62C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift */,
 			);
 			path = SafeAreaDTO;
 			sourceTree = "<group>";
@@ -729,6 +850,7 @@
 				0983BF1C2C4E964600F438A2 /* RxMoya */,
 				095D6FA12C4FEAB4007E3C1F /* Kingfisher */,
 				93F241F92C7E0D34002CBD6E /* NMapsMap */,
+				93646CC92C9D99DD00BEDCCC /* SkeletonView */,
 			);
 			productName = SafeAreaTravel;
 			productReference = 0944F26F2C4BDD4000AB22F7 /* SafeAreaTravel.app */;
@@ -811,6 +933,7 @@
 				0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */,
 				095D6FA02C4FEAB4007E3C1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				93F241F82C7E0D34002CBD6E /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
+				93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 0944F2702C4BDD4000AB22F7 /* Products */;
 			projectDirPath = "";
@@ -865,19 +988,23 @@
 			files = (
 				09C048FF2C5602D700688197 /* DivideLine.swift in Sources */,
 				0944F2D92C4BE9ED00AB22F7 /* MainMapViewController.swift in Sources */,
-				0944F2C62C4BDF9E00AB22F7 /* AppDIContainer.swift in Sources */,
+				93646CC32C9D8B4700BEDCCC /* EtcInfoView.swift in Sources */,
+				934D7CBC2C9994DA00C32D50 /* Encodable+Extension.swift in Sources */,
+				93646CC52C9D8DF700BEDCCC /* UINavigationbar+Extension.swift in Sources */,
 				93D254FC2C89E82D009BA1B3 /* SafeAreaInfoRepository.swift in Sources */,
 				0944F2C12C4BDEF300AB22F7 /* BaseViewController.swift in Sources */,
 				0952B0992C4D315A0025BB7C /* RouteModel.swift in Sources */,
+				93809CE02CBABF5100A91D83 /* String+Extension.swift in Sources */,
 				09C0490F2C563E1900688197 /* UITextField+Extension.swift in Sources */,
 				0952B0942C4D2E710025BB7C /* APIKeyManager.swift in Sources */,
-				93D254F52C89E59E009BA1B3 /* GoalMaker.swift in Sources */,
 				09834DE32C57BCF700120358 /* SearchLocationModel.swift in Sources */,
 				0944F2AB2C4BDD9E00AB22F7 /* StartViewController.swift in Sources */,
 				0944F2D42C4BE98500AB22F7 /* DetectDeinit.swift in Sources */,
 				0940660F2C5BB20A009A5A7C /* UIFont+Extension.swift in Sources */,
 				0952B09F2C4D3CDF0025BB7C /* RouteResponseDTO+Mapping.swift in Sources */,
+				93809CDA2CBAB71200A91D83 /* DataResponse.swift in Sources */,
 				933003E52C7B68DA00E60512 /* UIImageView+kf.swift in Sources */,
+				93646CC12C9D8B4000BEDCCC /* OilInfoView.swift in Sources */,
 				09C048EF2C5299E500688197 /* UIColor+Extension.swift in Sources */,
 				09C0490D2C5634FC00688197 /* RoundView.swift in Sources */,
 				0944F2E42C4BEC1000AB22F7 /* LocationInfoRepository.swift in Sources */,
@@ -888,36 +1015,45 @@
 				0952B09D2C4D34A30025BB7C /* Networking.swift in Sources */,
 				93D254FA2C89E80E009BA1B3 /* SafeAreaDAO.swift in Sources */,
 				0944F2D72C4BE9B400AB22F7 /* ModelType.swift in Sources */,
+				93646CBF2C9D8B3500BEDCCC /* FoodInfoView.swift in Sources */,
 				092D91B92C77645800818B5F /* CurrentLocationReactor.swift in Sources */,
-				0944F2EA2C4BEDB600AB22F7 /* SafeAreaDIContainer.swift in Sources */,
 				09834DE12C57BC6300120358 /* SearchLocationDTO+Mapping.swift in Sources */,
 				93D254F82C89E5EC009BA1B3 /* SafeAreaDTO+Mapping.swift in Sources */,
 				095D6F9C2C4FE895007E3C1F /* SafeAreaBottomSheet.swift in Sources */,
 				0944F2DB2C4BE9FA00AB22F7 /* MainMapReactor.swift in Sources */,
+				936678622C982EA800948CC4 /* DetailRestAreaCoordinator.swift in Sources */,
 				092D91B62C624FF900818B5F /* CurrentLocationViewController.swift in Sources */,
 				9317206D2C87420700AA0BDB /* CurrentMarker.swift in Sources */,
 				094066192C5DED7B009A5A7C /* TimeInfoView.swift in Sources */,
 				0944F2C82C4BE0AC00AB22F7 /* SafeAraAPI.swift in Sources */,
 				0944F2DF2C4BEA1400AB22F7 /* DetailRestAreaReactor.swift in Sources */,
+				93809CDC2CBAB8C100A91D83 /* AppDIContainer.swift in Sources */,
 				09C049082C5624A700688197 /* UILabel+Extension.swift in Sources */,
-				93D254F32C89E592009BA1B3 /* StartMaker.swift in Sources */,
+				93809CDE2CBAB8C800A91D83 /* SafeAreaDIContainer.swift in Sources */,
+				934D7CBA2C9994AB00C32D50 /* RequestRoute.swift in Sources */,
+				93D254F32C89E592009BA1B3 /* RouteMaker.swift in Sources */,
 				0944F2CE2C4BE1BE00AB22F7 /* ApiError.swift in Sources */,
 				0944F2E82C4BEC2400AB22F7 /* LocationInfoDAO.swift in Sources */,
 				0944F2C32C4BDF7A00AB22F7 /* AppFlowCoordinator.swift in Sources */,
-				9391E5122C968FB1000963E7 /* SafeAreaInfo.swift in Sources */,
+				9391E5122C968FB1000963E7 /* SafeAreaListInfo.swift in Sources */,
+				93809CE22CBAC0FC00A91D83 /* SafeAreaMaker.swift in Sources */,
+				93646CC72C9D977300BEDCCC /* DetailSafeAreaInfoDTO+Mapping.swift in Sources */,
 				0944F2E62C4BEC1800AB22F7 /* LocationInfoUseCase.swift in Sources */,
 				09C049042C5622E500688197 /* SearchResultTableViewCell.swift in Sources */,
 				937844B32C84BF0800DA21BA /* TimeImageEnum.swift in Sources */,
 				09C048FC2C5601D200688197 /* StartCoordinator.swift in Sources */,
 				095D6F9A2C4FE78E007E3C1F /* SearchLocationReactor.swift in Sources */,
-				933003E22C7B659F00E60512 /* GlobalStateManger.swift in Sources */,
+				93809CD82CBAB6E900A91D83 /* Response+Extension.swift in Sources */,
 				9372A11E2C8737AC00154868 /* UIButton+Extension.swift in Sources */,
 				09C049112C563E4800688197 /* SearchBar.swift in Sources */,
 				93239C682C889D0C00CCD55F /* ReverseLocationDTO+Mapping.swift in Sources */,
+				93809CD52CBAB69300A91D83 /* Single+Extension.swift in Sources */,
 				0944F2752C4BDD4000AB22F7 /* SceneDelegate.swift in Sources */,
 				09C048F52C54AB6F00688197 /* UIView+Extension.swift in Sources */,
 				0944F2ED2C4BEED300AB22F7 /* MainMapCoordinator.swift in Sources */,
+				93646CBD2C9D8A6300BEDCCC /* HusikSegment.swift in Sources */,
 				0944F2DD2C4BEA0600AB22F7 /* DetailRestAreaViewController.swift in Sources */,
+				93646CCC2C9D9B2800BEDCCC /* DetailSafeAreaInfo.swift in Sources */,
 				09E922A12C4FCD2000DBBEAC /* LocationSearchFloatingBtn.swift in Sources */,
 				93D254FE2C89E83D009BA1B3 /* SafeAreaInfoUseCase.swift in Sources */,
 				095D6F962C4FE764007E3C1F /* SearchLocationViewController.swift in Sources */,
@@ -1326,6 +1462,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 		93F241F82C7E0D34002CBD6E /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM";
@@ -1376,6 +1520,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0944F2C92C4BE0CE00AB22F7 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		93646CC92C9D99DD00BEDCCC /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93646CC82C9D99DD00BEDCCC /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		93F241F92C7E0D34002CBD6E /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;

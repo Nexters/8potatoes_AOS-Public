@@ -118,7 +118,7 @@ final class StartReactor: Reactor {
         case .setCompleteSetLocation(let isComplete):
             newState.completeSetLocation = isComplete
         }
-        newState.completeSetLocation = newState.startLocation.name != "" && newState.goalLocation.name != ""
+        newState.completeSetLocation = newState.startLocation.fullAddressRoad != "" && newState.goalLocation.fullAddressRoad != ""
         return newState
     }
 

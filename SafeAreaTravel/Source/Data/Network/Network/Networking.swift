@@ -4,6 +4,7 @@
 //
 //  Created by 최지철 on 7/21/24.
 //
+import Foundation
 
 import RxSwift
 import Moya
@@ -21,19 +22,21 @@ final class Networking {
     ) -> Single<Response> {
         let requestString = "\(target.method.rawValue) \(target.path)"
         
-        if case let .requestParameters(parameters, encoding) = target.task {
-            log.debug("REQUEST PARAMETERS: \(parameters), ENCODING: \(encoding)", file: file, function: function, line: line)
-        } else if case let .requestJSONEncodable(encodable) = target.task {
-            log.debug("💪🏻 REQUEST BODY: \(encodable)", file: file, function: function, line: line)
+        /// 요청 바디를 추출하여 로그 출력
+        var requestBody: String = ""
+        if let request = try? provider.endpoint(target).urlRequest(),
+        let httpBody = request.httpBody {
+        requestBody = String(data: httpBody, encoding: .utf8) ?? "Cannot parse body"
+        } else {
+        requestBody = "No body"
         }
-
+        
         return provider.rx.request(target)
             .catchAPIError(APIErrorResponse.self)
             .filterSuccessfulStatusCodes()
             .do(
                 onSuccess: { value in
                     let message = "SUCCESS: \(requestString) (\(value.statusCode))"
-                    log.debug(message, file: file, function: function, line: line)
                 },
                 onError: { error in
                     if let response = (error as? MoyaError)?.response {
@@ -53,9 +56,29 @@ final class Networking {
                     }
                 },
                 onSubscribed: {
-                    let message = "REQUEST: \(requestString)"
-                    log.debug(message, file: file, function: function, line: line)
+                    let message = """
+                    ✈️ REQUEST API : \(requestString)
+                    💪🏻 Body: \(requestBody)
+                    """
+                    log.APICall(message)
                 }
             )
+    }
+}
+
+extension Networking {
+    /// JSON 데이터를 디코딩하는 재사용 가능한 함수
+    func decodeJSON<T: Decodable>(from data: Data, to type: T.Type) throws -> T {
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            // 에러 로깅 처리
+            log.error("Decoding error: \(error)")
+            if let jsonString = String(data: data, encoding: .utf8) {
+                log.error("Received JSON: \(jsonString)")
+            }
+            throw error
+        }
     }
 }
