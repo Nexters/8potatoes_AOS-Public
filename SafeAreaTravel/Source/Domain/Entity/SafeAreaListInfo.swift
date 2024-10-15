@@ -28,10 +28,3 @@ extension SafeAreaListInfo {
 
 }
 
-struct SafeAreaInfo: Equatable {
-    let oilInfo: String
-    let rateInfo: String
-    let menuCount: String
-    let title: String
-    let isOpen: Bool
-}
