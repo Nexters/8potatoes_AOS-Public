@@ -23,7 +23,7 @@ final class MainMapViewController: BaseViewController, View {
     
     private let startMaker = RouteMaker(type: .start)
     private let goalMaker = RouteMaker(type: .goal)
-    private let safeAreaList = 
+    private var safeAreaMakers: [SafeAreaMaker] = []
     private let nMapView = NMFMapView()
     private let pathOverlay = NMFPath().then {
         $0.color = .main100
@@ -61,8 +61,6 @@ final class MainMapViewController: BaseViewController, View {
         let cameraUpdate = NMFCameraUpdate(scrollTo: koreaCenter, zoomTo: 6.4)
         nMapView.moveCamera(cameraUpdate)
         // 줌을 고정해서 사용자가 변경하지 못하도록 설정
-        nMapView.minZoomLevel = nMapView.cameraPosition.zoom
-        nMapView.maxZoomLevel = nMapView.cameraPosition.zoom
     }
     
     override func addView() {
@@ -125,6 +123,7 @@ final class MainMapViewController: BaseViewController, View {
             .asDriver(onErrorJustReturn: reactor.initialState.safeAreaList)
             .drive(onNext: {  [weak self] info in
                 self?.presentBottomSheet(info: info)
+                self?.updateSafeAreaMarkers(with: info.reststops)
             })
             .disposed(by: disposeBag)
     }
@@ -141,6 +140,36 @@ final class MainMapViewController: BaseViewController, View {
                 reactor.action.onNext(.changeGoalLocation)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+//MARK: - Private Method
+
+extension MainMapViewController {
+    private func updateSafeAreaMarkers(with safeAreaList: [SafeAreaListInfo.SafeAreaInfo]) {
+        
+        //기존 마커 초기화
+        for maker in safeAreaMakers {
+            maker.mapView = nil
+        }
+        safeAreaMakers.removeAll()
+        let n = safeAreaList.count
+        let middleIndics = n.getMiddleIndices(count: n)
+        
+        for (index, safeArea) in safeAreaList.enumerated() {
+            let makerType: SafeAreaMakerType = middleIndics.contains(index) ? .middle : .base
+            let maker = SafeAreaMaker(type: makerType,
+                                      text: safeArea.name)
+            
+            maker.position =  NMGLatLng(lat: safeArea.location.lat,
+                                        lng: safeArea.location.lon)
+            maker.mapView = nMapView
+            maker.safeAreaMakerInfoWindow.position =  NMGLatLng(lat: safeArea.location.lat,
+                                                   lng: safeArea.location.lon)
+            maker.safeAreaMakerInfoWindow.mapView = nMapView
+
+            safeAreaMakers.append(maker)
+        }
     }
 }
 

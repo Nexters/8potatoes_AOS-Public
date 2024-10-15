@@ -36,13 +36,13 @@ extension CurrentMarker {
         self.width = CGFloat(NMF_MARKER_SIZE_AUTO)
         self.height = CGFloat(NMF_MARKER_SIZE_AUTO)
         
-        self.anchor = CGPoint(x: 0.5, y: 1.0) /// 마커의 앵커 설정 (아래쪽 중앙을 기준으로 설정)
+        self.anchor = CGPoint(x: 0.5, y: 1.0) // 마커의 앵커 설정 (아래쪽 중앙을 기준으로 설정)
         
         self.iconPerspectiveEnabled = true
     }
     
     private func setInfoWindow() {
-        /// 마커의 정보창 데이터 소스로 자신을 설정
+        // 마커의 정보창 데이터 소스로 자신을 설정
         startInfoWindow.dataSource = self
     }
     
