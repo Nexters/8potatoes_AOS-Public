@@ -27,6 +27,7 @@ final class MainMapCoordinator: MainMapCoordinatorProtocol {
          dependencies: MainMapCoordinatorDependencies) {
         self.navigationController = navigationController
         self.dependencies = dependencies
+        self.navigationController.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     func start(startLocation: SearchLocationModel,

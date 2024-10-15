@@ -164,6 +164,10 @@ extension MainMapViewController {
             maker.position =  NMGLatLng(lat: safeArea.location.lat,
                                         lng: safeArea.location.lon)
             maker.mapView = nMapView
+            maker.safeAreaMakerInfoWindow.position =  NMGLatLng(lat: safeArea.location.lat,
+                                                   lng: safeArea.location.lon)
+            maker.safeAreaMakerInfoWindow.mapView = nMapView
+
             safeAreaMakers.append(maker)
         }
     }
