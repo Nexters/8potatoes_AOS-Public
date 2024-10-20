@@ -50,13 +50,13 @@ final class SafeAreaMaker: NMFMarker {
         }
         
         // 이미지의 좌우 끝부분의 너비를 설정합니다 (예: 10픽셀)
-        let capInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let capInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         // 스케일 가능한 이미지로 변환합니다.
         let stretchableImage = baseImage.resizableImage(withCapInsets: capInsets, resizingMode: .stretch)
         
         // 텍스트의 길이에 따른 필요한 너비를 계산합니다.
-        let font = UIFont.systemFont(ofSize: 16) // 폰트 설정 (필요에 따라 조정)
+        let font = UIFont.suit(.Bold, size: 16) // 폰트 설정 (필요에 따라 조정)
         let textAttributes = [NSAttributedString.Key.font: font]
         let textSize = (text as NSString).size(withAttributes: textAttributes)
         
