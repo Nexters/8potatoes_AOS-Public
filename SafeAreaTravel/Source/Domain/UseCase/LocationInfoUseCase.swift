@@ -41,21 +41,28 @@ final class LocationInfoUseCase: LocationInfoUseCaseProtocol {
             .map { route in
                 /// 고속도로 경로 추출
                 let highwayPaths = self.extractHighwaySections(from: route)
-                
-                /// 첫 번째 trafast의 highWayInfo를 업데이트한 새로운 Trafast 생성
-                let updatedTrafast = route.trafast.enumerated().map { index, trafast in
-                    if index == 0 {
-                        return trafast.updatedHighWayInfo(highwayPaths)
-                    } else {
-                        return trafast
+                /// '고속도로' 키에 해당하는 값이 있는지 확인하고 쿼드 리스트를 추출
+                if let highwaySections = highwayPaths["고속도로"] {
+                    let quads = highwaySections.map { $0.1 } // 각 튜플에서 쿼드([[Double]])만 추출
+                    let highwayInfo = ["고속도로" : quads]
+                    /// 첫 번째 trafast의 highWayInfo를 업데이트한 새로운 Trafast 생성
+                    let updatedTrafast = route.trafast.enumerated().map { index, trafast in
+                        if index == 0 {
+                            return trafast.updatedHighWayInfo(highwayInfo)
+                        } else {
+                            return trafast
+                        }
                     }
+                    /// 새로운 Route 객체 생성
+                    let updatedRoute = Route(trafast: updatedTrafast)
+                    return updatedRoute
+                } else {
+                    /// highwayPaths에 '고속도로' 키가 없을 경우 처리
+                    return route
                 }
-                /// 새로운 Route 객체 생성
-                let updatedRoute = Route(trafast: updatedTrafast)
-                return updatedRoute
             }
     }
-    
+
     func searchLocation(location: String, page: Int) -> Single<[SearchLocationModel]> {
         return repository.searchLocation(location: location, page: page)
             .map { models in
@@ -68,102 +75,96 @@ final class LocationInfoUseCase: LocationInfoUseCaseProtocol {
     }
 }
 extension LocationInfoUseCase {
-    func extractHighwaySections(from route: Route) -> [String: [[[Double]]]] {
-        var highwaySections: [String: [[[Double]]]] = [:]
-        guard let trafast = route.trafast.first else { return highwaySections }
-        
-        let path = trafast.path
-        let guides = trafast.guide
-        
-        var currentHighwayName: String?
-        var currentHighwayStartIndex: Int?
-        
-        // 고속도로 진입, 진출 type
-        let highwayEntranceTypes: Set<Int> = [50, 52, 54, 55, 56, 57, 59, 60, 62, 64, 66, 75, 76, 77]
-        let highwayExitTypes: Set<Int> = [51, 53, 58, 60, 62, 64, 66, 67, 78, 79, 80, 123]
-        
-        for guide in guides {
-            let instruction = guide.instructions
-            let pointIndex = guide.pointIndex
-            let type = guide.type
-            
-            // 고속도로 진입 여부 확인
-            if let highwayName = extractHighwayName(from: instruction, type: type, highwayEntranceTypes: highwayEntranceTypes) {
-                // 새로운 고속도로 진입
-                currentHighwayName = highwayName
-                currentHighwayStartIndex = pointIndex
-                log.info("고속도로 진입: \(highwayName) at index \(pointIndex)")
-            }
-            // 고속도로 출구 여부 확인
-            else if isHighwayExitGuide(type: type, highwayExitTypes: highwayExitTypes) {
-                if let highwayName = currentHighwayName, let startIndex = currentHighwayStartIndex {
-                    let endIndex = pointIndex
-                    if startIndex >= 0 && endIndex < path.count && startIndex <= endIndex {
-                        let highwaySectionPath = Array(path[startIndex...endIndex])
-                        
-                        // 섹션을 여러 개의 쿼드로 변환
-                        let quads = convertSectionToQuads(highwaySectionPath, segmentLength: 10)
-                        
-                        // 딕셔너리 업데이트
-                        highwaySections[highwayName, default: []].append(contentsOf: quads)
-                        log.info("고속도로 섹션 추가: \(highwayName), 거리: \(highwaySectionPath.count) 포인트")
-                    }
-                    // 고속도로 종료
-                    currentHighwayName = nil
-                    currentHighwayStartIndex = nil
-                }
-            }
+    
+    /// 고속도로 경로 추출하는 함수 (정사각형의 4개의 좌표배열)
+    func extractHighwaySections(from route: Route) -> [String: [([Int], [[Double]])]] {
+        var highwaySections: [String: [([Int], [[Double]])]] = [:]
+        let highwayKey = "고속도로"
+
+        // Trafast 데이터가 존재하는지 확인
+        guard let trafast = route.trafast.first else {
+            log.warning("경로에 trafast 데이터가 없습니다.")
+            return highwaySections
         }
-        
+
+        let path = trafast.path
+        let sections = trafast.section
+        let guides = trafast.guide
+
+        // 고속도로 진입 타입 정의 (고속도로 진입에 해당하는 타입만 포함)
+        let highwayEntranceTypes: Set<Int> = [50, 52, 54, 57, 59, 66, 68, 75, 76, 77, 121]
+
+        // 첫 번째 고속도로 진입 가이드 찾기
+        guard let firstEntranceGuide = guides.first(where: { highwayEntranceTypes.contains($0.type) }) else {
+            log.warning("경로에 고속도로 진입 가이드가 없습니다.")
+            return highwaySections
+        }
+
+        let firstEntrancePointIndex = firstEntranceGuide.pointIndex
+        log.debug("첫 번째 고속도로 진입 포인트 인덱스: \(firstEntrancePointIndex), 좌표: \(path[firstEntrancePointIndex])")
+
+        // 모든 섹션을 순회하며 고속도로 섹션 추출
+        for section in sections {
+            let sectionStartIndex = section.pointIndex
+            let sectionEndIndex = section.pointIndex + section.pointCount - 1
+
+            // 섹션이 firstEntrancePointIndex를 포함하는지 확인
+            if sectionEndIndex < firstEntrancePointIndex {
+                // 섹션이 firstEntrancePointIndex 이전에 끝나면 건너뜀
+                continue
+            }
+
+            // 섹션의 시작 인덱스 조정
+            let startIndex = max(sectionStartIndex, firstEntrancePointIndex)
+            let endIndex = sectionEndIndex
+
+            // 유효한 인덱스인지 확인
+            if startIndex < 0 || endIndex >= path.count || startIndex > endIndex {
+                log.warning("고속도로 섹션의 인덱스가 유효하지 않습니다. StartIndex: \(startIndex), EndIndex: \(endIndex), Path Count: \(path.count)")
+                continue
+            }
+
+            // 해당 섹션의 경로 추출 (인덱스와 함께)
+            let highwaySectionPathWithIndices = Array(zip(startIndex...endIndex, path[startIndex...endIndex]))
+
+            // 섹션을 여러 개의 쿼드로 변환
+            let quadsWithIndices = convertSectionToQuadsWithIndices(highwaySectionPathWithIndices, segmentLength: 10)
+
+            // 딕셔너리에 추가 (고속도로 키 사용)
+            highwaySections[highwayKey, default: []].append(contentsOf: quadsWithIndices)
+            log.info("고속도로 섹션 추가: 포인트 수: \(highwaySectionPathWithIndices.count)")
+        }
+
         return highwaySections
     }
     
-    private func extractHighwayName(from instruction: String, type: Int, highwayEntranceTypes: Set<Int>) -> String? {
-        if highwayEntranceTypes.contains(type) {
-            let pattern = "([가-힣]+고속도로)"
-            if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
-                let range = NSRange(instruction.startIndex..., in: instruction)
-                if let match = regex.firstMatch(in: instruction, options: [], range: range) {
-                    if let range = Range(match.range(at: 1), in: instruction) {
-                        let highwayName = instruction[range].trimmingCharacters(in: .whitespaces)
-                        print("고속도로 이름 추출: \(highwayName)")
-                        return highwayName
-                    }
-                }
-            }
-        }
-        return nil
-    }
-    
-    private func isHighwayExitGuide(type: Int, highwayExitTypes: Set<Int>) -> Bool {
-        return highwayExitTypes.contains(type)
-    }
-    
-    private func convertSectionToQuads(_ path: [[Double]], segmentLength: Int = 10) -> [[[Double]]] {
-        var quads: [[[Double]]] = []
-        let totalPoints = path.count
+    ///섹션을 쿼드로 변환하는 함수 (인덱스 포함)
+    private func convertSectionToQuadsWithIndices(_ pathWithIndices: [(Int, [Double])], segmentLength: Int = 10) -> [([Int], [[Double]])] {
+        var quadsWithIndices: [([Int], [[Double]])] = []
+        let totalPoints = pathWithIndices.count
 
-        // 분할된 구간의 시작 인덱스를 생성
+        // 일정 길이(segmentLength)로 분할하여 쿼드 생성
         let indices = stride(from: 0, to: totalPoints, by: segmentLength)
         for startIndex in indices {
             let endIndex = min(startIndex + segmentLength - 1, totalPoints - 1)
-            let segment = Array(path[startIndex...endIndex])
+            let segmentWithIndices = Array(pathWithIndices[startIndex...endIndex])
 
-            // 각 구간에 대해 쿼드 생성
-            if let quad = createQuad(for: segment) {
-                quads.append(quad)
+            if let quadWithIndices = createQuadWithIndices(for: segmentWithIndices) {
+                quadsWithIndices.append(quadWithIndices)
             }
         }
 
-        return quads
+        return quadsWithIndices
     }
 
-    private func createQuad(for segment: [[Double]]) -> [[Double]]? {
-        guard segment.count >= 2 else { return nil }
+    /// 주어진 구간에서 쿼드를 생성하는 함수 (인덱스 포함)
+    private func createQuadWithIndices(for segmentWithIndices: [(Int, [Double])]) -> ([Int], [[Double]])? {
+        guard segmentWithIndices.count >= 2 else { return nil }
 
-        // 구간의 좌표에서 위도와 경도의 최소값과 최대값을 구합니다.
-        let latitudes = segment.map { $0[1] }
-        let longitudes = segment.map { $0[0] }
+        let indices = segmentWithIndices.map { $0.0 }
+        let points = segmentWithIndices.map { $0.1 }
+        let latitudes = points.map { $0[1] }
+        let longitudes = points.map { $0[0] }
 
         guard let minLat = latitudes.min(),
               let maxLat = latitudes.max(),
@@ -172,7 +173,6 @@ extension LocationInfoUseCase {
             return nil
         }
 
-        // 사각형의 네 꼭지점을 정의합니다.
         let quad = [
             [minLon, maxLat], // 좌상단
             [maxLon, maxLat], // 우상단
@@ -180,10 +180,6 @@ extension LocationInfoUseCase {
             [minLon, minLat]  // 좌하단
         ]
 
-        return quad
+        return (indices, quad)
     }
 }
-
-
-
-
